@@ -60,8 +60,7 @@
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        },
-        "newlines-between": "always" // group들 사이마다 개행 적용 (group 내부에서 개행 적용 불가)
+        }
       }
     ]
   },
@@ -71,7 +70,8 @@
       "jsx": true
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
 
   "settings": {
