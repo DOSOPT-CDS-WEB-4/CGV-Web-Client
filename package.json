@@ -9,7 +9,8 @@
     "format": "prettier --write --cache .",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "lint-front": "lint-staged"
+    "lint-front": "lint-staged",
+    "lint:styled": "stylelint './src/**/*.styles.ts' --fix"
   },
   "lint-staged": {
     "**/*.tsx": "eslint --fix",
@@ -23,6 +24,10 @@
     "react-router-dom": "^6.19.0",
     "styled-components": "^6.1.1",
     "styled-reset": "^4.5.1",
+    "stylelint": "^15.11.0",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
