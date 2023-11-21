@@ -1,7 +1,7 @@
 import { css, DefaultTheme } from 'styled-components';
 
 const colors = {
-  white: '#DADADA',
+  white: '#FFFFFF',
   black: '#000000',
 
   gray100: '#F6F6F6',
