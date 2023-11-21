@@ -117,14 +117,14 @@ const fonts = {
   `,
   body_regular_15: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Regular', system-ui;
-    font-size: 15rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
   `,
   body_medium_15: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Medium', system-ui;
-    font-size: 15rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
     line-height: 100%;
@@ -132,7 +132,7 @@ const fonts = {
   `,
   body_semibold_15: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo SemiBold', system-ui;
-    font-size: 15rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 600;
     line-height: 100%;
@@ -140,7 +140,7 @@ const fonts = {
   `,
   body_bold_15: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Bold', system-ui;
-    font-size: 15rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
@@ -149,14 +149,14 @@ const fonts = {
   body_regular_16: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Regular', system-ui;
     font-style: normal;
-    font-size: 16rem;
+    font-size: 1.6rem;
     font-weight: 400;
     line-height: 100%;
     letter-spacing: -0.008rem;
   `,
   body_semibold_16: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo SemiBold', system-ui;
-    font-size: 16rem;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 600;
     line-height: 100%;
@@ -164,7 +164,7 @@ const fonts = {
   `,
   body_bold_16: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Bold', system-ui;
-    font-size: 16rem;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
@@ -172,14 +172,14 @@ const fonts = {
   `,
   body_semibold_18: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo SemiBold', system-ui;
-    font-size: 18rem;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 600;
     line-height: 2.4rem;
   `,
   title_regular_18: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Regular', system-ui;
-    font-size: 18rem;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 500;
     line-height: 100%;
@@ -187,21 +187,21 @@ const fonts = {
   `,
   title_medium_18: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Medium', system-ui;
-    font-size: 18rem;
+    font-size: 1.8rem;
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -0.009rem;
   `,
   title_semibold_18: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo SemiBold', system-ui;
-    font-size: 18rem;
+    font-size: 1.8rem;
     font-weight: 600;
     line-height: 100%;
     letter-spacing: -0.009rem;
   `,
   title_bold_18: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Bold', system-ui;
-    font-size: 18rem;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
