@@ -4,7 +4,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       white: string;
-      bg: string;
+      black: string;
 
       gray100: string;
       gray200: string;
@@ -28,7 +28,32 @@ declare module 'styled-components' {
       yellow: string;
     };
     fonts: {
-      regular_smibold_12: SerializedStyles;
+      body_regular_12: SerializedStyles;
+
+      body_regular_10: SerializedStyles;
+      body_semibold_10: SerializedStyles;
+      body_regular_12: SerializedStyles;
+      body_medium_12: SerializedStyles;
+      body_semibold_12: SerializedStyles;
+      body_regular_13: SerializedStyles;
+      body_medium_13: SerializedStyles;
+      body_semibold_13: SerializedStyles;
+      body_semibold_14: SerializedStyles;
+      body_regular_14: SerializedStyles;
+      body_bold_14: SerializedStyles;
+      body_regular_15: SerializedStyles;
+
+      body_medium_15: SerializedStyles;
+      body_semibold_15: SerializedStyles;
+      body_bold_15: SerializedStyles;
+      body_regular_16: SerializedStyles;
+      body_semibold_16: SerializedStyles;
+      body_bold_16: SerializedStyles;
+      body_semibold_18: SerializedStyles;
+      title_regular_18: SerializedStyles;
+      title_medium_18: SerializedStyles;
+      title_semibold_18: SerializedStyles;
+      title_bold_18: SerializedStyles;
     };
   }
 }
