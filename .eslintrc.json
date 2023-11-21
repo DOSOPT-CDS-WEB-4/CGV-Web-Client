@@ -26,6 +26,7 @@
     "plugin:import/typescript",
     "plugin:jsx-a11y/recommended"
   ],
+  "ignorePatterns": [".eslintrc.cjs", "vite.config.ts", "index.ts"],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }], // 들여쓰기 몇 칸? 기본 2칸으로 하되, switch문에서는 1칸으로 지정
     "quotes": ["off", "single"], // 쌍따옴표가 아닌 홑따옴표를 사용
@@ -73,7 +74,6 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-
   "settings": {
     "import/resolver": {
       "node": {
