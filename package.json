@@ -10,7 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "lint-front": "lint-staged",
-    "lint:styled": "stylelint './src/**/*.styles.ts' --fix"
+    "lint:styled": "stylelint './src/**/.{ts, tsx, js, jsx}' --fix"
   },
   "lint-staged": {
     "**/*.tsx": "eslint --fix",
@@ -24,20 +24,16 @@
     "react-router-dom": "^6.19.0",
     "styled-components": "^6.1.1",
     "styled-reset": "^4.5.1",
-    "stylelint": "^15.11.0",
-    "stylelint-config-recommended": "^13.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
     "eslint": "^8.54.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -48,7 +44,13 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
+    "postcss": "^8.4.31",
+    "postcss-syntax": "^0.36.2",
     "prettier": "^3.1.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
