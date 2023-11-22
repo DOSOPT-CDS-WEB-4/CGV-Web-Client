@@ -39,8 +39,6 @@ const St = {
   MovieChartWrapper: styled.div`
     & > p {
         display: inline;
-        flex-direction: column;
-        justify-content: center;
         flex-shrink: 0;
         ${({ theme }) => theme.fonts['title_bold_18']};
     }
@@ -63,7 +61,6 @@ const St = {
     }
 
     & > .arrow {
-        flex-shrink: 0;
         margin: 1.8rem 1.5rem 0rem 0.2rem;
 
     }
@@ -82,9 +79,9 @@ const St = {
   LI: styled.li`
       display: inline-block; 
       list-style-type: none;
+      cursor: pointer;
 
       & > p {
-        text-align: center;
         ${({ theme }) => theme.fonts['body_regular_14']};
       }
 
@@ -105,6 +102,11 @@ const St = {
         color: ${({ theme }) => theme.colors['gray600']};
         padding: 2.1rem 2.2rem 0.8rem 0rem;
         border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
+      }
+
+      & > p:hover {
+        color: ${({ theme }) => theme.colors['red']};
+        transition: 0.5s;
       }
     `,
 };
