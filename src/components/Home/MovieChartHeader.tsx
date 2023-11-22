@@ -72,23 +72,33 @@ const St = {
 
   SubChartWrapper: styled.div`
 
-    `,
-
+`,
   LI: styled.li`
-        display: inline-block; 
-        list-style-type: none;
+    display: inline-block; 
+    list-style-type: none;
 
-        & > p {
-        }
-        
-        & > p.selected {
-        }
+    & > p {
+        text-align: center;
+        ${({ theme }) => theme.fonts['body_regular_14']};
+    }
 
-        & > p.next-to-selected {
-        }
+    & > p.selected {
+        color: ${({ theme }) => theme.colors['red']};
+        padding: 2.1rem 0rem 0.8rem 0rem;
+        margin: 0rem 0rem 0rem 1.5rem;
+        border-bottom: 1px solid ${({ theme }) => theme.colors['red']};
+    }
 
-        & > p.not-selected {
-        }
+    & > p.next-to-selected {
+        color: ${({ theme }) => theme.colors['gray600']};
+        padding: 2.1rem 2.2rem 0.8rem 2.2rem;
+        border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
+    }
 
+    & > p.not-selected {
+        color: ${({ theme }) => theme.colors['gray600']};
+        padding: 2.1rem 2.2rem 0.8rem 0rem;
+        border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
+    }
     `,
 };
