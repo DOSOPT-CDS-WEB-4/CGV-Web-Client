@@ -36,7 +36,10 @@ export default MyCgvMenu;
 
 const St = {
   MenuHeader: styled.div`
-
+      background: ${({ theme }) => theme.colors['gray100']};
+      width: 100%;
+      height: 0.9rem;
+      flex-shrink: 0;
     `,
 
   MenuWrapper: styled.div`
@@ -63,7 +66,10 @@ const St = {
     `,
 
   MenuFooter: styled.div`
-
+      background: ${({ theme }) => theme.colors['gray100']};
+      width: 100%;
+      height: 0.9rem;
+      flex-shrink: 0;
     `,
 
 };
