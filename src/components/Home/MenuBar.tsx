@@ -59,11 +59,11 @@ const St = {
   Menu: styled.button`
         color: ${({ theme }) => theme.colors['white']};
         ${({ theme }) => theme.fonts['body_bold_15']};
-        font-size: 1.5rem;
+        /* font-size: 1.5rem;
         font-style: normal;
         font-weight: 700;
         line-height: 100%; 
-        letter-spacing: -0.0075rem;
+        letter-spacing: -0.0075rem; */
         flex-shrink: 0;
 
         &.home {
