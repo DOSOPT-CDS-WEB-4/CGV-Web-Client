@@ -27,7 +27,10 @@ const St = {
     `,
 
   TextWrapper: styled.div`
-
+      flex-direction: column;
+      text-align: left;
+      flex-shrink: 0;
+      margin: 1.3rem 7.6rem 1.2rem 2.2rem;
     `,
 
   SmallTxt: styled.div`
