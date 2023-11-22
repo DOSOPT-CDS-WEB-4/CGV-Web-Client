@@ -59,11 +59,6 @@ const St = {
   Menu: styled.button`
         color: ${({ theme }) => theme.colors['white']};
         ${({ theme }) => theme.fonts['body_bold_15']};
-        /* font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 100%; 
-        letter-spacing: -0.0075rem; */
         flex-shrink: 0;
 
         &.home {
@@ -73,17 +68,8 @@ const St = {
             margin: 0rem 0rem 0rem 1.5rem
         }
 
-        &.event {
-            padding: 1.5rem 0rem 1.2rem 0rem;
-        }
-
-        &.movie-talk, &.fast-order {
-            padding: 1.5rem 0rem 1.2rem 0rem;
-        }
-
-        &.gift-shop, &.cgv {
+        &.event, &.movie-talk, &.fast-order, &.gift-shop, &.cgv {
             padding: 1.5rem 0rem 1.2rem 0rem;
         }
     `,
-
 };
