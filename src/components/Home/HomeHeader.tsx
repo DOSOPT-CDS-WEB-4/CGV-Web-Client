@@ -5,10 +5,10 @@ import { IcCgvLogo, IcHamburger, IcSearch, IcTicket } from '../../assets/icon/in
 import MyTicket from './MyTicket';
 
 const HomeHeader = () => {
-  const myticketSection = useRef<HTMLDivElement>(null);
+  const myTicketSection = useRef<HTMLDivElement>(null);
 
   const handleClickBtn = () => {
-    myticketSection.current?.scrollIntoView({ behavior: 'smooth' });
+    myTicketSection.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -21,7 +21,7 @@ const HomeHeader = () => {
           className='ticket'
           onClick={handleClickBtn} />
       </St.HeaderWrapper>
-      <div ref={myticketSection}>
+      <div ref={myTicketSection}>
         <MyTicket />
       </div>
     </>
