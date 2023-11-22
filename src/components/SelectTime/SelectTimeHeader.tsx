@@ -3,7 +3,7 @@ import { ICHamburger } from '../../assets/icon';
 const SelectTimeHeader = () => {
   return (
     <St.HeaderWrapper>
-      <St.MenuIcon>
+      <St.MenuIcon type="button">
         <ICHamburger />
       </St.MenuIcon>
       <St.PageTitle>빠른 예매</St.PageTitle>
