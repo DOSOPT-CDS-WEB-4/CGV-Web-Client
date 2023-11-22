@@ -151,25 +151,25 @@ ${reset}
 
 @font-face {
   font-family: 'Apple SD Gothic Neo Regular';
-  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoR.woff2') format('woff2');
+  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoR.woff2') format('font-woff2');
   unicode-range: U+AC00-D7A3; //한글만
 }
 
 @font-face {
   font-family: 'Apple SD Gothic Neo Medium';
-  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoM.woff2') format('woff2');
+  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoM.woff2') format('font-woff2');
   unicode-range: U+AC00-D7A3; //한글만
 }
 
 @font-face {
   font-family: 'Apple SD Gothic Neo SemiBold';
-  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoSB.woff2') format('woff2');
+  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoSB.woff2') format('font-woff2');
   unicode-range: U+AC00-D7A3; //한글만
 }
 
 @font-face {
   font-family: 'Apple SD Gothic Neo Bold';
-  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoSB.woff2') format('woff2');
+  src: url('./AppleSDGGothicNeo/AppleSDGothicNeoSB.woff2') format('font-woff2');
   unicode-range: U+AC00-D7A3; //한글만
 }
 
