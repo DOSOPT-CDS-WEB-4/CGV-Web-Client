@@ -1,18 +1,31 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 
 import { IcCgvLogo, IcHamburger, IcSearch, IcTicket } from '../../assets/icon/index';
+import MyTicket from './MyTicket';
 
 const HomeHeader = () => {
-  return (
+  const myticketSection = useRef<HTMLDivElement>(null);
 
-    <St.HeaderWrapper>
-      <St.LogoWrapper>
+  const handleClickBtn = () => {
+    myticketSection.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <St.HeaderWrapper>
         <IcHamburger className='hamburger' />
         <IcCgvLogo className='logo' />
         <IcSearch className='search' />
-        <IcTicket className='ticket' />
-      </St.LogoWrapper>
-    </St.HeaderWrapper>
+        <IcTicket
+          className='ticket'
+          onClick={handleClickBtn} />
+      </St.HeaderWrapper>
+      <div ref={myticketSection}>
+        <MyTicket />
+      </div>
+    </>
+
   );
 };
 
@@ -20,11 +33,7 @@ export default HomeHeader;
 
 const St = {
   HeaderWrapper: styled.div`
-
-  `,
-
-  LogoWrapper: styled.div`
-  width: 100%;
+    width: 100%;
 
     & > .hamburger {
       width: 2rem;
@@ -50,5 +59,4 @@ const St = {
       margin: 1.5rem 1.5rem 1.1rem 0rem;
     }
 `,
-
 };
