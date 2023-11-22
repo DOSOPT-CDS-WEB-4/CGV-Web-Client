@@ -46,25 +46,7 @@
     "simple-import-sort/imports": "error", //import 정렬 강제
     "simple-import-sort/exports": "error", //export 정렬 강제
     "no-unused-vars": "warn",
-    "import/no-named-as-default": 0,
-    "import/order": [
-      "error",
-      {
-        "groups": ["builtin", "external", ["parent", "sibling"], "index"], // import 되는 순서 정의
-        "pathGroups": [
-          {
-            "pattern": "react*", // path가 react로 시작하면
-            "group": "external", // external 앞에
-            "position": "before"
-          }
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "newlines-between": "always"
-      }
-    ]
+    "import/no-named-as-default": 0
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
