@@ -27,6 +27,7 @@ const St = {
     `,
 
   TextWrapper: styled.div`
+      width: 6rem;
       flex-direction: column;
       text-align: left;
       flex-shrink: 0;
@@ -34,10 +35,12 @@ const St = {
     `,
 
   SmallTxt: styled.div`
-
+      color: ${({ theme }) => theme.colors['white']};
+      ${({ theme }) => theme.fonts['body_regular_10']};
     `,
 
   BigTxt: styled.div`
-
+      color: ${({ theme }) => theme.colors['white']};
+      ${({ theme }) => theme.fonts['body_semibold_16']};
     `,
 };
