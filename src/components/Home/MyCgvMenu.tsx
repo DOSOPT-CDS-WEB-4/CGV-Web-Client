@@ -43,26 +43,34 @@ const St = {
     `,
 
   MenuWrapper: styled.div`
+      white-space: nowrap;
+      overflow-x: auto;
+      max-width: 100%;
 
+      &.wrapper::-webkit-scrollbar {
+          display: none;
+      }
     `,
 
   LI: styled.li`
+      display: inline-block; 
+      list-style-type: none;
 
-        & > img {
+      & > img {
 
-        }
+      }
 
-        & > img.left {
+      & > img.left {
 
-        }
+      }
 
-        & > p {
+      & > p {
 
-        }
+      }
 
-        & > p.left-txt {
+      & > p.left-txt {
 
-        }
+      }
     `,
 
   MenuFooter: styled.div`
