@@ -57,21 +57,26 @@ const St = {
       list-style-type: none;
 
       & > img {
-
+        width: 5.6rem;
+        height: 5.6rem;
+        margin: 1.6rem 0.3rem 1.7rem 3.2rem;
       }
 
       & > img.left {
-
+        margin-left: 2.6rem;
       }
 
       & > p {
-
+        margin: 0.3rem 0.3rem 1.7rem 3.2rem;
+        color: ${({ theme }) => theme.colors['gray900']};
+        text-align: center;
+        ${({ theme }) => theme.fonts['body_medium_13']};
       }
 
       & > p.left-txt {
-
+        margin-left: 2.6rem;
       }
-    `,
+  `,
 
   MenuFooter: styled.div`
       background: ${({ theme }) => theme.colors['gray100']};
