@@ -15,6 +15,15 @@ export default BookingFloatingButton;
 
 const St = {
   BtnWrapper: styled.button`
+      position: fixed;
+      width: 15.8rem;
+      height: 5.5rem;
+      top: 63.4rem;
+      left: 25.2rem;
+      flex-shrink: 0;
+      border-radius: 5rem;
+      background: ${({ theme }) => theme.colors['gradient']};
+      box-shadow: 5px 6px 6px 0px rgba(0, 0, 0, 0.40);
     `,
 
   TextWrapper: styled.div`
