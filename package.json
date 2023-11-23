@@ -10,7 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "lint-front": "lint-staged",
-    "lint:styled": "stylelint './src/**/.{ts, tsx, js, jsx}' --fix"
+    "stylelint": "stylelint --ignore-path .gitignore '**/*.(ts|ts|js|jsx)' --fix"
   },
   "lint-staged": {
     "**/*.tsx": "eslint --fix",
@@ -48,9 +48,9 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^3.1.0",
     "stylelint": "^15.11.0",
+    "stylelint-config-clean-order": "^5.2.0",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
