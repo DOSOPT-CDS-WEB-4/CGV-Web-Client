@@ -36,16 +36,16 @@ export default MyCgvMenu;
 
 const St = {
   MenuHeader: styled.div`
-      background: ${({ theme }) => theme.colors['gray100']};
+      flex-shrink: 0;
       width: 100%;
       height: 0.9rem;
-      flex-shrink: 0;
+      background: ${({ theme }) => theme.colors['gray100']};
     `,
 
   MenuWrapper: styled.div`
-      white-space: nowrap;
       overflow-x: auto;
       max-width: 100%;
+      white-space: nowrap;
 
       &.wrapper::-webkit-scrollbar {
           display: none;
@@ -79,10 +79,10 @@ const St = {
   `,
 
   MenuFooter: styled.div`
-      background: ${({ theme }) => theme.colors['gray100']};
+      flex-shrink: 0;
       width: 100%;
       height: 0.9rem;
-      flex-shrink: 0;
+      background: ${({ theme }) => theme.colors['gray100']};
     `,
 
 };
