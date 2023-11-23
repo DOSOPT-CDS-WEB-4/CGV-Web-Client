@@ -36,14 +36,18 @@ export default MenuBar;
 
 const St = {
   MenuBarWrapper: styled.div`
-        background: ${({ theme }) => theme.colors['gradient']};
-        width: 37.5rem;
-        height: 4.2rem;
-        flex-shrink: 0;
-        white-space: nowrap;
-        overflow-x: auto;
-        max-width: 100%;
         scrollbar-width: none;
+
+        overflow-x: auto;
+        flex-shrink: 0;
+
+        width: 37.5rem;
+        max-width: 100%;
+        height: 4.2rem;
+
+        white-space: nowrap;
+
+        background: ${({ theme }) => theme.colors['gradient']};
 
         &::-webkit-scrollbar {
             display: none;
@@ -51,21 +55,22 @@ const St = {
     `,
 
   LI: styled.li`
-        display: inline-block; 
+        display: inline-block;
+        margin-right: 1.8rem; 
         list-style-type: none;
-        margin-right: 1.8rem;
     `,
 
   Menu: styled.button`
         color: ${({ theme }) => theme.colors['white']};
         ${({ theme }) => theme.fonts['body_bold_15']};
+
         flex-shrink: 0;
 
         &.home {
-            border-bottom: 2px solid white;
-            border-bottom-width: 0.3rem;
+            margin: 0rem 0rem 0rem 1.5rem;
             padding: 1.5rem 0.2rem 0.92rem 0.2rem;
-            margin: 0rem 0rem 0rem 1.5rem
+            border-bottom: 2px solid white;
+            border-bottom-width: 0.3rem
         }
 
         &.event, &.movie-talk, &.fast-order, &.gift-shop, &.cgv {
