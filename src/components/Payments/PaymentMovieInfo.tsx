@@ -4,11 +4,12 @@ const PaymentMovieInfo = () => {
   return (
     <St.PaymentMovieInfoWrapper>
       <St.MovieInfoTitle>그대들은 어떻게 살~</St.MovieInfoTitle>
-      <St.MovieInfoDateBox>
-        <St.MovieInfoDateText>2023.10.31</St.MovieInfoDateText>
-        <St.MovieInfoDateText>화요일</St.MovieInfoDateText>
-        <St.MovieInfoDateText>22.35 ~ 24.49</St.MovieInfoDateText>
-      </St.MovieInfoDateBox>
+      <St.MovieInfoDetailBox>
+        <St.MovieInfoDetailText>
+          2023.10.31 <span className="detailDay">화요일 </span>· 22:35~24:49
+        </St.MovieInfoDetailText>
+        <St.MovieInfoDetailText>홍대 · 3관 7층</St.MovieInfoDetailText>
+      </St.MovieInfoDetailBox>
       <St.MovieInfoPersonText>일반2</St.MovieInfoPersonText>
       <St.MovieInfoAmountText>28,000원</St.MovieInfoAmountText>
     </St.PaymentMovieInfoWrapper>
@@ -33,23 +34,20 @@ const St = {
     ${({ theme }) => theme.fonts.title_medium_18};
   `,
 
-  MovieInfoDateBox: styled.div`
+  MovieInfoDetailBox: styled.div`
     display: flex;
+    flex-direction: column;
     gap: 0.4rem;
   `,
 
-  MovieInfoDateText: styled.span`
+  MovieInfoDetailText: styled.p`
     color: ${({ theme }) => theme.colors.gray400};
     ${({ theme }) => theme.fonts.body_regular_14};
 
-    &.day {
+    & > .detailDay {
       color: ${({ theme }) => theme.colors.blue_1};
+      ${({ theme }) => theme.fonts.body_regular_14};
     }
-  `,
-
-  MovieInfoPlaeText: styled.p`
-    color: ${({ theme }) => theme.colors.gray400};
-    ${({ theme }) => theme.fonts.body_regular_14};
   `,
 
   MovieInfoPersonText: styled.p`
