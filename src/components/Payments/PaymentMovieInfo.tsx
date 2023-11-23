@@ -1,17 +1,37 @@
 import styled from 'styled-components';
 
 const PaymentMovieInfo = () => {
+  // 영화, 상영관, 인원, 결제 정보 더미데이터
+  const DUMMY_MOVIE_INFO = {
+    movie_title: '그대들은 어떻게 살것인가',
+    movie_date: '2023.10.31',
+    movie_day: '화요일',
+    start_time: '22:35',
+    end_time: '24:49',
+    region: '홍대',
+    place: '3관 7층',
+
+    person: '일반2',
+
+    price: 28000,
+  };
+
+  const { movie_title, movie_date, movie_day, start_time, end_time, region, place, person, price } =
+    DUMMY_MOVIE_INFO;
+
   return (
     <St.PaymentMovieInfoWrapper>
-      <St.MovieInfoTitle>그대들은 어떻게 살~</St.MovieInfoTitle>
+      <St.MovieInfoTitle>{movie_title}</St.MovieInfoTitle>
       <St.MovieInfoDetailBox>
         <St.MovieInfoDetailText>
-          2023.10.31 <span className="detailDay">화요일 </span>· 22:35~24:49
+          {movie_date} <span className="detailDay">{movie_day} </span>· {start_time}~{end_time}
         </St.MovieInfoDetailText>
-        <St.MovieInfoDetailText>홍대 · 3관 7층</St.MovieInfoDetailText>
+        <St.MovieInfoDetailText>
+          {region} · {place}
+        </St.MovieInfoDetailText>
       </St.MovieInfoDetailBox>
-      <St.MovieInfoPersonText>일반2</St.MovieInfoPersonText>
-      <St.MovieInfoAmountText>28,000원</St.MovieInfoAmountText>
+      <St.MovieInfoPersonText>{person}</St.MovieInfoPersonText>
+      <St.MovieInfoPriceText>{price.toLocaleString()}원</St.MovieInfoPriceText>
     </St.PaymentMovieInfoWrapper>
   );
 };
@@ -55,7 +75,7 @@ const St = {
     ${({ theme }) => theme.fonts.body_regular_14}
   `,
 
-  MovieInfoAmountText: styled.p`
+  MovieInfoPriceText: styled.p`
     margin-left: auto;
     color: ${({ theme }) => theme.colors.gray900};
     ${({ theme }) => theme.fonts.body_semibold_15};
