@@ -1,5 +1,11 @@
+import PaymentHeader from '../components/Payment/PaymentHeader';
+
 const Payment = () => {
-  return <div>결제하기 페이지입니다.</div>;
+  return (
+    <>
+      <PaymentHeader />
+    </>
+  );
 };
 
 export default Payment;
