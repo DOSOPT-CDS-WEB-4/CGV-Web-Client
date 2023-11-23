@@ -54,22 +54,21 @@ const St = {
     }
 
     & > p.view-all {
-        margin: 1.8rem 0.2rem 0.4rem 0rem;
         flex-shrink: 0;
+        margin: 1.8rem 0.2rem 0.4rem 0rem;
         color: ${({ theme }) => theme.colors['gray400']};
         ${({ theme }) => theme.fonts['body_regular_13']};
     }
 
     & > .arrow {
         margin: 1.8rem 1.5rem 0rem 0.2rem;
-
     }
   `,
 
   SubChartWrapper: styled.div`
+    overflow-x: auto;
     max-width: 100%;
     white-space: nowrap;
-    overflow-x: auto;
           
     &::-webkit-scrollbar {
       display: none;
@@ -77,30 +76,30 @@ const St = {
   `,
 
   LI: styled.li`
+      cursor: pointer;
       display: inline-block; 
       list-style-type: none;
-      cursor: pointer;
 
       & > p {
         ${({ theme }) => theme.fonts['body_regular_14']};
       }
 
       & > p.selected {
-        color: ${({ theme }) => theme.colors['red']};
-        padding: 2.1rem 0rem 0.8rem 0rem;
         margin: 0rem 0rem 0rem 1.5rem;
+        padding: 2.1rem 0rem 0.8rem 0rem;
+        color: ${({ theme }) => theme.colors['red']};
         border-bottom: 1px solid ${({ theme }) => theme.colors['red']};
       }
 
       & > p.next-to-selected {
-        color: ${({ theme }) => theme.colors['gray600']};
         padding: 2.1rem 2.2rem 0.8rem 2.2rem;
+        color: ${({ theme }) => theme.colors['gray600']};
         border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
       }
 
       & > p.not-selected {
-        color: ${({ theme }) => theme.colors['gray600']};
         padding: 2.1rem 2.2rem 0.8rem 0rem;
+        color: ${({ theme }) => theme.colors['gray600']};
         border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
       }
 
