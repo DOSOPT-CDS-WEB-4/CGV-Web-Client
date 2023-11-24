@@ -26,7 +26,7 @@ const St = {
   BtnWrapper: styled.div`
     & > .button {
       position: fixed;
-      top: 75.5rem;
+      top: 70.1rem;
       left: 31.5rem;
     }
   `,
