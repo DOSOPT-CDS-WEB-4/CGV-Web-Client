@@ -70,7 +70,7 @@ const St = {
     & p.second-line {
       ${({ theme }) => theme.fonts.body_semibold_18};
     } 
-    `,
+    `, 
   
   IconWrapper: styled.div`
       display: inline;
