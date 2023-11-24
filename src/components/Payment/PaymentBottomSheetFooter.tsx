@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import { IcArrowUp } from '../../assets/icon';
+
 const PaymentBottomSheetFooter = () => {
   return (
     <St.PaymentBottomSheetFooterWrapper>
+      <IcArrowUp />
       <St.FooterPayButton>28000원 결제하기</St.FooterPayButton>
     </St.PaymentBottomSheetFooterWrapper>
   );
@@ -17,7 +20,9 @@ const St = {
     left: 0;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.1rem;
+    align-items: center;
 
     width: 100%;
     height: 8.8rem;
