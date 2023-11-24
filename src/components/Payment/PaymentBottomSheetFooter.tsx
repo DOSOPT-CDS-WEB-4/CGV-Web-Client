@@ -17,7 +17,6 @@ const St = {
   PaymentBottomSheetFooterWrapper: styled.footer`
     position: fixed;
     bottom: 0;
-    left: 0;
 
     display: flex;
     flex-direction: column;
@@ -25,8 +24,12 @@ const St = {
     align-items: center;
 
     width: 100%;
+    max-width: 43rem;
     height: 8.8rem;
     padding-bottom: 2.3rem;
+
+    border-radius: 1.8rem 1.8rem 0 0;
+    box-shadow: 0 -0.4rem 0.4rem rgba(0, 0, 0, 0.15);
   `,
 
   FooterPayButton: styled.button`
