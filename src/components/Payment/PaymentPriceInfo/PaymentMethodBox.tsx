@@ -1,12 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { IcCard } from '../../../assets/icon';
+interface PaymentMethodBoxProps {
+  isClicked: boolean;
+  icon: string;
+  description: string;
+}
 
-const PaymentMethodBox = ({ isClicked }: { isClicked: boolean }) => {
+const PaymentMethodBox = ({ isClicked, icon, description }: PaymentMethodBoxProps) => {
   return (
     <St.PaymentMethodBoxContainer $isClicked={isClicked}>
-      <IcCard />
-      <St.PaymentMethodBoxText>스마트 결제</St.PaymentMethodBoxText>
+      <St.PaymentMethodIcon src={icon} $description={description} alt="결제방법-박스-아이콘" />
+      {description && <St.PaymentMethodBoxText>{description}</St.PaymentMethodBoxText>}
     </St.PaymentMethodBoxContainer>
   );
 };
@@ -22,7 +26,6 @@ const St = {
 
     width: 11.2rem;
     height: 6.2rem;
-    padding-bottom: 0.6rem;
 
     background-color: ${({ theme }) => theme.colors.white};
     border: 0.1rem solid
@@ -30,8 +33,17 @@ const St = {
     border-radius: 0.2rem;
   `,
 
+  PaymentMethodIcon: styled.img<{ $description: string }>`
+    ${({ $description }) =>
+    $description === '' &&
+      css`
+        width: 6.3rem;
+        height: 1.8rem;
+      `};
+  `,
+
   PaymentMethodBoxText: styled.p`
-    padding: 0.3rem;
+    padding: 0.3rem 0 0.6rem 0;
     color: ${({ theme }) => theme.colors.gray500};
     ${({ theme }) => theme.fonts.body_regular_12};
   `,

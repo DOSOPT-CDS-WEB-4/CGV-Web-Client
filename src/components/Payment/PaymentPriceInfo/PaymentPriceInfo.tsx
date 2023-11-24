@@ -1,8 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-import { IcCheck } from '../../assets/icon';
+import { PAYMENT_METHOD } from '../../../assets/constants/PAYMENT_METHOD';
+import { IcCheck } from '../../../assets/icon';
+import PaymentMethodBox from './PaymentMethodBox';
 
 const PaymentPriceInfo = () => {
+  const [isClicked] = useState(false);
+
   return (
     <St.PaymentPriceInfoWrapper>
       <St.PriceInfoTextArea>
@@ -16,6 +21,18 @@ const PaymentPriceInfo = () => {
         <St.BannerText className="highlight">최초 1회! </St.BannerText>
         <St.BannerText> CGV 스마트 결제 등록하고 빠르게 결제하세요.</St.BannerText>
       </St.PriceInfoBanner>
+      <St.PaymentMethodBoxWrapper>
+        {PAYMENT_METHOD.map(({ id, icon, description }) => {
+          return (
+            <PaymentMethodBox
+              key={id}
+              isClicked={isClicked}
+              icon={icon}
+              description={description}
+            />
+          );
+        })}
+      </St.PaymentMethodBoxWrapper>
     </St.PaymentPriceInfoWrapper>
   );
 };
@@ -78,5 +95,14 @@ const St = {
     &.highlight {
       color: yellow;
     }
+  `,
+
+  PaymentMethodBoxWrapper: styled.article`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.4rem;
+
+    padding-top: 0.4rem;
   `,
 };
