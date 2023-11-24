@@ -37,7 +37,8 @@ export default MyPage;
 
 const St = {
   HeaderWrapper: styled.div`
-    `,
+    margin: 1.9rem 7.5rem 2.4rem 1.5rem;
+  `,
 
   User: styled.p`
     `,
