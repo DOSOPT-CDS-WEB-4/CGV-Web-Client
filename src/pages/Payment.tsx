@@ -1,5 +1,12 @@
+import PaymentMovieInfo from '../components/Payments/PaymentMovieInfo';
+
 const Payment = () => {
-  return <div>결제하기 페이지입니다.</div>;
+  return (
+    <div>
+      결제하기 페이지입니다.
+      <PaymentMovieInfo />
+    </div>
+  );
 };
 
 export default Payment;

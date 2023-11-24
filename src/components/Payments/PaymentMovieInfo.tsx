@@ -47,6 +47,8 @@ const St = {
     width: 100%;
     height: 13.2rem;
     padding: 2.2rem 1.5rem;
+
+    border-bottom: 0.1rem solid ${({ theme }) => theme.colors.gray200};
   `,
 
   MovieInfoTitle: styled.h2`
