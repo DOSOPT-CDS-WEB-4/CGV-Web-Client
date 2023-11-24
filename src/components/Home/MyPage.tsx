@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { IcMembership } from '../../assets/icon';
+import { IcArrowBottom, IcMembership } from '../../assets/icon';
 import img_mymenu1 from '../../assets/image/img_mymenu1.png';
 import img_mymenu2 from '../../assets/image/img_mymenu2.png';
 import img_mymenu3 from '../../assets/image/img_mymenu3.png';
@@ -38,6 +38,10 @@ const MyPage = () => {
         <St.MovieCount>18편</St.MovieCount>
       </St.ContentWrapper>
       <St.ButtonWrapper>
+        <St.DetailButton>
+          <St.ButtonText>더 자세히 보기</St.ButtonText>
+          <IcArrowBottom className='arrow-icon'/>
+        </St.DetailButton>
       </St.ButtonWrapper>
 
       <St.Footer />
@@ -70,7 +74,7 @@ const St = {
     & p.second-line {
       ${({ theme }) => theme.fonts.body_semibold_18};
     } 
-    `, 
+    `,
   
   IconWrapper: styled.div`
       display: inline;
@@ -78,41 +82,63 @@ const St = {
   `,
 
   ContentWrapper: styled.div`
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
 
-    width: 34.4rem;
-    height: 4.4rem;
-    margin: 0.8rem 1.7rem 0.4rem 1.4rem;
-    padding: 0rem 1.9rem 0rem 0.8rem;
+        width: 34.4rem;
+        height: 4.4rem;
+        margin: 0.8rem 1.7rem 0.4rem 1.4rem;
+        padding: 0rem 1.9rem 0rem 0.8rem;
 
-    background: ${({ theme }) => theme.colors['gray100']};
-    border-radius: 5rem;
+        background: ${({ theme }) => theme.colors['gray100']};
+        border-radius: 5rem;
 
-    & > img {
-      width: 3rem;
-      height: 3rem;
-    }
-`,
+        & > img {
+          width: 3rem;
+          height: 3rem;
+        }
+    `,
 
   MyMovie: styled.p`
     margin-left: 1.3rem;
     ${({ theme }) => theme.fonts.body_medium_15};
-`,
+  `,
 
   MovieCount: styled.p`
-    margin-left: auto;
-    color: ${({ theme }) => theme.colors.red};
-    white-space: nowrap;
-    ${({ theme }) => theme.fonts.body_medium_15};
-`,
+      margin-left: auto;
+      color: ${({ theme }) => theme.colors.red};
+      white-space: nowrap;
+      ${({ theme }) => theme.fonts.body_medium_15};
+  `,
 
   ButtonWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  `,
 
+  DetailButton: styled.button`
+    display: flex;
+
+    width: 19.2rem;
+    height: 3.8rem;
+    margin-bottom: 2rem;
+    padding: 1.1rem 4.3rem 1.1rem 3.6rem;
+
+    border: 1px solid ${({ theme }) => theme.colors.red};
+    border-radius: 5rem;
+
+    & > .arrow-icon {
+      margin-left: auto;
+    }
   `,
 
   ButtonText: styled.p`
+    margin-left: auto;
+    color: ${({ theme }) => theme.colors.red};
+    ${({ theme }) => theme.fonts.body_regular_16};
   `,
 
   Footer: styled.div`
