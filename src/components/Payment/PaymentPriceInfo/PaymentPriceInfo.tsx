@@ -21,10 +21,12 @@ const PaymentPriceInfo = () => {
           <St.SaveLastText>마지막 결제수단 저장</St.SaveLastText>
         </St.PriceInfoSaveLastBox>
       </St.PriceInfoTextArea>
+
       <St.PriceInfoBanner>
-        <St.BannerText className="highlight">최초 1회! </St.BannerText>
+        <St.BannerText className="highlight">최초 1회! &nbsp;</St.BannerText>
         <St.BannerText> CGV 스마트 결제 등록하고 빠르게 결제하세요.</St.BannerText>
       </St.PriceInfoBanner>
+
       <St.PaymentMethodBoxWrapper>
         {PAYMENT_METHOD.map(({ id, icon, description }) => {
           return (
@@ -38,6 +40,10 @@ const PaymentPriceInfo = () => {
           );
         })}
       </St.PaymentMethodBoxWrapper>
+
+      <St.PriceInfoTossExplainText>
+        ﹒TOSS로 결제하는 경우 TOSS에서 제공하는 즉시할인, 청구할인, 무이자만 제공됩니다.
+      </St.PriceInfoTossExplainText>
     </St.PaymentPriceInfoWrapper>
   );
 };
@@ -109,5 +115,18 @@ const St = {
     gap: 0.4rem;
 
     padding-top: 0.4rem;
+  `,
+
+  PriceInfoTossExplainText: styled.p`
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 3.2rem;
+
+    color: ${({ theme }) => theme.colors.gray400};
+
+    /* 폰트 적용 수정 후 추후 적용 */
+    /* ${({ theme }) => theme.fonts.body_regular_10}; */
   `,
 };
