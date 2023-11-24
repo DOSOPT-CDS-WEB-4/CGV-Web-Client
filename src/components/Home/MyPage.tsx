@@ -78,16 +78,35 @@ const St = {
   `,
 
   ContentWrapper: styled.div`
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
 
-    `,
+    width: 34.4rem;
+    height: 4.4rem;
+    margin: 0.8rem 1.7rem 0.4rem 1.4rem;
+    padding: 0rem 1.9rem 0rem 0.8rem;
+
+    background: ${({ theme }) => theme.colors['gray100']};
+    border-radius: 5rem;
+
+    & > img {
+      width: 3rem;
+      height: 3rem;
+    }
+`,
 
   MyMovie: styled.p`
-
-  `,
+    margin-left: 1.3rem;
+    ${({ theme }) => theme.fonts.body_medium_15};
+`,
 
   MovieCount: styled.p`
-
-  `,
+    margin-left: auto;
+    color: ${({ theme }) => theme.colors.red};
+    white-space: nowrap;
+    ${({ theme }) => theme.fonts.body_medium_15};
+`,
 
   ButtonWrapper: styled.div`
 
