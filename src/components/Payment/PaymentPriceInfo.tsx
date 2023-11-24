@@ -12,6 +12,10 @@ const PaymentPriceInfo = () => {
           <St.SaveLastText>마지막 결제수단 저장</St.SaveLastText>
         </St.PriceInfoSaveLastBox>
       </St.PriceInfoTextArea>
+      <St.PriceInfoBanner>
+        <St.BannerText className="highlight">최초 1회! </St.BannerText>
+        <St.BannerText> CGV 스마트 결제 등록하고 빠르게 결제하세요.</St.BannerText>
+      </St.PriceInfoBanner>
     </St.PaymentPriceInfoWrapper>
   );
 };
@@ -21,6 +25,7 @@ export default PaymentPriceInfo;
 const St = {
   PaymentPriceInfoWrapper: styled.section`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -52,5 +57,26 @@ const St = {
   SaveLastText: styled.p`
     color: ${({ theme }) => theme.colors.coral};
     ${({ theme }) => theme.fonts.body_regular_14};
+  `,
+
+  PriceInfoBanner: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34.5rem;
+    height: 3rem;
+
+    background-color: ${({ theme }) => theme.colors.coral};
+    border-radius: 0.5rem;
+  `,
+
+  BannerText: styled.span`
+    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.fonts.body_regular_13};
+
+    &.highlight {
+      color: yellow;
+    }
   `,
 };
