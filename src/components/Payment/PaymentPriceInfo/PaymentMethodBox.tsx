@@ -1,17 +1,30 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface PaymentMethodBoxProps {
-  isClicked: boolean;
-  icon: string;
+  isSelected: boolean;
+  defaultIcon: string;
+  selectedIcon: string;
   description: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const PaymentMethodBox = ({ isClicked, icon, description, onClick }: PaymentMethodBoxProps) => {
+const PaymentMethodBox = ({
+  isSelected,
+  defaultIcon,
+  selectedIcon,
+  description,
+  onClick,
+}: PaymentMethodBoxProps) => {
   return (
-    <St.PaymentMethodBoxContainer $isClicked={isClicked} onClick={onClick}>
-      <St.PaymentMethodIcon src={icon} $description={description} alt="결제방법-박스-아이콘" />
-      {description && <St.PaymentMethodBoxText>{description}</St.PaymentMethodBoxText>}
+    <St.PaymentMethodBoxContainer $isClicked={isSelected} onClick={onClick}>
+      {isSelected ? (
+        <img src={selectedIcon} alt="선택된-결제방법-박스-아이콘" />
+      ) : (
+        <img src={defaultIcon} alt="결제방법-박스-아이콘" />
+      )}
+      {description && (
+        <St.PaymentMethodBoxText $isSelected={isSelected}>{description}</St.PaymentMethodBoxText>
+      )}
     </St.PaymentMethodBoxContainer>
   );
 };
@@ -34,18 +47,10 @@ const St = {
     border-radius: 0.2rem;
   `,
 
-  PaymentMethodIcon: styled.img<{ $description: string }>`
-    ${({ $description }) =>
-    $description === '' &&
-      css`
-        width: 6.3rem;
-        height: 1.8rem;
-      `};
-  `,
-
-  PaymentMethodBoxText: styled.p`
+  PaymentMethodBoxText: styled.p<{ $isSelected: boolean }>`
     padding: 0.3rem 0 0.6rem 0;
-    color: ${({ theme }) => theme.colors.gray500};
+    color: ${({ $isSelected, theme }) =>
+    $isSelected ? theme.colors.gray900 : theme.colors.gray500};
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
 };

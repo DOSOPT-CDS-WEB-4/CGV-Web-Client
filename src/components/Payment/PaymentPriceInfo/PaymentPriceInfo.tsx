@@ -28,12 +28,13 @@ const PaymentPriceInfo = () => {
       </St.PriceInfoBanner>
 
       <St.PaymentMethodBoxWrapper>
-        {PAYMENT_METHOD.map(({ id, icon, description }) => {
+        {PAYMENT_METHOD.map(({ id, defaultIcon, selectedIcon, description }) => {
           return (
             <PaymentMethodBox
               key={id}
-              isClicked={selectedMethod === id}
-              icon={icon}
+              isSelected={selectedMethod === id}
+              defaultIcon={defaultIcon}
+              selectedIcon={selectedIcon}
               description={description}
               onClick={() => handleClickMethodBox(id)}
             />

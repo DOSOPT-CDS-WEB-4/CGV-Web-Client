@@ -1,6 +1,9 @@
 import IcCgvLogo from './ic_cgv_logo.svg?react';
 
-import IcCard from './ic_card.svg?react';
 import IcCheck from './ic_check.svg?react';
 
-export { IcCard, IcCgvLogo, IcCheck };
+import IcCardDefault from './ic_card_default.svg?react';
+import IcCardSelcted from './ic_card_selected.svg?react';
+import IcToss from './ic_toss.svg?react';
+
+export { IcCardDefault, IcCardSelcted, IcCgvLogo, IcCheck, IcToss };

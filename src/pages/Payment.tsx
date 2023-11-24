@@ -1,4 +1,4 @@
-import PaymentPriceInfo from '../components/Payment/PaymentPriceInfo';
+import PaymentPriceInfo from '../components/Payment/PaymentPriceInfo/PaymentPriceInfo';
 
 const Payment = () => {
   return (
