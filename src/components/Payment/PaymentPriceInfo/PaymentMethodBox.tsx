@@ -4,11 +4,12 @@ interface PaymentMethodBoxProps {
   isClicked: boolean;
   icon: string;
   description: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const PaymentMethodBox = ({ isClicked, icon, description }: PaymentMethodBoxProps) => {
+const PaymentMethodBox = ({ isClicked, icon, description, onClick }: PaymentMethodBoxProps) => {
   return (
-    <St.PaymentMethodBoxContainer $isClicked={isClicked}>
+    <St.PaymentMethodBoxContainer $isClicked={isClicked} onClick={onClick}>
       <St.PaymentMethodIcon src={icon} $description={description} alt="결제방법-박스-아이콘" />
       {description && <St.PaymentMethodBoxText>{description}</St.PaymentMethodBoxText>}
     </St.PaymentMethodBoxContainer>
@@ -18,7 +19,7 @@ const PaymentMethodBox = ({ isClicked, icon, description }: PaymentMethodBoxProp
 export default PaymentMethodBox;
 
 const St = {
-  PaymentMethodBoxContainer: styled.div<{ $isClicked: boolean }>`
+  PaymentMethodBoxContainer: styled.button<{ $isClicked: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;

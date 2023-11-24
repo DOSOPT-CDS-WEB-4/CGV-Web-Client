@@ -6,7 +6,11 @@ import { IcCheck } from '../../../assets/icon';
 import PaymentMethodBox from './PaymentMethodBox';
 
 const PaymentPriceInfo = () => {
-  const [isClicked] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState<number>();
+
+  const handleClickMethodBox = (id: number) => {
+    setSelectedMethod(id);
+  };
 
   return (
     <St.PaymentPriceInfoWrapper>
@@ -26,9 +30,10 @@ const PaymentPriceInfo = () => {
           return (
             <PaymentMethodBox
               key={id}
-              isClicked={isClicked}
+              isClicked={selectedMethod === id}
               icon={icon}
               description={description}
+              onClick={() => handleClickMethodBox(id)}
             />
           );
         })}
