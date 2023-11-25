@@ -1,17 +1,33 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import SelectPersonBottomSheetPortal from './SelectPersonBottomSheetPortal';
 
-const SelectPersonBottomSheet = () => {
+interface SelectPersonBottomSheetProps {
+  isOpenBottomSheet: boolean;
+  setIsOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SelectPersonBottomSheet = ({
+  isOpenBottomSheet,
+  setIsOpenBottomSheet,
+}: SelectPersonBottomSheetProps) => {
   return (
     <SelectPersonBottomSheetPortal>
-      <>
-        <St.BottomSheetBg></St.BottomSheetBg>
-        <St.BottomSheetConatiner>
-          바텀시트 부분
-          <St.BottomSheetSelectPersonBtn type="button">인원선택</St.BottomSheetSelectPersonBtn>
-        </St.BottomSheetConatiner>
-      </>
+      {isOpenBottomSheet && (
+        <>
+          <St.BottomSheetBg onClick={() => setIsOpenBottomSheet(false)}></St.BottomSheetBg>
+          <St.BottomSheetConatiner>
+            바텀시트 부분
+            <St.BottomSheetSelectPersonBtn
+              type="button"
+              onClick={() => setIsOpenBottomSheet(false)}
+            >
+              인원선택
+            </St.BottomSheetSelectPersonBtn>
+          </St.BottomSheetConatiner>
+        </>
+      )}
     </SelectPersonBottomSheetPortal>
   );
 };
@@ -20,8 +36,12 @@ export default SelectPersonBottomSheet;
 
 const St = {
   BottomSheetBg: styled.div`
+    cursor: pointer;
+
     position: fixed;
     top: 0;
+
+    overflow: hidden;
 
     width: 100%;
     max-width: 43rem;
