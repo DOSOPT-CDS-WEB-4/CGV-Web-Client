@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BottomSheetBtn from './SelectPersonBottomSheetAtoms/BottomSheetBtn';
+import BottomSheetHeader from './SelectPersonBottomSheetAtoms/BottomSheetHeader';
 import SelectPersonBottomSheetPortal from './SelectPersonBottomSheetPortal';
 
 interface SelectPersonBottomSheetProps {
@@ -19,7 +20,7 @@ const SelectPersonBottomSheet = ({
         <>
           <St.BottomSheetBg onClick={() => setIsOpenBottomSheet(false)}></St.BottomSheetBg>
           <St.BottomSheetConatiner>
-            바텀시트 부분
+            <BottomSheetHeader setIsOpenBottomSheet={setIsOpenBottomSheet} />
             <BottomSheetBtn setIsOpenBottomSheet={setIsOpenBottomSheet} />
           </St.BottomSheetConatiner>
         </>
