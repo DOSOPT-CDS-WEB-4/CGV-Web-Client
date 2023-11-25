@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BottomSheetBtn from './SelectPersonBottomSheetAtoms/BottomSheetBtn';
+import BottomSheetContents from './SelectPersonBottomSheetAtoms/BottomSheetContents';
 import BottomSheetHeader from './SelectPersonBottomSheetAtoms/BottomSheetHeader';
 import SelectPersonBottomSheetPortal from './SelectPersonBottomSheetPortal';
 
@@ -21,6 +22,7 @@ const SelectPersonBottomSheet = ({
           <St.BottomSheetBg onClick={() => setIsOpenBottomSheet(false)}></St.BottomSheetBg>
           <St.BottomSheetConatiner>
             <BottomSheetHeader setIsOpenBottomSheet={setIsOpenBottomSheet} />
+            <BottomSheetContents />
             <BottomSheetBtn setIsOpenBottomSheet={setIsOpenBottomSheet} />
           </St.BottomSheetConatiner>
         </>
@@ -59,7 +61,9 @@ const St = {
 
     width: 100%;
     max-width: 43rem;
-    height: calc(100vh - 23.2rem);
+    /* height: calc(100vh - 23.2rem);
+     */
+    height: 51.5rem;
 
     background-color: white;
   `,

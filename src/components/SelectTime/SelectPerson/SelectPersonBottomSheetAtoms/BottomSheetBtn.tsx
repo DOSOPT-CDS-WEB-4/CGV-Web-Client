@@ -18,6 +18,9 @@ export default BottomSheetBtn;
 
 const St = {
   BottomSheetSelectPersonBtn: styled.button`
+    position: absolute;
+    bottom: 0;
+
     display: flex;
     justify-content: center;
 
