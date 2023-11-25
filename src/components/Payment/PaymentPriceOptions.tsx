@@ -1,24 +1,10 @@
 import styled from 'styled-components';
 
+import { PRICE_OPTIONS } from '../../assets/constants/PAYMENT_PRICE_OPTIONS';
 import { IcArrowBottom } from '../../assets/icon';
 import img_toss_banner from '../../assets/image/img_toss_banner.png';
 
 const PaymentPriceOptions = () => {
-  const PRICE_OPTIONS = [
-    {
-      id: 1,
-      description: '할인쿠폰',
-    },
-    {
-      id: 2,
-      description: '관람권/기프티콘',
-    },
-    {
-      id: 3,
-      description: '포인트/상품권',
-    },
-  ];
-
   return (
     <St.PriceOptionsWrapper>
       <St.TossBannerContainer>
