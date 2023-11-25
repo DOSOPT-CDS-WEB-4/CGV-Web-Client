@@ -1,3 +1,5 @@
 import IcCgvLogo from './ic_cgv_logo.svg?react';
 
-export { IcCgvLogo };
+import IcClose from './ic_close.svg?react';
+
+export { IcCgvLogo, IcClose };
