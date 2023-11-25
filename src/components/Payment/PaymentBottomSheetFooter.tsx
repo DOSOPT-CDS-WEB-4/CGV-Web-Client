@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import { IcArrowUp } from '../../assets/icon';
 
 const PaymentBottomSheetFooter = () => {
+  const CHARGE_AMOUNT = 28000;
+
   return (
     <St.PaymentBottomSheetFooterWrapper>
       <IcArrowUp />
-      <St.FooterPayButton>28000원 결제하기</St.FooterPayButton>
+      <St.FooterPayButton>{CHARGE_AMOUNT.toLocaleString()}원 결제하기</St.FooterPayButton>
     </St.PaymentBottomSheetFooterWrapper>
   );
 };
