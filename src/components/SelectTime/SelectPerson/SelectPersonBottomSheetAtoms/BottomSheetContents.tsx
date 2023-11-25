@@ -40,7 +40,10 @@ const St = {
     flex-direction: column;
     gap: 1.6rem;
     align-items: center;
+
+    padding-bottom: 11.4rem;
   `,
+
   ContentsMovieInfoContainer: styled.div`
     display: flex;
     flex-direction: column;

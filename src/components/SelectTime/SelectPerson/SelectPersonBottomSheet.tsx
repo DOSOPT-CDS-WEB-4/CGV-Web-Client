@@ -61,9 +61,7 @@ const St = {
 
     width: 100%;
     max-width: 43rem;
-    /* height: calc(100vh - 23.2rem);
-     */
-    height: 51.5rem;
+    max-height: 51.5rem;
 
     background-color: white;
     border-radius: 1.8rem 1.8rem 0 0;
