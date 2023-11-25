@@ -66,5 +66,8 @@ const St = {
     height: 51.5rem;
 
     background-color: white;
+    border-radius: 1.8rem 1.8rem 0 0;
+
+    transition: transform 1000ms ease-out;
   `,
 };
