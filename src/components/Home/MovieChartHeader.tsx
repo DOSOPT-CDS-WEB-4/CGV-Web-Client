@@ -36,7 +36,7 @@ const MovieChartHeader = () => {
 export default MovieChartHeader;
 
 const St = {
-  MovieChartWrapper: styled.div`
+  MovieChartWrapper: styled.nav`
     & > p {
         display: inline;
         flex-shrink: 0;
