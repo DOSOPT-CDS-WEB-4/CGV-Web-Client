@@ -16,15 +16,20 @@ const MovieCard: React.FC<MovieCardContents> = (props) => {
   const { posterImg, title, ranking, audience, like } = props;
 
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
+  const [isLike, setIsLike] = useState<boolean>(false);
 
   const handleCard = () => {
     setSelectedCard(!selectedCard);
   };
 
+  const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setIsLike(!isLike);
+  };
+
   return (
     <St.MovieCardWrapper
-      onClick={() => {handleCard();
-        console.log('클릭됨');}}
+      onClick={() => {handleCard();}}
       className={selectedCard ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={posterImg} alt="Movie-Poster" />
       <St.AllImg src={img_all} alt="all-img" />
@@ -32,7 +37,9 @@ const MovieCard: React.FC<MovieCardContents> = (props) => {
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {audience}</St.Audience>
       <St.BookingBtn>예매하기</St.BookingBtn>
-      <St.LikeBtn>
+      <St.LikeBtn
+        onClick={(e) => {handleButton(e);}}
+        className={isLike ? 'fill-heart' : 'empty-heart'}>
         <IcHeartOn />
         <St.LikeNumber>{like}</St.LikeNumber>
       </St.LikeBtn>
@@ -123,6 +130,13 @@ const St = {
 
     border: 1px solid ${({ theme }) => theme.colors.red};
     border-radius: 5rem;
+
+    &.empty-heart > svg {
+        path {
+            fill: none;
+            stroke: ${({ theme }) => theme.colors.red};
+        }
+    }
   `,
 
   LikeNumber: styled.p`
