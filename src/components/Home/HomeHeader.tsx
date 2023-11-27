@@ -36,8 +36,6 @@ const St = {
     width: 100%;
 
     & > .hamburger {
-      width: 2rem;
-      height: 1.6rem;
       margin: 1.7rem 0rem 1.5rem 1.7rem;
     }
 
@@ -48,14 +46,10 @@ const St = {
     }
 
     & > .search {
-      width: 2.4rem;
-      height: 2.4rem;
       margin: 1.5rem 0.3rem 1.1rem 0rem;
     }
 
     & > .ticket {
-      width: 3rem;
-      height: 2.4rem;
       margin: 1.5rem 1.5rem 1.1rem 0rem;
     }
 `,
