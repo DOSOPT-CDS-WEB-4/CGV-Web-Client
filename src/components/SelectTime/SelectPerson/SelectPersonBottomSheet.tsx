@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import BottomSheetBtn from './SelectPersonBottomSheetAtoms/BottomSheetBtn';
 import BottomSheetContents from './SelectPersonBottomSheetAtoms/BottomSheetContents';
@@ -32,6 +32,24 @@ const SelectPersonBottomSheet = ({
 };
 
 export default SelectPersonBottomSheet;
+
+const slideUp = keyframes`
+     from {
+    transform: translateY(51.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
+// const slideDown = keyframes`
+//   from {
+//     transform: translateY(0);
+//   }
+//   to {
+//     transform: translateY(-51.5rem);
+//   }
+//   `;
 
 const St = {
   BottomSheetBg: styled.div`
@@ -66,6 +84,6 @@ const St = {
     background-color: white;
     border-radius: 1.8rem 1.8rem 0 0;
 
-    transition: transform 1000ms ease-out;
+    animation: ${slideUp} 0.25s ease-out forwards;
   `,
 };
