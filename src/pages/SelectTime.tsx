@@ -1,11 +1,11 @@
-import SelectTimeFooter from '../components/SelectTime/Footer';
-import MovieInfo from '../components/SelectTime/MovieInfo';
+import Footer from '../components/SelectTime/Footer';
+import SelectTimeHeader from '../components/SelectTime/SelectTimeHeader';
 
 const SelectTime = () => {
   return (
     <>
-      <MovieInfo />
-      <SelectTimeFooter />
+      <SelectTimeHeader />
+      <Footer />
     </>
   );
 };
