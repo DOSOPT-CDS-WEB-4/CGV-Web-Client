@@ -157,6 +157,12 @@ const St = {
     &.active > p {
       color: ${({ theme }) => theme.colors.white};
     }
+
+    &.active > svg {
+      path {
+	    fill: ${({ theme }) => theme.colors.white};
+      }
+    }
   `,
 
   ButtonText: styled.p`
