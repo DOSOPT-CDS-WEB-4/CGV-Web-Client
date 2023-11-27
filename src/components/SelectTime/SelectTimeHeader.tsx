@@ -23,6 +23,10 @@ const St = {
     padding: 1.2rem 16rem 1.2rem 1.6rem;
 
     background-color: transparent;
+
+    & > svg {
+      cursor: pointer;
+    }
   `,
 
   MenuIcon: styled.button`
