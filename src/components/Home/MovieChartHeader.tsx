@@ -37,6 +37,9 @@ export default MovieChartHeader;
 
 const St = {
   MovieChartWrapper: styled.nav`
+    display: flex;
+    padding: 1.9rem 1.5rem 2.1rem 1.5rem;
+
     & > p {
         display: inline;
         flex-shrink: 0;
@@ -44,24 +47,24 @@ const St = {
     }
 
     & > p.movie-chart {
-        margin: 1.9rem 0.4rem 2.1rem 1.5rem;
+        margin-right: 0.8rem;
         color: ${({ theme }) => theme.colors.red};
     }
 
     & > p.scheduled {
-        margin: 1.9rem 14.4rem 2.1rem 0.4rem;
+        margin-right: 14.4rem;
         color: ${({ theme }) => theme.colors.gray400};
     }
 
     & > p.view-all {
         flex-shrink: 0;
-        margin: 1.8rem 0.2rem 0.4rem 0rem;
+        margin-right: 0.4rem;
         color: ${({ theme }) => theme.colors.gray400};
         ${({ theme }) => theme.fonts.body_regular_13};
     }
 
     & > svg {
-        margin: 1.8rem 1.5rem 0rem 0.2rem;
+        margin-left: auto;
     }
   `,
 
