@@ -9,18 +9,30 @@ import SelectPersonBottomSheetPortal from './SelectPersonBottomSheetPortal';
 interface SelectPersonBottomSheetProps {
   isOpenBottomSheet: boolean;
   setIsOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+  isUnmount: boolean;
+  setIsUnmount: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SelectPersonBottomSheet = ({
   isOpenBottomSheet,
   setIsOpenBottomSheet,
+  isUnmount,
+  setIsUnmount,
 }: SelectPersonBottomSheetProps) => {
+  const handleCloseBottomSheet = () => {
+    setIsUnmount(true);
+
+    setTimeout(() => {
+      setIsOpenBottomSheet(false);
+    }, 300);
+  };
+
   return (
     <SelectPersonBottomSheetPortal>
       {isOpenBottomSheet && (
         <>
-          <St.BottomSheetBg onClick={() => setIsOpenBottomSheet(false)}></St.BottomSheetBg>
-          <St.BottomSheetConatiner>
+          <St.BottomSheetBg onClick={handleCloseBottomSheet}></St.BottomSheetBg>
+          <St.BottomSheetConatiner $isUnmount={isUnmount}>
             <BottomSheetHeader setIsOpenBottomSheet={setIsOpenBottomSheet} />
             <BottomSheetContents />
             <BottomSheetBtn setIsOpenBottomSheet={setIsOpenBottomSheet} />
@@ -34,7 +46,7 @@ const SelectPersonBottomSheet = ({
 export default SelectPersonBottomSheet;
 
 const slideUp = keyframes`
-     from {
+  from {
     transform: translateY(51.5rem);
   }
   to {
@@ -42,14 +54,14 @@ const slideUp = keyframes`
   }
 `;
 
-// const slideDown = keyframes`
-//   from {
-//     transform: translateY(0);
-//   }
-//   to {
-//     transform: translateY(-51.5rem);
-//   }
-//   `;
+const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(51.5rem);
+  }
+  `;
 
 const St = {
   BottomSheetBg: styled.div`
@@ -68,7 +80,7 @@ const St = {
     background-color: ${({ theme }) => theme.colors.black};
   `,
 
-  BottomSheetConatiner: styled.section`
+  BottomSheetConatiner: styled.section<{ $isUnmount: boolean }>`
     position: fixed;
     z-index: 10;
     bottom: 0;
@@ -84,6 +96,6 @@ const St = {
     background-color: white;
     border-radius: 1.8rem 1.8rem 0 0;
 
-    animation: ${slideUp} 0.25s ease-out forwards;
+    animation: ${({ $isUnmount }) => ($isUnmount ? slideDown : slideUp)} 0.3s ease-in-out;
   `,
 };
