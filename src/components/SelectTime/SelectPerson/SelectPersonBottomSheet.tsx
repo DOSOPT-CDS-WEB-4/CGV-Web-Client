@@ -1,101 +1,19 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-
-import BottomSheetBtn from './SelectPersonBottomSheetAtoms/BottomSheetBtn';
-import BottomSheetContents from './SelectPersonBottomSheetAtoms/BottomSheetContents';
-import BottomSheetHeader from './SelectPersonBottomSheetAtoms/BottomSheetHeader';
-import SelectPersonBottomSheetPortal from './SelectPersonBottomSheetPortal';
+import SelectPersonBottomSheetBtn from './SelectPersonBottomSheetAtoms/SelectPersonBottomSheetBtn';
+import SelectPersonBottomSheetContents from './SelectPersonBottomSheetAtoms/SelectPersonBottomSheetContents';
+import SelectPersonBottomSheetHeader from './SelectPersonBottomSheetAtoms/SelectPersonBottomSheetHeader';
 
 interface SelectPersonBottomSheetProps {
-  isOpenBottomSheet: boolean;
-  setIsOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
-  isUnmount: boolean;
-  setIsUnmount: React.Dispatch<React.SetStateAction<boolean>>;
+  handleCloseBottomSheet: () => void;
 }
 
-const SelectPersonBottomSheet = ({
-  isOpenBottomSheet,
-  setIsOpenBottomSheet,
-  isUnmount,
-  setIsUnmount,
-}: SelectPersonBottomSheetProps) => {
-  const handleCloseBottomSheet = () => {
-    setIsUnmount(true);
-
-    setTimeout(() => {
-      setIsOpenBottomSheet(false);
-    }, 300);
-  };
-
+const SelectPersonBottomSheet = ({ handleCloseBottomSheet }: SelectPersonBottomSheetProps) => {
   return (
-    <SelectPersonBottomSheetPortal>
-      {isOpenBottomSheet && (
-        <>
-          <St.BottomSheetBg onClick={handleCloseBottomSheet}></St.BottomSheetBg>
-          <St.BottomSheetConatiner $isUnmount={isUnmount}>
-            <BottomSheetHeader setIsOpenBottomSheet={setIsOpenBottomSheet} />
-            <BottomSheetContents />
-            <BottomSheetBtn setIsOpenBottomSheet={setIsOpenBottomSheet} />
-          </St.BottomSheetConatiner>
-        </>
-      )}
-    </SelectPersonBottomSheetPortal>
+    <>
+      <SelectPersonBottomSheetHeader handleCloseBottomSheet={handleCloseBottomSheet} />
+      <SelectPersonBottomSheetContents />
+      <SelectPersonBottomSheetBtn handleCloseBottomSheet={handleCloseBottomSheet} />
+    </>
   );
 };
 
 export default SelectPersonBottomSheet;
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(51.5rem);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
-
-const slideDown = keyframes`
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(51.5rem);
-  }
-  `;
-
-const St = {
-  BottomSheetBg: styled.div`
-    cursor: pointer;
-
-    position: fixed;
-    top: 0;
-
-    overflow: hidden;
-
-    width: 100%;
-    max-width: 43rem;
-    height: 100vh;
-
-    opacity: 0.5;
-    background-color: ${({ theme }) => theme.colors.black};
-  `,
-
-  BottomSheetConatiner: styled.section<{ $isUnmount: boolean }>`
-    position: fixed;
-    z-index: 10;
-    bottom: 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100%;
-    max-width: 43rem;
-    max-height: 51.5rem;
-
-    background-color: white;
-    border-radius: 1.8rem 1.8rem 0 0;
-
-    animation: ${({ $isUnmount }) => ($isUnmount ? slideDown : slideUp)} 0.3s ease-in-out;
-  `,
-};

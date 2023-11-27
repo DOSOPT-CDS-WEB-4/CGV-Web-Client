@@ -2,19 +2,21 @@ import styled from 'styled-components';
 
 import { IcClose } from '../../../../assets/icon';
 
-const BottomSheetHeader = ({
-  setIsOpenBottomSheet,
-}: {
-  setIsOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+interface SelectPersonBottomSheetHeaderProps {
+  handleCloseBottomSheet: () => void;
+}
+
+const SelectPersonBottomSheetHeader = ({
+  handleCloseBottomSheet,
+}: SelectPersonBottomSheetHeaderProps) => {
   return (
     <St.BottomSheetHeaderWrapper>
-      <IcClose onClick={() => setIsOpenBottomSheet(false)} />
+      <IcClose onClick={handleCloseBottomSheet} />
     </St.BottomSheetHeaderWrapper>
   );
 };
 
-export default BottomSheetHeader;
+export default SelectPersonBottomSheetHeader;
 
 const St = {
   BottomSheetHeaderWrapper: styled.header`

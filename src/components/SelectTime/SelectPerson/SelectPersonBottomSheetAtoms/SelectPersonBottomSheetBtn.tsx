@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 
-const BottomSheetBtn = ({
-  setIsOpenBottomSheet,
-}: {
-  setIsOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+interface SelectPersonBottomSheetBtnProps {
+  handleCloseBottomSheet: () => void;
+}
+
+const SelectPersonBottomSheetBtn = ({
+  handleCloseBottomSheet,
+}: SelectPersonBottomSheetBtnProps) => {
   return (
     <>
-      <St.BottomSheetSelectPersonBtn type="button" onClick={() => setIsOpenBottomSheet(false)}>
+      <St.BottomSheetSelectPersonBtn type="button" onClick={handleCloseBottomSheet}>
         인원선택
       </St.BottomSheetSelectPersonBtn>
     </>
   );
 };
 
-export default BottomSheetBtn;
+export default SelectPersonBottomSheetBtn;
 
 const St = {
   BottomSheetSelectPersonBtn: styled.button`
