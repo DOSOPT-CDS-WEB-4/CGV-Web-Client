@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
@@ -27,6 +28,11 @@ const MovieCard: React.FC<MovieCardContents> = (props) => {
     setIsLike(!isLike);
   };
 
+  const navigate = useNavigate();
+  const handleBooking = () => {
+    navigate('/select-time');
+  };
+
   return (
     <St.MovieCardWrapper
       onClick={() => {handleCard();}}
@@ -36,7 +42,8 @@ const MovieCard: React.FC<MovieCardContents> = (props) => {
       <St.MovieTitle>{title}</St.MovieTitle>
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {audience}</St.Audience>
-      <St.BookingBtn>예매하기</St.BookingBtn>
+      <St.BookingBtn
+        onClick={handleBooking}>예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
