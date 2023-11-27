@@ -2,14 +2,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import ALLImgUrl from '../../assets/image/img_all.png';
-import PosterImgUrl from '../../assets/image/img_moviedetail1.png';
+import PosterImgUrl from '../../assets/image/img_moviedetail1@2x.png';
 import SelectTimeHeader from './SelectTimeHeader';
 
 const DATA = {
   id: 1,
   title: '그대들은 어떻게 살 것인가',
   content:
-    '화재로 어머니를 잃은 11살 소년 ‘마히토’는 아버지와 함께 어머니의 고향으로 간다. 어머니에 대한 그리움과 새로운 보금자리에 적응하느라 힘들어하던 ‘마히토’ 앞에 정체를 알 수 없는 왜가리 한 마리가 나타나고, 저택에서 일하는 일곱 할멈으로부터 왜가리가 살고 있는 탑에 대한 신비로운 이야기를 듣게 된다. 그러던 어느 날, ‘마히토’는 사라져버린 새엄마 ‘나츠코’를 찾기 위해 탑으로 들어가고, 왜가리가 안내하는 대로 이세계(異世界)의 문을 통과하는데…!',
+    '화재로 어머니를 잃은 11살 소년 ‘마히토’는 아버지와 함께 어머니의 고향으로 간다. 어머니에 대한 그리움과 새로운 보금자리에 적응하느라 힘들어하던 ‘마히토’ 앞에 정체를 알 수 없는 왜가리 한 마리가 나타나고, 저택에서 일하는 일곱 할멈으로부터 왜가리가 살고 있는 탑에 대한 신비로운 이야기를 듣게 된다. 그러던 어느 날, ‘마히토’는 사라져버린 새엄마 ‘나츠코’를 찾기 위해 탑으로 들어가고, 왜가리가 안내하는 대로 이세계의 문을 통과하는데…!',
   date: '2023.10.25',
   genre: '애니메이션',
   country: '일본',
@@ -67,14 +67,18 @@ const St = {
 
   MovieInfo: styled.div`
     display: flex;
+    gap: 1.2rem;
+
     width: 37.5rem;
-    padding: 0.5rem 0.16rem;
+    padding: 0.5rem 1.6rem;
 
     heigth: 21.5rem;
   `,
 
   Poster: styled.img`
     flex-shrink: 0;
+    width: 14rem;
+    height: 17.8rem;
   `,
 
   InfoContent: styled.div`
@@ -91,7 +95,9 @@ const St = {
     display: flex;
     gap: 0.6rem;
     align-items: center;
+
     margin-bottom: 0.5rem;
+    padding-top: 1.1rem;
   `,
 
   AllImg: styled.img`
@@ -120,16 +126,20 @@ const St = {
     overflow: hidden;
 
     width: 19.1rem;
-    height: 8.2rem;
+    height: 7.2rem;
+    margin-bottom: 1rem;
 
     text-overflow: ellipsis;
     white-space: break-spaces;
+    ${({ theme }) => theme.fonts.body_regular_10};
   `,
 
   MovieContentShow: styled.p`
     overflow: scroll;
     width: 19.1rem;
-    height: 8.2rem;
+    height: 7.2rem;
+    margin-bottom: 1rem;
+    ${({ theme }) => theme.fonts.body_regular_10};
   `,
 
   ViewMoreBtn: styled.button`
