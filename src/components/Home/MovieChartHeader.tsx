@@ -59,8 +59,9 @@ const St = {
     & > p.view-all {
         flex-shrink: 0;
         margin-right: 0.4rem;
-        color: ${({ theme }) => theme.colors.gray400};
         ${({ theme }) => theme.fonts.body_regular_13};
+
+        color: ${({ theme }) => theme.colors.gray400};
     }
 
     & > svg {
