@@ -21,7 +21,7 @@ const MovieCardSlider = () => {
 
   return (
     <St.MovieListWrapper>
-      <Slider {...settings}>
+      <St.MovieCardSlider {...settings}>
         {DATA.slice(0, 5).map((movie: MovieCardContents, index: number) => (
           <MovieCard key={index}
             posterImg={movie.posterImg}
@@ -31,7 +31,7 @@ const MovieCardSlider = () => {
             like={movie.like}
           />
         ))}
-      </Slider>
+      </St.MovieCardSlider>
     </St.MovieListWrapper>
   );
 };
@@ -41,6 +41,12 @@ export default MovieCardSlider;
 const St = {
   MovieListWrapper: styled.div`
     padding: 1.6rem 0rem 1.3rem 0rem;
+  `,
+
+  MovieCardSlider: styled(Slider)`
+    .slick-slide > div {
+      padding-right: 0.8rem;
+  }
   `,
 
 };
