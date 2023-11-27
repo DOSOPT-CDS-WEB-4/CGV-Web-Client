@@ -11,7 +11,7 @@ const MyCgvMenu = () => {
       <St.MenuHeader />
       <St.MenuWrapper>
         <St.LI>
-          <img src={img_menu1} className='left' alt='my cgv' />
+          <img src={img_menu1} className='left' alt='my-cgv' />
           <p className='left-txt'>MY CGV</p>
         </St.LI>
         <St.LI>
@@ -23,7 +23,7 @@ const MyCgvMenu = () => {
           <p>할인정보</p>
         </St.LI>
         <St.LI>
-          <img src={img_menu4} alt='CGV 스토어' />
+          <img src={img_menu4} alt='CGV-스토어' />
           <p>CGV스토어</p>
         </St.LI>
       </St.MenuWrapper>
