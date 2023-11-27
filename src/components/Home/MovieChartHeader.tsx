@@ -85,7 +85,7 @@ const St = {
       }
 
       & > p.selected {
-        margin: 0rem 0rem 0rem 1.5rem;
+        margin-left: 1.5rem;
         padding: 2.1rem 0rem 0.8rem 0rem;
         color: ${({ theme }) => theme.colors.red};
         border-bottom: 1px solid ${({ theme }) => theme.colors.red};
