@@ -45,8 +45,12 @@ const St = {
 
   MovieCardSlider: styled(Slider)`
     .slick-slide > div {
-      padding-right: 0.8rem;
-  }
+      padding-right: 0.4rem;
+    }
+
+    .slick-track {
+      height: 33rem;
+    }
   `,
 
 };
