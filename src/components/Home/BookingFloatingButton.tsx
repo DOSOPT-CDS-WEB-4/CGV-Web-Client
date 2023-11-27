@@ -39,7 +39,7 @@ const St = {
     width: 15.8rem;
     height: 5.5rem;
 
-    background: ${({ theme }) => theme.colors['gradient']};
+    background: ${({ theme }) => theme.colors.gradient2};
     border-radius: 5rem;
     box-shadow: 5px 6px 6px 0px rgba(0, 0, 0, 0.40);
   `,
@@ -55,12 +55,12 @@ const St = {
   `,
 
   SmallTxt: styled.div`
-    color: ${({ theme }) => theme.colors['white']};
-    ${({ theme }) => theme.fonts['body_regular_10']};
+    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.fonts.body_regular_10};
   `,
 
   BigTxt: styled.div`
-    color: ${({ theme }) => theme.colors['white']};
-    ${({ theme }) => theme.fonts['body_semibold_16']};
+    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.fonts.body_semibold_16};
   `,
 };
