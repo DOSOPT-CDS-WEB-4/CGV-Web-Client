@@ -140,6 +140,10 @@ const St = {
     height: 7.2rem;
     margin-bottom: 1rem;
     ${({ theme }) => theme.fonts.body_regular_10};
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   `,
 
   ViewMoreBtn: styled.button`
