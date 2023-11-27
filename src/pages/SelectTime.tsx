@@ -1,5 +1,11 @@
+import MovieInfo from '../components/SelectTime/MovieInfo';
+
 const SelectTime = () => {
-  return <div>관람 시간 선택 페이지입니다.</div>;
+  return (
+    <>
+      <MovieInfo />
+    </>
+  );
 };
 
 export default SelectTime;
