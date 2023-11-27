@@ -40,24 +40,24 @@ const St = {
     & > p {
         display: inline;
         flex-shrink: 0;
-        ${({ theme }) => theme.fonts['title_bold_18']};
+        ${({ theme }) => theme.fonts.title_bold_18};
     }
 
     & > p.movie-chart {
         margin: 1.9rem 0.4rem 2.1rem 1.5rem;
-        color: ${({ theme }) => theme.colors['red']};
+        color: ${({ theme }) => theme.colors.red};
     }
 
     & > p.scheduled {
         margin: 1.9rem 14.4rem 2.1rem 0.4rem;
-        color: ${({ theme }) => theme.colors['gray400']};
+        color: ${({ theme }) => theme.colors.gray400};
     }
 
     & > p.view-all {
         flex-shrink: 0;
         margin: 1.8rem 0.2rem 0.4rem 0rem;
-        color: ${({ theme }) => theme.colors['gray400']};
-        ${({ theme }) => theme.fonts['body_regular_13']};
+        color: ${({ theme }) => theme.colors.gray400};
+        ${({ theme }) => theme.fonts.body_regular_13};
     }
 
     & > svg {
@@ -81,30 +81,30 @@ const St = {
       list-style-type: none;
 
       & > p {
-        ${({ theme }) => theme.fonts['body_regular_14']};
+        ${({ theme }) => theme.fonts.body_regular_14};
       }
 
       & > p.selected {
         margin: 0rem 0rem 0rem 1.5rem;
         padding: 2.1rem 0rem 0.8rem 0rem;
-        color: ${({ theme }) => theme.colors['red']};
-        border-bottom: 1px solid ${({ theme }) => theme.colors['red']};
+        color: ${({ theme }) => theme.colors.red};
+        border-bottom: 1px solid ${({ theme }) => theme.colors.red};
       }
 
       & > p.next-to-selected {
         padding: 2.1rem 2.2rem 0.8rem 2.2rem;
-        color: ${({ theme }) => theme.colors['gray600']};
-        border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
+        color: ${({ theme }) => theme.colors.gray600};
+        border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
       }
 
       & > p.not-selected {
         padding: 2.1rem 2.2rem 0.8rem 0rem;
-        color: ${({ theme }) => theme.colors['gray600']};
-        border-bottom: 1px solid ${({ theme }) => theme.colors['gray300']};
+        color: ${({ theme }) => theme.colors.gray600};
+        border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
       }
 
       & > p:hover {
-        color: ${({ theme }) => theme.colors['red']};
+        color: ${({ theme }) => theme.colors.red};
         transition: 0.5s;
       }
     `,
