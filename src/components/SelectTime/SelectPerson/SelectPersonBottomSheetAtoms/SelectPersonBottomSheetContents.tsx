@@ -3,13 +3,26 @@ import styled from 'styled-components';
 import img_seat from '../../../../assets/image/img_seat.png';
 
 const BottomSheetContents = () => {
+  const DUMMY_MOVIE_INFO = {
+    region: '홍대',
+    place: '4관 6층',
+    date: '2023.10.31(화)',
+    start_time: '15:30',
+    end_time: '17:40',
+    rest_seat: 144,
+  };
+
+  const { region, place, date, start_time, end_time, rest_seat } = DUMMY_MOVIE_INFO;
   return (
     <St.BottomSheetContentsWrapper>
       <St.ContentsMovieInfoContainer>
         <St.MovieInfoText>
-          <St.MoieInfoTextStrong>홍대 </St.MoieInfoTextStrong>4관 6층
+          <St.MoieInfoTextStrong>{region} </St.MoieInfoTextStrong>
+          {place}
         </St.MovieInfoText>
-        <St.MovieInfoText>2023.10.31(화) 4회 15:30~17:40</St.MovieInfoText>
+        <St.MovieInfoText>
+          {date} 4회 {start_time}~{end_time}
+        </St.MovieInfoText>
       </St.ContentsMovieInfoContainer>
 
       <St.RestSeatInfoContainer>
@@ -17,7 +30,7 @@ const BottomSheetContents = () => {
           <span>screen</span>
         </St.RestSeatInfoScreen>
         <St.RestSeatImg src={img_seat} alt="잔여-좌석-이미지" />
-        <St.RestSeatText>잔여 144석</St.RestSeatText>
+        <St.RestSeatText>잔여 {rest_seat}석</St.RestSeatText>
       </St.RestSeatInfoContainer>
 
       <St.MovieInfoDetailTextContainer>
