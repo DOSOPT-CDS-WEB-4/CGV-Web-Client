@@ -47,7 +47,7 @@ const St = {
 
         white-space: nowrap;
 
-        background: ${({ theme }) => theme.colors['gradient']};
+        background: ${({ theme }) => theme.colors.gradient};
 
         &::-webkit-scrollbar {
             display: none;
@@ -61,10 +61,9 @@ const St = {
     `,
 
   Menu: styled.button`
-        color: ${({ theme }) => theme.colors['white']};
-        ${({ theme }) => theme.fonts['body_bold_15']};
-
         flex-shrink: 0;
+        color: ${({ theme }) => theme.colors.white};
+        ${({ theme }) => theme.fonts.body_bold_15};
 
         &.home {
             margin: 0rem 0rem 0rem 1.5rem;
