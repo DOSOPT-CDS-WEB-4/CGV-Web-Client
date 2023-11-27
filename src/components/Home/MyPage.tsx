@@ -37,6 +37,7 @@ const MyPage = () => {
         <St.MyMovie>내가 쓴 리뷰</St.MyMovie>
         <St.MovieCount>18편</St.MovieCount>
       </St.ContentWrapper>
+      
       <St.ButtonWrapper>
         <St.DetailButton>
           <St.ButtonText>더 자세히 보기</St.ButtonText>
@@ -44,7 +45,7 @@ const MyPage = () => {
         </St.DetailButton>
       </St.ButtonWrapper>
 
-      <St.Footer />
+      <St.BottomLine />
     </>
   );
 };
@@ -54,16 +55,16 @@ export default MyPage;
 const St = {
   TitleWrapper: styled.div`
     display: flex;
-    padding: 1.9rem 2.3rem 0rem 2.5rem;
+    padding: 1.9rem 1.5rem 2.4rem 2.3rem;
   `,
 
   UserWrapper: styled.div`
-        color: ${({ theme }) => theme.colors['gray900']};
+        color: ${({ theme }) => theme.colors.gray900};
         ${({ theme }) => theme.fonts.body_semibold_18};
 
     & p.user {
       display: inline;
-      color: ${({ theme }) => theme.colors['red']};
+      color: ${({ theme }) => theme.colors.red};
       ${({ theme }) => theme.fonts.body_semibold_18};
     }
 
@@ -91,7 +92,7 @@ const St = {
         margin: 0.8rem 1.7rem 0.4rem 1.4rem;
         padding: 0rem 1.9rem 0rem 0.8rem;
 
-        background: ${({ theme }) => theme.colors['gray100']};
+        background: ${({ theme }) => theme.colors.gray100};
         border-radius: 5rem;
 
         & > img {
@@ -141,7 +142,7 @@ const St = {
     ${({ theme }) => theme.fonts.body_regular_16};
   `,
 
-  Footer: styled.div`
+  BottomLine: styled.div`
     flex-shrink: 0;
     width: 100%;
     height: 0.9rem;
