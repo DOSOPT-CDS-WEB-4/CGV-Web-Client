@@ -10,7 +10,7 @@ const MovieChartHeader = () => {
         <p className='movie-chart'>무비차트</p>
         <p className='scheduled'>상영예정</p>
         <p className='view-all'>전체보기</p>
-        <IcArrowFront className='arrow' />
+        <IcArrowFront />
       </St.MovieChartWrapper>
       <St.SubChartWrapper>
         <St.LI>
@@ -60,7 +60,7 @@ const St = {
         ${({ theme }) => theme.fonts['body_regular_13']};
     }
 
-    & > .arrow {
+    & > svg {
         margin: 1.8rem 1.5rem 0rem 0.2rem;
     }
   `,
