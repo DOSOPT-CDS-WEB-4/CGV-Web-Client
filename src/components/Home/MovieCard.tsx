@@ -58,7 +58,13 @@ const St = {
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.20);
 
     &.selected {
-        background-color: ${({ theme }) => theme.colors.gradient};
+        color: ${({ theme }) => theme.colors.white};
+        background: ${({ theme }) => theme.colors.gradient};
+    }
+
+    &.selected > button {
+        color: ${({ theme }) => theme.colors.red};
+        background-color: ${({ theme }) => theme.colors.white};
     }
   `,
 
