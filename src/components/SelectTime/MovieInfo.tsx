@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import ALLImgUrl from '../../assets/image/img_all.png';
-import PosterImgUrl from '../../assets/image/img_movie.png';
+import PosterImgUrl from '../../assets/image/img_moviedetail1.png';
 import SelectTimeHeader from './SelectTimeHeader';
 
 const DATA = {
@@ -17,28 +18,37 @@ const DATA = {
 };
 
 const MovieInfo = () => {
+  const [clicked, setClicked] = useState(false);
+
+  const handleSetClicked = () => {
+    setClicked(true);
+  };
+
   return (
     <>
       <St.MovieInfoWrapper>
         <SelectTimeHeader />
-        <div>
+        <St.MovieInfo>
           <img src={DATA.posterImgUrl} alt="영화포스터이미지" />
-          <div>
-            <div>
-              <img src={ALLImgUrl} alt="관람등급이미지" />
-              <span>{DATA.title}</span>
-            </div>
+          <St.InfoContent>
+            <St.TitleWrapper>
+              <St.AllImg src={ALLImgUrl} alt="관람등급이미지" />
+              <St.MovieTitle>{DATA.title}</St.MovieTitle>
+            </St.TitleWrapper>
 
-            <div>
-              <span>{DATA.date}개봉</span>
-              <span>{DATA.genre}</span>
-              <span>{DATA.country}</span>
-              <span>{DATA.runningTime}</span>
-            </div>
-            <p>{DATA.content}</p>
-            <button>더보기</button>
-          </div>
-        </div>
+            <St.ExtraInfo>
+              {DATA.date}개봉 · {DATA.genre} · {DATA.country} · {DATA.runningTime}
+            </St.ExtraInfo>
+            {!clicked ? (
+              <St.ContentWrapper>
+                <St.MovieContent>{DATA.content}</St.MovieContent>
+                <St.ViewMoreBtn onClick={handleSetClicked}>더보기</St.ViewMoreBtn>
+              </St.ContentWrapper>
+            ) : (
+              <St.MovieContentShow>{DATA.content}</St.MovieContentShow>
+            )}
+          </St.InfoContent>
+        </St.MovieInfo>
       </St.MovieInfoWrapper>
     </>
   );
@@ -52,5 +62,81 @@ const St = {
     height: 26.3rem;
     background-image: url('image/img_background.png');
     background-size: cover;
+  `,
+
+  MovieInfo: styled.div`
+    display: flex;
+    width: 37.5rem;
+    padding: 0.5rem 1.6rem;
+
+    heigth: 21.5rem;
+  `,
+
+  InfoContent: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 19.1rem;
+
+    color: ${({ theme }) => theme.colors.white};
+  `,
+
+  TitleWrapper: styled.div`
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  `,
+
+  AllImg: styled.img`
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+  `,
+
+  MovieTitle: styled.span`
+    ${({ theme }) => theme.fonts.body_bold_15};
+  `,
+
+  ExtraInfo: styled.div`
+    ${({ theme }) => theme.fonts.body_semibold_10};
+
+    margin-bottom: 1rem;
+  `,
+
+  ContentWrapper: styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  `,
+
+  MovieContent: styled.p`
+    overflow: hidden;
+
+    width: 19.1rem;
+    height: 8.2rem;
+
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+  `,
+
+  MovieContentShow: styled.p`
+    overflow: scroll;
+    width: 19.1rem;
+    height: 8.2rem;
+  `,
+
+  ViewMoreBtn: styled.button`
+    width: 4.2rem;
+    height: 1.8rem;
+    padding: 0.2rem 0.6rem;
+
+    color: ${({ theme }) => theme.colors.white};
+
+    border: 0.5px solid ${({ theme }) => theme.colors.white};
+    border-radius: 1.4rem;
+
+    ${({ theme }) => theme.fonts.body_semibold_10};
   `,
 };
