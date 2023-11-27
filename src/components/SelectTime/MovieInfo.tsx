@@ -144,6 +144,7 @@ const St = {
     &::-webkit-scrollbar {
       display: none;
     }
+
   `,
 
   ViewMoreBtn: styled.button`
