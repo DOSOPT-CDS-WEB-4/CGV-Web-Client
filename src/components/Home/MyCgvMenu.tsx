@@ -39,7 +39,7 @@ const St = {
       flex-shrink: 0;
       width: 100%;
       height: 0.9rem;
-      background: ${({ theme }) => theme.colors['gray100']};
+      background: ${({ theme }) => theme.colors.gray100};
     `,
 
   MenuWrapper: styled.div`
@@ -68,9 +68,9 @@ const St = {
 
       & > p {
         margin: 0.3rem 0.3rem 1.7rem 3.2rem;
-        color: ${({ theme }) => theme.colors['gray900']};
+        color: ${({ theme }) => theme.colors.gray900};
         text-align: center;
-        ${({ theme }) => theme.fonts['body_medium_13']};
+        ${({ theme }) => theme.fonts.body_medium_13};
       }
 
       & > p.left-txt {
@@ -82,7 +82,7 @@ const St = {
       flex-shrink: 0;
       width: 100%;
       height: 0.9rem;
-      background: ${({ theme }) => theme.colors['gray100']};
+      background: ${({ theme }) => theme.colors.gray100};
     `,
 
 };
