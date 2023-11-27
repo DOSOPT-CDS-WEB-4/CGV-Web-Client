@@ -63,7 +63,7 @@ const St = {
   Menu: styled.button`
         flex-shrink: 0;
         color: ${({ theme }) => theme.colors.white};
-        ${({ theme }) => theme.fonts.body_bold_15};
+        ${({ theme }) => theme.fonts.body_bold_15}; 
 
         &.home {
             margin: 0rem 0rem 0rem 1.5rem;
