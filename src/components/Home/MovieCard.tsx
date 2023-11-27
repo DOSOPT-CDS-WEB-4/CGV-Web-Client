@@ -18,7 +18,7 @@ const MovieCard: React.FC<MovieCardContents> = (props) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
 
   const handleCard = () => {
-    setSelectedCard(true);
+    setSelectedCard(!selectedCard);
   };
 
   return (
