@@ -1,5 +1,13 @@
+import Footer from '../components/SelectTime/Footer';
+import SelectTimeHeader from '../components/SelectTime/SelectTimeHeader';
+
 const SelectTime = () => {
-  return <div>관람 시간 선택 페이지입니다.</div>;
+  return (
+    <>
+      <SelectTimeHeader />
+      <Footer />
+    </>
+  );
 };
 
 export default SelectTime;
