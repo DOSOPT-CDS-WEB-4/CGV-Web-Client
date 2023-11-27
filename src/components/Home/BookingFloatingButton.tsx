@@ -16,7 +16,7 @@ const BookingFloatingButton: React.FC<BookingFloatingButtonProps> = ({ selectedC
   return (
     <St.BtnWrapper
       onClick={handleBtn}
-      disabled={!selectedCard}
+      disabled={selectedCard}
     >
       <St.TextWrapper>
         <St.SmallTxt>빠르고 쉽게</St.SmallTxt>
