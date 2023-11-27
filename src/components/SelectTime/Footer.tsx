@@ -15,22 +15,29 @@ export default SelectTimeFooter;
 
 const St = {
   FooterWrapper: styled.section`
+    top: 801px;
+
     display: flex;
+    gap: 0.5rem;
+
     width: 37.5rem;
     height: 3.9rem;
-    top: 801px;
     padding: 0 1.6rem;
-    gap: 0.5rem;
-    background-color: #d9d9d9;
+
+    background-color: ${({ theme }) => theme.colors.gray200};
   `,
 
   FooterButton: styled.button`
     width: 8.2rem;
     height: 3.9rem;
+
     flex-shrink: 0;
+
     background-color: transparent;
+
     cursor: pointer;
     ${({ theme }) => theme.fonts.body_medium_13};
+
     color: ${({ theme }) => theme.colors.gray900};
   `,
 };
