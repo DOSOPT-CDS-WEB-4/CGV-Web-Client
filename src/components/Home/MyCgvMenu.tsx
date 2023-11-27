@@ -8,7 +8,7 @@ import img_menu4 from '../../assets/image/img_menu4.png';
 const MyCgvMenu = () => {
   return (
     <>
-      <St.MenuHeader />
+      <St.MenuTopLine />
       <St.MenuWrapper>
         <St.LI>
           <img src={img_menu1} className='left' alt='my-cgv' />
@@ -27,7 +27,7 @@ const MyCgvMenu = () => {
           <p>CGV스토어</p>
         </St.LI>
       </St.MenuWrapper>
-      <St.MenuFooter />
+      <St.MenuBottomLine />
     </>
   );
 };
@@ -35,7 +35,7 @@ const MyCgvMenu = () => {
 export default MyCgvMenu;
 
 const St = {
-  MenuHeader: styled.div`
+  MenuTopLine: styled.div`
       flex-shrink: 0;
       width: 100%;
       height: 0.9rem;
@@ -78,7 +78,7 @@ const St = {
       }
   `,
 
-  MenuFooter: styled.div`
+  MenuBottomLine: styled.div`
       flex-shrink: 0;
       width: 100%;
       height: 0.9rem;
