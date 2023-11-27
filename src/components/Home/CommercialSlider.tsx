@@ -10,10 +10,18 @@ import img_ad3 from '../../assets/image/img_ad3.png';
 import img_ad4 from '../../assets/image/img_ad4.png';
 
 const CommercialSlider = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 4000,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <St.CommercialWrapper>
-      <St.CommercialSlider>
+      <St.CommercialSlider {...settings}>
         <St.Commercial src={img_ad1} alt='첫번째-광고' />
         <St.Commercial src={img_ad2} alt='두번째-광고' />
         <St.Commercial src={img_ad3} alt='세번째-광고' />
@@ -25,15 +33,21 @@ const CommercialSlider = () => {
 
 const St = {
   CommercialWrapper: styled.div`
-
+    width: 37.5rem;
+    height: 15.2rem;
   `,
 
   CommercialSlider: styled(Slider)`
-
+    .slick-track {
+      width: 37.5rem;
+      height: 15.2rem;
+    }
   `,
   
   Commercial: styled.img`
-
+    width: 37.5rem;
+    height: 15.2rem;
+    object-fit: cover;
   `,
 };
 
