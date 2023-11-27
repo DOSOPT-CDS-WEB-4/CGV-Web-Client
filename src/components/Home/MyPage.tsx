@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { IcArrowBottom, IcMembership } from '../../assets/icon';
@@ -6,6 +7,13 @@ import img_mymenu2 from '../../assets/image/img_mymenu2.png';
 import img_mymenu3 from '../../assets/image/img_mymenu3.png';
 
 const MyPage = () => {
+
+  const [clickedBtn, setClickedBtn] = useState<boolean>(false);
+
+  const handleButton = () => {
+    setClickedBtn(true);
+  };
+
   return (
     <>
       <St.TitleWrapper>
@@ -17,7 +25,7 @@ const MyPage = () => {
             <p className='second-line'>진짜 안 본 영화가 없으시군요?</p>
           </div>
         </St.UserWrapper>
-        <St.IconWrapper>
+        <St.IconWrapper className=''>
           <IcMembership/>
         </St.IconWrapper>
       </St.TitleWrapper>
@@ -39,9 +47,14 @@ const MyPage = () => {
       </St.ContentWrapper>
       
       <St.ButtonWrapper>
-        <St.DetailButton>
-          <St.ButtonText>더 자세히 보기</St.ButtonText>
-          <IcArrowBottom className='arrow-icon'/>
+        <St.DetailButton 
+          onClick={() => {handleButton();
+            console.log('클릭됨');}}
+          className={clickedBtn ? 'active' : 'not-active'}
+        >
+          <St.ButtonText
+          >더 자세히 보기</St.ButtonText>
+          <IcArrowBottom/>
         </St.DetailButton>
       </St.ButtonWrapper>
 
@@ -116,8 +129,10 @@ const St = {
   ButtonWrapper: styled.div`
     display: flex;
     justify-content: center;
+
     width: 100%;
     margin-top: 2rem;
+    margin-bottom: 2rem;
   `,
 
   DetailButton: styled.button`
@@ -125,14 +140,22 @@ const St = {
 
     width: 19.2rem;
     height: 3.8rem;
-    margin-bottom: 2rem;
-    padding: 1.1rem 4.3rem 1.1rem 3.6rem;
+    padding: 1rem 3.6rem 1rem 4.3rem;
 
     border: 1px solid ${({ theme }) => theme.colors.red};
     border-radius: 5rem;
 
-    & > .arrow-icon {
+    & > svg {
       margin-left: auto;
+    }
+
+    &.active {
+      color: ${({ theme }) => theme.colors.white};
+      background: ${({ theme }) => theme.colors.gradient};
+    }
+
+    &.active > p {
+      color: ${({ theme }) => theme.colors.white};
     }
   `,
 
