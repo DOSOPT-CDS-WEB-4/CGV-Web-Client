@@ -1,13 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-import theme from '../../styles/theme';
-
-interface MenuBarProps {
-  theme: typeof theme;
-}
-
-const MenuBar: React.FC<MenuBarProps> = () => {
+const MenuBar = () => {
   return (
     <St.MenuBarWrapper>
       <St.LI>
