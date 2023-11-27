@@ -29,7 +29,7 @@ const MovieInfo = () => {
       <St.MovieInfoWrapper>
         <SelectTimeHeader />
         <St.MovieInfo>
-          <img src={DATA.posterImgUrl} alt="영화포스터이미지" />
+          <St.Poster src={DATA.posterImgUrl} alt="영화포스터이미지" />
           <St.InfoContent>
             <St.TitleWrapper>
               <St.AllImg src={ALLImgUrl} alt="관람등급이미지" />
@@ -67,11 +67,14 @@ const St = {
   MovieInfo: styled.div`
     display: flex;
     width: 37.5rem;
-    padding: 0.5rem 1.6rem;
+    padding: 0.5rem 0.16rem;
 
     heigth: 21.5rem;
   `,
 
+  Poster: styled.img`
+    flex-shrink: 0;
+  `,
   InfoContent: styled.div`
     display: flex;
     flex-direction: column;
