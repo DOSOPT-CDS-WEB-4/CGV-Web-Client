@@ -32,11 +32,11 @@ export default SelectRegion;
 
 const St = {
   SelectRegion: styled.section`
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 1.6rem;
     width: 37.5rem;
+    display: flex;
+
+    padding: 1.6rem;
+    gap: 0.8rem;
     overflow: auto;
     white-space: nowrap;
     overflow: scroll;
