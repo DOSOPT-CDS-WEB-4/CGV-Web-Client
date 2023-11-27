@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
@@ -15,8 +15,17 @@ export interface MovieCardContents {
 const MovieCard: React.FC<MovieCardContents> = (props) => {
   const { posterImg, title, ranking, audience, like } = props;
 
+  const [selectedCard, setSelectedCard] = useState<boolean>(false);
+
+  const handleCard = () => {
+    setSelectedCard(true);
+  };
+
   return (
-    <St.MovieCardWrapper>
+    <St.MovieCardWrapper
+      onClick={() => {handleCard();
+        console.log('클릭됨');}}
+      className={selectedCard ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={posterImg} alt="Movie-Poster" />
       <St.AllImg src={img_all} alt="all-img" />
       <St.MovieTitle>{title}</St.MovieTitle>
@@ -47,6 +56,10 @@ const St = {
 
     border-radius: 2rem;
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.20);
+
+    &.selected {
+        background-color: ${({ theme }) => theme.colors.gradient};
+    }
   `,
 
   MoviePoster: styled.img`
