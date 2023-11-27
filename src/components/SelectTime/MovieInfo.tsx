@@ -19,38 +19,39 @@ const DATA = {
 
 const MovieInfo = () => {
   const [clicked, setClicked] = useState(false);
+  const { posterImgUrl, title, date, genre, country, runningTime, content } = DATA;
 
   const handleSetClicked = () => {
     setClicked(true);
   };
 
   return (
-    <>
-      <St.MovieInfoWrapper>
-        <SelectTimeHeader />
-        <St.MovieInfo>
-          <St.Poster src={DATA.posterImgUrl} alt="영화포스터이미지" />
-          <St.InfoContent>
-            <St.TitleWrapper>
-              <St.AllImg src={ALLImgUrl} alt="관람등급이미지" />
-              <St.MovieTitle>{DATA.title}</St.MovieTitle>
-            </St.TitleWrapper>
+    <St.MovieInfoWrapper>
+      <SelectTimeHeader />
+      <St.MovieInfo>
+        <St.Poster src={posterImgUrl} alt="영화포스터이미지" />
+        <St.InfoContent>
+          <St.TitleWrapper>
+            <St.AllImg src={ALLImgUrl} alt="관람등급이미지" />
+            <St.MovieTitle>{title}</St.MovieTitle>
+          </St.TitleWrapper>
 
-            <St.ExtraInfo>
-              {DATA.date}개봉 · {DATA.genre} · {DATA.country} · {DATA.runningTime}
-            </St.ExtraInfo>
-            {!clicked ? (
-              <St.ContentWrapper>
-                <St.MovieContent>{DATA.content}</St.MovieContent>
-                <St.ViewMoreBtn onClick={handleSetClicked}>더보기</St.ViewMoreBtn>
-              </St.ContentWrapper>
-            ) : (
-              <St.MovieContentShow>{DATA.content}</St.MovieContentShow>
-            )}
-          </St.InfoContent>
-        </St.MovieInfo>
-      </St.MovieInfoWrapper>
-    </>
+          <St.ExtraInfo>
+            {date} 개봉 · {genre} · {country} · {runningTime}
+          </St.ExtraInfo>
+          {!clicked ? (
+            <St.ContentWrapper>
+              <St.MovieContent>{content}</St.MovieContent>
+              <St.ViewMoreBtn onClick={handleSetClicked} type="button">
+                더보기
+              </St.ViewMoreBtn>
+            </St.ContentWrapper>
+          ) : (
+            <St.MovieContentShow>{content}</St.MovieContentShow>
+          )}
+        </St.InfoContent>
+      </St.MovieInfo>
+    </St.MovieInfoWrapper>
   );
 };
 
@@ -75,6 +76,7 @@ const St = {
   Poster: styled.img`
     flex-shrink: 0;
   `,
+
   InfoContent: styled.div`
     display: flex;
     flex-direction: column;
