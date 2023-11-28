@@ -14,6 +14,7 @@ const BookingFloatingButton = ({ selectedCard } : BookingFloatingButtonProps) =>
 
   return (
     <St.BtnWrapper
+      type='button'
       onClick={handleBtn}
       disabled={selectedCard}
     >
