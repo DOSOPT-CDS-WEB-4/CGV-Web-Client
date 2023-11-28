@@ -8,4 +8,6 @@ import IcCardDefault from './ic_card_default.svg?react';
 import IcCardSelcted from './ic_card_selected.svg?react';
 import IcToss from './ic_toss.svg?react';
 
-export { IcArrowBottom, IcCardDefault, IcCardSelcted, IcCgvLogo, IcCheck, IcToss };
+import IcArrowUp from './ic_arrow_up.svg?react';
+
+export { IcArrowBottom, IcArrowUp, IcCardDefault, IcCardSelcted, IcCgvLogo, IcCheck, IcToss };

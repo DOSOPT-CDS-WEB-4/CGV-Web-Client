@@ -1,3 +1,4 @@
+import PaymentBottomSheetFooter from '../components/Payment/PaymentBottomSheetFooter';
 import PaymentHeader from '../components/Payment/PaymentHeader';
 import PaymentMovieInfo from '../components/Payment/PaymentMovieInfo';
 import PaymentPriceInfo from '../components/Payment/PaymentPriceInfo/PaymentPriceInfo';
@@ -10,6 +11,7 @@ const Payment = () => {
       <PaymentMovieInfo />
       <PaymentPriceOptions />
       <PaymentPriceInfo />
+      <PaymentBottomSheetFooter />
     </div>
   );
 };
