@@ -1,223 +1,133 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-import { ICFavoriteOff } from '../../assets/icon';
+const SelectDate = () => {
+  const [selectedDate, setSelectedDate] = useState<number>();
 
-const DATA_LIST = {
-  region_names: '홍대',
-  region_far: '1.3km',
-  screen_types: ['전체', '일반관', 'IMAX관', '컴포트관', 'GOLD CLASS관', '4DX관'],
-  movie_screen_schedules: {
-    screenType: '컴포트관',
-    place: '1관 8층',
-    moivetype: '자막',
-    screenactive: '2D',
-    startTime: '12:15',
-    endTime: '14:00',
-    totalSeats: 200,
-    emptySeats: 200,
-    reservationAvailability: true,
-  },
-};
+  const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
+  const todayDate = new Date();
 
-const SelectMovieTime = () => {
-  const { region_names, region_far, screen_types } = DATA_LIST;
-  const {
-    screenType,
-    place,
-    moivetype,
-    screenactive,
-    totalSeats,
-    startTime,
-    endTime,
-    emptySeats,
-    reservationAvailability,
-  } = DATA_LIST.movie_screen_schedules;
+  const checkDay = (dayOfWeek: string) => {
+    if (dayOfWeek === '토') {
+      return 'blue_1';
+    } else if (dayOfWeek === '일') {
+      return 'red';
+    } else {
+      return 'gray700';
+    }
+  };
+
+  const DATE_LIST = [];
+
+  for (let i = 0; i < 14; i++) {
+    const futureDate = new Date(todayDate);
+    futureDate.setDate(todayDate.getDate() + i);
+
+    const dayOfWeek = dayOfWeekNames[futureDate.getDay()];
+    const dayColor = checkDay(dayOfWeek);
+
+    const label = i === 0 ? '오늘' : i === 1 ? '내일' : dayOfWeek;
+
+    DATE_LIST.push({
+      id: i,
+      year: futureDate.getFullYear(),
+      month: futureDate.getMonth() + 1,
+      day: futureDate.getDate(),
+      dayOfWeek: label,
+      color: dayColor,
+    });
+  }
+
+  const handleClickDate = (id: number) => {
+    setSelectedDate(id);
+  };
 
   return (
-    <St.SelectMovieWrapper>
-      <St.SelectedRegion>
-        <i>
-          <ICFavoriteOff />
-        </i>
-        <St.Region>{region_names}</St.Region>
-        <St.Distance>{region_far}</St.Distance>
-      </St.SelectedRegion>
-      <St.ScreenTypeWrapper>
-        {screen_types.map(type => (
-          <St.EachType key={type}>{type}</St.EachType>
-        ))}
-      </St.ScreenTypeWrapper>
-      <St.SelectTime>
-        <St.Info>
-          <St.InfoLeft>
-            {moivetype},{screenactive},{screenType}
-          </St.InfoLeft>
-          <St.InfoRight>
-            <St.TotalSeats>{totalSeats}석</St.TotalSeats>
-            <St.Location>{place}</St.Location>
-          </St.InfoRight>
-        </St.Info>
-        <St.TimeTableList>
-          <St.TimeTable>
-            <St.TimeWrapper>
-              <St.StartTime>{startTime}</St.StartTime>
-              <St.EndTime>~{endTime}</St.EndTime>
-            </St.TimeWrapper>
-            <St.EmptySeatsWrapper>
-              <St.EmptySeats>잔여 {emptySeats}석</St.EmptySeats>
-            </St.EmptySeatsWrapper>
-          </St.TimeTable>
-        </St.TimeTableList>
-      </St.SelectTime>
-    </St.SelectMovieWrapper>
+    <St.SelectDateWapper>
+      {DATE_LIST.map(({ id, day, dayOfWeek, color }, idx) =>
+        idx < 6 ? (
+          <St.DateWrapper key={id} onClick={() => handleClickDate(id)}>
+            <St.Date $isSelected={id === selectedDate}>{day}</St.Date>
+            <St.Day $DateColor={color} $isSelected={id === selectedDate}>
+              {dayOfWeek}
+            </St.Day>
+          </St.DateWrapper>
+        ) : (
+          <St.DateWrapper key={id} onClick={() => handleClickDate(id)} disabled>
+            <St.Date $isSelected={id === selectedDate} className="not-main">
+              {day}
+            </St.Date>
+            <St.Day $DateColor={color} $isSelected={id === selectedDate} className="not-main">
+              {dayOfWeek}
+            </St.Day>
+          </St.DateWrapper>
+        ),
+      )}
+    </St.SelectDateWapper>
   );
 };
 
-export default SelectMovieTime;
+export default SelectDate;
 
 const St = {
-  SelectMovieWrapper: styled.article`
-    width: 37.5rem;
-    height: 32.2rem;
-  `,
-
-  SelectedRegion: styled.section`
-    width: 37.5rem;
-    padding: 1.8rem 0 1.4rem 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  `,
-
-  Region: styled.span`
-    color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.fonts.title_semibold_18};
-  `,
-
-  Distance: styled.span`
-    color: ${({ theme }) => theme.colors.red};
-    ${({ theme }) => theme.fonts.body_medium_13};
-  `,
-
-  ScreenTypeWrapper: styled.section`
-    width: 37.5rem;
-    height: 3rem;
-    flex-shrink: 0;
-    display: flex;
-    padding: 0 1.6rem;
-    margin-bottom: 2.4rem;
-    gap: 0.9rem;
-
+  SelectDateWapper: styled.section`
     overflow: auto;
-    white-space: nowrap;
     overflow: scroll;
+    display: inline-flex;
+    align-items: center;
+
+    width: 37.5rem;
+    height: 6.2rem;
+    margin-bottom: 2.1rem;
+    padding: 0rem 0.2rem 0rem 1.6rem;
+
+    white-space: nowrap;
 
     &::-webkit-scrollbar {
       display: none;
     }
   `,
 
-  EachType: styled.li`
+  DateWrapper: styled.button`
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+
+    & > .not-main {
+      color: ${({ theme }) => theme.colors.gray500};
+    }
+  `,
+
+  Date: styled.span<{ $isSelected: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 3rem;
-    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
 
+    color: ${({ $isSelected, theme }) => ($isSelected ? theme.colors.white : theme.colors.black)};
+
+    background: ${({ $isSelected, theme }) =>
+    $isSelected ? theme.colors.gradient : theme.colors.white};
+    border-radius: 5rem;
+
+    ${({ theme }) => theme.fonts.body_bold_16};
+  `,
+
+  Day: styled.span<{ $isSelected: boolean; $DateColor: string }>`
     ${({ theme }) => theme.fonts.body_regular_13};
 
-    text-wrap: nowrap;
-    vertical-align: center;
-
-    border-radius: 1.6rem;
-    border: 1px solid ${({ theme }) => theme.colors.gray600};
-    color: ${({ theme }) => theme.colors.gray600};
-  `,
-
-  SelectTime: styled.section`
-    width: 37.5rem;
-    padding: 0 1.6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  `,
-
-  Info: styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  `,
-
-  InfoLeft: styled.div`
-    color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.fonts.body_bold_14};
-  `,
-
-  InfoRight: styled.div`
-    display: flex;
-    ${({ theme }) => theme.fonts.body_medium_12};
-    color: ${({ theme }) => theme.colors.gray800};
-  `,
-
-  TotalSeats: styled.span`
-    color: ${({ theme }) => theme.colors.gray800};
-    ${({ theme }) => theme.fonts.body_medium_12};
-    margin-right: 0.2rem;
-  `,
-
-  Location: styled.span`
-    color: ${({ theme }) => theme.colors.gray700};
-    ${({ theme }) => theme.fonts.body_medium_12};
-  `,
-
-  TimeTable: styled.button`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 10.7rem;
-    height: 6.8rem;
-    flex-shrink: 0;
-
-    overflow: hidden;
-    border-radius: 0.6rem;
-    border: 1px solid ${({ theme }) => theme.colors.red};
-  `,
-
-  TimeWrapper: styled.div`
-    display: flex;
-    align-items: center;
-    height: 4.2rem;
-  `,
-
-  StartTime: styled.span`
-    color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.fonts.body_semibold_16};
-  `,
-
-  EndTime: styled.span`
-    color: ${({ theme }) => theme.colors.gray600};
-    ${({ theme }) => theme.fonts.body_semibold_12};
-  `,
-
-  EmptySeatsWrapper: styled.div`
-    width: 10.7rem;
-    height: 2.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: ${({ theme }) => theme.colors.gray100};
-  `,
-
-  EmptySeats: styled.span`
-    color: ${({ theme }) => theme.colors.red};
-    ${({ theme }) => theme.fonts.body_semibold_12};
-  `,
-
-  TimeTableList: styled.div`
-    display: flex;
-    gap: 0.8rem;
+    color: ${({ $isSelected, $DateColor, theme }) =>
+    $isSelected
+      ? theme.colors.red
+      : $DateColor === 'blue_1'
+        ? theme.colors.blue_1
+        : $DateColor === 'red'
+          ? theme.colors.red
+          : theme.colors.gray600};
   `,
 };

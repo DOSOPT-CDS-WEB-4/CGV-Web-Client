@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import Footer from '../components/SelectTime/Footer';
 import MovieInfo from '../components/SelectTime/MovieInfo';
 import SelectDate from '../components/SelectTime/SelectDate';
