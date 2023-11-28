@@ -57,15 +57,17 @@ const SelectMovieTime = () => {
             <St.Location>{place}</St.Location>
           </St.InfoRight>
         </St.Info>
-        <St.TimeTable>
-          <St.TimeWrapper>
-            <St.StartTime>{startTime}</St.StartTime>
-            <St.EndTime>~{endTime}</St.EndTime>
-          </St.TimeWrapper>
-          <St.EmptySeatsWrapper>
-            <St.EmptySeats>잔여 {emptySeats}석</St.EmptySeats>
-          </St.EmptySeatsWrapper>
-        </St.TimeTable>
+        <St.TimeTableList>
+          <St.TimeTable>
+            <St.TimeWrapper>
+              <St.StartTime>{startTime}</St.StartTime>
+              <St.EndTime>~{endTime}</St.EndTime>
+            </St.TimeWrapper>
+            <St.EmptySeatsWrapper>
+              <St.EmptySeats>잔여 {emptySeats}석</St.EmptySeats>
+            </St.EmptySeatsWrapper>
+          </St.TimeTable>
+        </St.TimeTableList>
       </St.SelectTime>
     </St.SelectMovieWrapper>
   );
@@ -135,13 +137,16 @@ const St = {
 
   SelectTime: styled.section`
     width: 37.5rem;
+    padding: 0 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
   `,
 
   Info: styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.6rem;
   `,
 
   InfoLeft: styled.div`
@@ -165,7 +170,7 @@ const St = {
     ${({ theme }) => theme.fonts.body_medium_12};
   `,
 
-  TimeTable: styled.div`
+  TimeTable: styled.button`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -208,5 +213,10 @@ const St = {
   EmptySeats: styled.span`
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.body_semibold_12};
+  `,
+
+  TimeTableList: styled.div`
+    display: flex;
+    gap: 0.8rem;
   `,
 };
