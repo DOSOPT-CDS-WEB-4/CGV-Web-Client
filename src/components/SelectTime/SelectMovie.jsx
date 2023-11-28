@@ -58,10 +58,13 @@ const SelectMovieTime = () => {
           </St.InfoRight>
         </St.Info>
         <St.TimeTable>
-          <div>
-            {startTime}~{endTime}
-          </div>
-          <div>잔여 {emptySeats}</div>
+          <St.TimeWrapper>
+            <St.StartTime>{startTime}</St.StartTime>
+            <St.EndTime>~{endTime}</St.EndTime>
+          </St.TimeWrapper>
+          <St.EmptySeatsWrapper>
+            <St.EmptySeats>잔여 {emptySeats}석</St.EmptySeats>
+          </St.EmptySeatsWrapper>
         </St.TimeTable>
       </St.SelectTime>
     </St.SelectMovieWrapper>
@@ -163,10 +166,47 @@ const St = {
   `,
 
   TimeTable: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     width: 10.7rem;
     height: 6.8rem;
     flex-shrink: 0;
+
+    overflow: hidden;
     border-radius: 0.6rem;
     border: 1px solid ${({ theme }) => theme.colors.red};
+  `,
+
+  TimeWrapper: styled.div`
+    display: flex;
+    align-items: center;
+    height: 4.2rem;
+  `,
+
+  StartTime: styled.span`
+    color: ${({ theme }) => theme.colors.gray900};
+    ${({ theme }) => theme.fonts.body_semibold_16};
+  `,
+
+  EndTime: styled.span`
+    color: ${({ theme }) => theme.colors.gray600};
+    ${({ theme }) => theme.fonts.body_semibold_12};
+  `,
+
+  EmptySeatsWrapper: styled.div`
+    width: 10.7rem;
+    height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${({ theme }) => theme.colors.gray100};
+  `,
+
+  EmptySeats: styled.span`
+    color: ${({ theme }) => theme.colors.red};
+    ${({ theme }) => theme.fonts.body_semibold_12};
   `,
 };
