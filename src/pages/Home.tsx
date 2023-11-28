@@ -1,10 +1,10 @@
-import CommercialSlider from "../components/Home/CommercialSlider";
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
-    <>
-      <CommercialSlider />
-    </>
+    <div>
+      <MenuBar />
+    </div>
   );
 };
 
