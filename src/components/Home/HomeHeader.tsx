@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { IcCgvLogo, IcHamburger, IcSearch, IcTicket } from '../../assets/icon/index';
 
 interface HomeHeaderProps {
-    onTicketClick: () => void;
+  onTicketClick: () => void;
 }
 
-const HomeHeader = ({ onTicketClick } : HomeHeaderProps) => {
+const HomeHeader = ({ onTicketClick }: HomeHeaderProps) => {
+
   return (
     <St.HeaderWrapper>
       <IcHamburger className='hamburger' />

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 
 import BookingFloatingButton from '../components/Home/BookingFloatingButton';
@@ -12,18 +13,24 @@ import MyTicket from '../components/Home/MyTicket';
 import TopButton from '../components/Home/TopButton';
 
 const Home = () => {
+  const myTicketSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleTicketClick = () => {
+    if (myTicketSectionRef.current) {
+      myTicketSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <St.HomePageWrapper>
-      <HomeHeader onTicketClick={function (): void {
-        throw new Error('Function not implemented.');
-      } } />
+      <HomeHeader onTicketClick={handleTicketClick} />
       <CommercialSlider />
       <MenuBar />
       <MovieChartHeader />
       <MovieCardSlider />
       <MyCgvMenu />
       <MyPage />
-      <MyTicket />
+      <MyTicket ref={myTicketSectionRef} />
       <TopButton />
       <BookingFloatingButton selectedCard={false}/>
     </St.HomePageWrapper>
