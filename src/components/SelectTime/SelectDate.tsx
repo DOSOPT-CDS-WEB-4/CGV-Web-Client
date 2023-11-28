@@ -52,6 +52,7 @@ const SelectDate = () => {
     }
   }
   console.log(DATE_LIST);
+
   return (
     <St.SelectDateWapper>
       {DATE_LIST.map(DATE => (
@@ -87,25 +88,30 @@ const St = {
   `,
 
   DateWrappr: styled.div`
+    cursor: pointer;
+
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
-
-    width: 4.2rem;
   `,
 
-  Date: styled.span`
+  Date: styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
 
     width: 4.2rem;
     height: 4.2rem;
-    ${({ theme }) => theme.fonts.body_bold_16};
 
     color: ${({ theme }) => theme.colors.black};
+
+    background-color: transparent;
+    border-radius: 5rem;
+
+    ${({ theme }) => theme.fonts.body_bold_16};
   `,
+
   Day: styled.span`
     ${({ theme }) => theme.fonts.body_regular_13};
 
