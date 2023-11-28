@@ -1,4 +1,4 @@
-import SelectTimeFooter from '../components/SelectTime/Footer';
+import Footer from '../components/SelectTime/Footer';
 import MovieInfo from '../components/SelectTime/MovieInfo';
 import SelectDate from '../components/SelectTime/SelectDate';
 import SelectRegion from '../components/SelectTime/SelectRegion';
@@ -9,7 +9,7 @@ const SelectTime = () => {
       <MovieInfo />
       <SelectRegion />
       <SelectDate />
-      <SelectTimeFooter />
+      <Footer />
     </>
   );
 };
