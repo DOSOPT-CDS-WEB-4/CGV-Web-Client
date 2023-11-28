@@ -50,8 +50,13 @@ const St = {
     }
 
     .slick-track {
-      height: 33rem;
+      height: 35.2rem;
     }
+
+    .slick-dots {
+      padding: 2.2rem;
+    }
+
   `,
 
 };
