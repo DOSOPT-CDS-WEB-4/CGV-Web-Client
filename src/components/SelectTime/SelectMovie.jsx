@@ -161,7 +161,10 @@ const St = {
     }
   `,
 
-  EachType: styled.li`
+  EachType:
+    styled.li <
+    { $isClicked: boolean } >
+    `
     display: flex;
     align-items: center;
     justify-content: center;
