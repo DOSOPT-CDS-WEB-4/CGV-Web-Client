@@ -9,7 +9,7 @@ const MyPage = () => {
   const [clickedBtn, setClickedBtn] = useState<boolean>(false);
 
   const handleButton = () => {
-    setClickedBtn(true);
+    setClickedBtn(!clickedBtn);
   };
 
   return (
