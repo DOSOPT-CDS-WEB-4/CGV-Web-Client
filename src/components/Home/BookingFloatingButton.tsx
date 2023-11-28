@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
@@ -6,7 +5,7 @@ interface BookingFloatingButtonProps {
   selectedCard: boolean;
 }
 
-const BookingFloatingButton: React.FC<BookingFloatingButtonProps> = ({ selectedCard }) => {
+const BookingFloatingButton = ({ selectedCard } : BookingFloatingButtonProps) => {
   const navigate = useNavigate();
 
   const handleBtn = () => {
