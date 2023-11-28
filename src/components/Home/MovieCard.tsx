@@ -14,7 +14,7 @@ export interface MovieCardProps {
   like: number;
 }
 
-const MovieCard = ({ id, posterImg, title, ranking, audience, like }: MovieCardProps) => {
+const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
 
