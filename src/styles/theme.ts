@@ -17,6 +17,7 @@ const colors = {
   red: '#FA4357',
   coral: '#FF6362',
   gradient: 'linear-gradient(90deg, #FB4458 11.4%, #F06330 89.47%)',
+  gradient2: 'linear-gradient(90deg, rgba(251, 68, 88, 0.90) 2.83%, rgba(240, 99, 48, 0.90) 81.45%)',
 
   green_1: '#9FCD63',
   green_2: '#408450',

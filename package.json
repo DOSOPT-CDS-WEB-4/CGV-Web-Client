@@ -17,11 +17,13 @@
     "**/*.ts": "eslint --fix"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.12",
     "axios": "^1.6.2",
     "install": "^0.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
+    "react-slick": "^0.29.0",
     "styled-components": "^6.1.1",
     "styled-reset": "^4.5.1",
     "vite-plugin-svgr": "^4.2.0"
@@ -47,6 +49,7 @@
     "postcss": "^8.4.31",
     "postcss-syntax": "^0.36.2",
     "prettier": "^3.1.0",
+    "slick-carousel": "^1.8.1",
     "stylelint": "^15.11.0",
     "stylelint-config-clean-order": "^5.2.0",
     "stylelint-config-recommended": "^13.0.0",
