@@ -6,6 +6,7 @@ import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
 
 export interface MovieCardProps {
+  id: number;
   posterImg: string;
   title: string;
   ranking: string;
@@ -13,7 +14,7 @@ export interface MovieCardProps {
   like: number;
 }
 
-const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps) => {
+const MovieCard = ({ id, posterImg, title, ranking, audience, like }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
 

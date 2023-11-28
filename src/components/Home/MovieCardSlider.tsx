@@ -22,13 +22,14 @@ const MovieCardSlider = () => {
   return (
     <St.MovieListWrapper>
       <St.MovieCardSlider {...settings}>
-        {DATA.slice(0, 5).map((movie: MovieCardProps, index: number) => (
-          <MovieCard key={index}
-            posterImg={movie.posterImg}
-            title={movie.title}
-            ranking={movie.ranking}
-            audience={movie.audience}
-            like={movie.like}
+        {DATA.slice(0, 5).map(({ id, posterImg, title, ranking, audience, like } : MovieCardProps) => (
+          <MovieCard key={id}
+            id={id}
+            posterImg={posterImg}
+            title={title}
+            ranking={ranking}
+            audience={audience}
+            like={like}
           />
         ))}
       </St.MovieCardSlider>
