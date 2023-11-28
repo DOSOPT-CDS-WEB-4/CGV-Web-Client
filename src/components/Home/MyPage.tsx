@@ -2,9 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import { IcArrowBottom, IcMembership } from '../../assets/icon';
-import img_mymenu1 from '../../assets/image/img_mymenu1.png';
-import img_mymenu2 from '../../assets/image/img_mymenu2.png';
-import img_mymenu3 from '../../assets/image/img_mymenu3.png';
+import MYDATA from '../../constants/Dummy';
 
 const MyPage = () => {
 
@@ -30,21 +28,13 @@ const MyPage = () => {
         </St.IconWrapper>
       </St.TitleWrapper>
 
-      <St.ContentWrapper>
-        <img src={img_mymenu1} alt='내가 본 영화' />
-        <St.MyMovie>내가 본 영화</St.MyMovie>
-        <St.MovieCount>28편</St.MovieCount>
-      </St.ContentWrapper>
-      <St.ContentWrapper>
-        <img src={img_mymenu2} alt='기대되는 영화' />
-        <St.MyMovie>기대되는 영화</St.MyMovie>
-        <St.MovieCount>55편</St.MovieCount>
-      </St.ContentWrapper>
-      <St.ContentWrapper>
-        <img src={img_mymenu3} alt='기대되는 영화' />
-        <St.MyMovie>내가 쓴 리뷰</St.MyMovie>
-        <St.MovieCount>18편</St.MovieCount>
-      </St.ContentWrapper>
+      {MYDATA.map((data) => (
+        <St.ContentWrapper key={data.id}>
+          <img src={data.image} alt={data.title} />
+          <St.MyMovie>{data.title}</St.MyMovie>
+          <St.MovieCount>{data.count}</St.MovieCount>
+        </St.ContentWrapper>
+      ))}
       
       <St.ButtonWrapper>
         <St.DetailButton 
