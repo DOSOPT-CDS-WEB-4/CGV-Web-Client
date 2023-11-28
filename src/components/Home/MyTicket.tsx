@@ -9,7 +9,7 @@ const MyTicket = () => {
       <img src={img_ticket} alt='티켓 이미지' />
     </St.ImgWrapper>
   );
-};
+}; 
 
 export default MyTicket;
 
