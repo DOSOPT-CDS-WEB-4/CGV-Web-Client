@@ -65,6 +65,7 @@ const SelectDate = () => {
       )}
     </St.SelectDateWapper>
   );
+};
 
 export default SelectDate;
 
@@ -111,7 +112,7 @@ const St = {
     color: ${({ $isSelected, theme }) => ($isSelected ? theme.colors.white : theme.colors.black)};
 
     background: ${({ $isSelected, theme }) =>
-    $isSelected ? theme.colors.gradient : theme.colors.white};
+      $isSelected ? theme.colors.gradient : theme.colors.white};
     border-radius: 5rem;
 
     ${({ theme }) => theme.fonts.body_bold_16};
@@ -121,12 +122,12 @@ const St = {
     ${({ theme }) => theme.fonts.body_regular_13};
 
     color: ${({ $isSelected, $DateColor, theme }) =>
-    $isSelected
-      ? theme.colors.red
-      : $DateColor === 'blue_1'
-        ? theme.colors.blue_1
-        : $DateColor === 'red'
-          ? theme.colors.red
-          : theme.colors.gray600};
+      $isSelected
+        ? theme.colors.red
+        : $DateColor === 'blue_1'
+          ? theme.colors.blue_1
+          : $DateColor === 'red'
+            ? theme.colors.red
+            : theme.colors.gray600};
   `,
 };
