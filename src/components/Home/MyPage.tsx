@@ -71,7 +71,7 @@ const St = {
     padding: 1.9rem 1.5rem 2.4rem 2.3rem;
   `,
 
-  UserWrapper: styled.div`
+  UserWrapper: styled.article`
         color: ${({ theme }) => theme.colors.gray900};
         ${({ theme }) => theme.fonts.body_semibold_18};
 
@@ -95,7 +95,7 @@ const St = {
       margin-left: auto;
   `,
 
-  ContentWrapper: styled.div`
+  ContentWrapper: styled.section`
         display: flex;
         flex-shrink: 0;
         align-items: center;
