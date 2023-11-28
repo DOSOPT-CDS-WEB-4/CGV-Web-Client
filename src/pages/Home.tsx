@@ -1,9 +1,9 @@
-import MyPage from '../components/Home/MyPage';
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
     <div>
-      <MyPage />
+      <MenuBar />
     </div>
   );
 };
