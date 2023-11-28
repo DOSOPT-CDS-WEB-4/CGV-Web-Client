@@ -48,6 +48,7 @@ const MyPage = () => {
       
       <St.ButtonWrapper>
         <St.DetailButton 
+          type='button'
           onClick={() => {handleButton();
             console.log('클릭됨');}}
           className={clickedBtn ? 'active' : 'not-active'}
