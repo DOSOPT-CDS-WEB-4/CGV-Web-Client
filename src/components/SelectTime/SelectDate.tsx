@@ -48,14 +48,25 @@ const SelectDate = () => {
 
   return (
     <St.SelectDateWapper>
-      {DATE_LIST.map(({ id, day, dayOfWeek, color }) => (
-        <St.DateWrappr key={id} onClick={() => handleClickDate(id)}>
-          <St.Date $isSelected={id === selectedDate}>{day}</St.Date>
-          <St.Day $DateColor={color} $isSelected={id === selectedDate}>
-            {dayOfWeek}
-          </St.Day>
-        </St.DateWrappr>
-      ))}
+      {DATE_LIST.map(({ id, day, dayOfWeek, color }, idx) =>
+        idx < 6 ? (
+          <St.DateWrapper key={id} onClick={() => handleClickDate(id)}>
+            <St.Date $isSelected={id === selectedDate}>{day}</St.Date>
+            <St.Day $DateColor={color} $isSelected={id === selectedDate}>
+              {dayOfWeek}
+            </St.Day>
+          </St.DateWrapper>
+        ) : (
+          <St.DateWrapper key={id} onClick={() => handleClickDate(id)} disabled>
+            <St.Date $isSelected={id === selectedDate} className="not-main">
+              {day}
+            </St.Date>
+            <St.Day $DateColor={color} $isSelected={id === selectedDate} className="not-main">
+              {dayOfWeek}
+            </St.Day>
+          </St.DateWrapper>
+        ),
+      )}
     </St.SelectDateWapper>
   );
 };
@@ -67,11 +78,10 @@ const St = {
     overflow: auto;
     overflow: scroll;
     display: inline-flex;
-    gap: 1.2rem;
     align-items: center;
 
     width: 37.5rem;
-    height: 6.1rem;
+    height: 6.2rem;
     margin-bottom: 2.1rem;
     padding: 0rem 0.2rem 0rem 1.6rem;
 
@@ -82,24 +92,28 @@ const St = {
     }
   `,
 
-  DateWrappr: styled.div`
+  DateWrapper: styled.button`
     cursor: pointer;
 
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+
+    & > .not-main {
+      color: ${({ theme }) => theme.colors.gray500};
+    }
   `,
 
-  Date: styled.button`
+  Date: styled.span`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 4.2rem;
-    height: 4.2rem;
+    width: 4rem;
+    height: 4rem;
 
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ $isSelected, theme }) => ($isSelected ? theme.colors.white : theme.colors.black)};
 
     background: ${({ $isSelected, theme }) =>
       $isSelected ? theme.colors.gradient : theme.colors.white};
