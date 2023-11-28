@@ -65,7 +65,6 @@ const SelectDate = () => {
       )}
     </St.SelectDateWapper>
   );
-};
 
 export default SelectDate;
 
