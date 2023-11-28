@@ -145,7 +145,7 @@ const fonts = {
     font-weight: 700;
     font-style: normal;
     line-height: 100%;
-    letter-spacing: -0.075rem;
+    letter-spacing: -0.0075rem;
   `,
   body_regular_16: css`
     font-family: 'Pretendard Variable', 'Apple SD Gothic Neo Regular', system-ui;
