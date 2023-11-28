@@ -41,6 +41,8 @@ export default MovieCardSlider;
 
 const St = {
   MovieListWrapper: styled.div`
+    width: 100%;
+    height: auto;
     padding: 1.6rem 0rem 1.3rem 0rem;
   `,
 

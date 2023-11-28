@@ -4,16 +4,24 @@ import { IcCgvLogo, IcHamburger, IcSearch, IcTicket } from '../../assets/icon/in
 
 interface HomeHeaderProps {
   onTicketClick: () => void;
+  scrollToRef: React.RefObject<HTMLDivElement>;
 }
 
-const HomeHeader = ({ onTicketClick }: HomeHeaderProps) => {
+const HomeHeader = ({ onTicketClick, scrollToRef }: HomeHeaderProps) => {
+
+  const handleTicketClick = () => {
+    onTicketClick();
+    if (scrollToRef.current) {
+      scrollToRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <St.HeaderWrapper>
-      <IcHamburger className='hamburger' />
+      <IcHamburger className='hamburger'/>
       <IcCgvLogo className='logo' />
       <IcSearch className='search' />
-      <IcTicket className='ticket' onClick={onTicketClick} />
+      <IcTicket className='ticket' onClick={handleTicketClick} />
     </St.HeaderWrapper>
   );
 };
