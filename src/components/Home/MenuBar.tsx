@@ -34,7 +34,7 @@ const St = {
         overflow-x: auto;
         flex-shrink: 0;
 
-        width: 37.5rem;
+        width: 100%;
         max-width: 100%;
         height: 4.2rem;
 

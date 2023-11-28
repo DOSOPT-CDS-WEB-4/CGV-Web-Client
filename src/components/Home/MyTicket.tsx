@@ -17,7 +17,7 @@ const St = {
   ImgWrapper: styled.div`
       scroll-behavior: smooth;
       overflow-x: auto;
-      max-width: 100%;
+      width: 100%;
       white-space: nowrap;
 
       &::-webkit-scrollbar {

@@ -33,21 +33,20 @@ const CommercialSlider = () => {
 
 const St = {
   CommercialWrapper: styled.div`
-    width: 37.5rem;
+    width: 100%;
     height: 15.2rem;
   `,
 
   CommercialSlider: styled(Slider)`
     .slick-track {
-      width: 37.5rem;
+      width: 100%;
       height: 15.2rem;
     }
   `,
   
   Commercial: styled.img`
-    width: 37.5rem;
+    width: 100%;
     height: 15.2rem;
-    object-fit: cover;
   `,
 };
 

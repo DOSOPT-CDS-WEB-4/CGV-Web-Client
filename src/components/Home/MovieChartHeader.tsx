@@ -38,6 +38,7 @@ export default MovieChartHeader;
 const St = {
   MovieChartWrapper: styled.nav`
     display: flex;
+    width: 100%;
     padding: 1.9rem 1.5rem 2.1rem 1.5rem;
 
     & > p {
@@ -59,6 +60,7 @@ const St = {
     & > p.view-all {
         flex-shrink: 0;
         margin-right: 0.4rem;
+        margin-left: auto;
         ${({ theme }) => theme.fonts.body_regular_13};
 
         color: ${({ theme }) => theme.colors.gray400};
@@ -71,9 +73,9 @@ const St = {
 
   SubChartWrapper: styled.div`
     overflow-x: auto;
-    max-width: 100%;
+    width: 100%;
     white-space: nowrap;
-          
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -90,19 +92,19 @@ const St = {
 
       & > p.selected {
         margin-left: 1.5rem;
-        padding: 2.1rem 0rem 0.8rem 0rem;
+        padding: 0rem 0rem 0.8rem 0rem;
         color: ${({ theme }) => theme.colors.red};
         border-bottom: 1px solid ${({ theme }) => theme.colors.red};
       }
 
       & > p.next-to-selected {
-        padding: 2.1rem 2.2rem 0.8rem 2.2rem;
+        padding: 0rem 2.2rem 0.8rem 2.2rem;
         color: ${({ theme }) => theme.colors.gray600};
         border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
       }
 
       & > p.not-selected {
-        padding: 2.1rem 2.2rem 0.8rem 0rem;
+        padding: 0rem 2.2rem 0.8rem 0rem;
         color: ${({ theme }) => theme.colors.gray600};
         border-bottom: 1px solid ${({ theme }) => theme.colors.gray300};
       }
