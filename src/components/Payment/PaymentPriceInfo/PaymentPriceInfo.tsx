@@ -58,7 +58,7 @@ const St = {
     align-items: center;
     justify-content: center;
 
-    width: 37.5rem;
+    width: 100%;
     height: 24.4rem;
     padding: 0 1.5rem;
   `,
@@ -93,7 +93,7 @@ const St = {
     align-items: center;
     justify-content: center;
 
-    width: 34.5rem;
+    width: 100%;
     height: 3rem;
 
     background-color: ${({ theme }) => theme.colors.coral};
@@ -115,6 +115,7 @@ const St = {
     grid-template-rows: repeat(2, 1fr);
     gap: 0.4rem;
 
+    width: 100%;
     padding-top: 0.4rem;
   `,
 

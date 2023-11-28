@@ -6,13 +6,13 @@ import PaymentPriceOptions from '../components/Payment/PaymentPriceOptions';
 
 const Payment = () => {
   return (
-    <div>
+    <>
       <PaymentHeader />
       <PaymentMovieInfo />
       <PaymentPriceOptions />
       <PaymentPriceInfo />
       <PaymentBottomSheetFooter />
-    </div>
+    </>
   );
 };
 
