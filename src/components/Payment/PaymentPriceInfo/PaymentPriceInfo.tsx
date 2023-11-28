@@ -105,7 +105,7 @@ const St = {
     ${({ theme }) => theme.fonts.body_regular_13};
 
     &.highlight {
-      color: yellow;
+      color: ${({ theme }) => theme.colors.yellow};
     }
   `,
 
