@@ -1,9 +1,14 @@
+import PaymentHeader from '../components/Payment/PaymentHeader';
+import PaymentMovieInfo from '../components/Payment/PaymentMovieInfo';
 import PaymentPriceInfo from '../components/Payment/PaymentPriceInfo/PaymentPriceInfo';
+import PaymentPriceOptions from '../components/Payment/PaymentPriceOptions';
 
 const Payment = () => {
   return (
     <div>
-      결제하기 페이지입니다.
+      <PaymentHeader />
+      <PaymentMovieInfo />
+      <PaymentPriceOptions />
       <PaymentPriceInfo />
     </div>
   );
