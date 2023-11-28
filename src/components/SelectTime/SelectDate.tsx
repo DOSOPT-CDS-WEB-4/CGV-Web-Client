@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const SelectDate = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [isSelected, setIsSelected] = useState(false);
+
   const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
   const todayDate = new Date();
 
@@ -15,6 +19,7 @@ const SelectDate = () => {
   };
 
   const DATE_LIST = [];
+
   for (let i = 0; i < 14; i++) {
     const futureDate = new Date(todayDate);
     futureDate.setDate(todayDate.getDate() + i);
@@ -22,43 +27,33 @@ const SelectDate = () => {
     const dayOfWeek = dayOfWeekNames[futureDate.getDay()];
     const dayColor = checkDay(dayOfWeek);
 
-    if (i === 0) {
-      DATE_LIST.push({
-        id: i,
-        year: futureDate.getFullYear(),
-        month: futureDate.getMonth() + 1,
-        day: futureDate.getDate(),
-        dayOfWeek: '오늘',
-        color: dayColor,
-      });
-    } else if (i === 1) {
-      DATE_LIST.push({
-        id: i,
-        year: futureDate.getFullYear(),
-        month: futureDate.getMonth() + 1,
-        day: futureDate.getDate(),
-        dayOfWeek: '내일',
-        color: dayColor,
-      });
-    } else {
-      DATE_LIST.push({
-        id: i,
-        year: futureDate.getFullYear(),
-        month: futureDate.getMonth() + 1,
-        day: futureDate.getDate(),
-        dayOfWeek: dayOfWeek,
-        color: dayColor,
-      });
-    }
+    const label = i === 0 ? '오늘' : i === 1 ? '내일' : dayOfWeek;
+
+    DATE_LIST.push({
+      id: i,
+      year: futureDate.getFullYear(),
+      month: futureDate.getMonth() + 1,
+      day: futureDate.getDate(),
+      dayOfWeek: label,
+      color: dayColor,
+    });
   }
-  console.log(DATE_LIST);
+
+  const handleClickDate = (id: number) => {
+    setSelectedDate(id);
+    setIsSelected(true);
+  };
+
+  const { id, day, dayOfWeek, color } = DATE_LIST;
 
   return (
     <St.SelectDateWapper>
-      {DATE_LIST.map(DATE => (
-        <St.DateWrappr key={DATE.id}>
-          <St.Date>{DATE.day}</St.Date>
-          <St.Day $DateColor={DATE.color}>{DATE.dayOfWeek}</St.Day>
+      {DATE_LIST.map(({ id, day, dayOfWeek, color }) => (
+        <St.DateWrappr key={id} onClick={() => handleClickDate(id)}>
+          <St.Date $isSelected={id === selectedDate}>{day}</St.Date>
+          <St.Day $DateColor={color} $isSelected={id === selectedDate}>
+            {dayOfWeek}
+          </St.Day>
         </St.DateWrappr>
       ))}
     </St.SelectDateWapper>
@@ -106,7 +101,8 @@ const St = {
 
     color: ${({ theme }) => theme.colors.black};
 
-    background-color: transparent;
+    background: ${({ $isSelected, theme }) =>
+      $isSelected ? theme.colors.gradient : theme.colors.white};
     border-radius: 5rem;
 
     ${({ theme }) => theme.fonts.body_bold_16};
