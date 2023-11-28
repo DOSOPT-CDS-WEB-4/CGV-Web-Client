@@ -13,27 +13,33 @@ const BookingFloatingButton = ({ selectedCard } : BookingFloatingButtonProps) =>
   };
 
   return (
-    <St.BtnWrapper
-      type='button'
-      onClick={handleBtn}
-      disabled={selectedCard}
-    >
-      <St.TextWrapper>
-        <St.SmallTxt>빠르고 쉽게</St.SmallTxt>
-        <St.BigTxt>지금예매</St.BigTxt>
-      </St.TextWrapper>
-    </St.BtnWrapper>
+    <St.ButtonWrapper>
+      <St.ButtonContents
+        type='button'
+        onClick={handleBtn}
+        disabled={selectedCard}
+      >
+        <St.TextWrapper>
+          <St.SmallTxt>빠르고 쉽게</St.SmallTxt>
+          <St.BigTxt>지금예매</St.BigTxt>
+        </St.TextWrapper>
+      </St.ButtonContents>
+    </St.ButtonWrapper>
+
   );
 };
 
 export default BookingFloatingButton;
 
 const St = {
-  BtnWrapper: styled.button`
+  ButtonWrapper: styled.div`
     position: fixed;
-    top: 63.4rem;
-    left: 25.2rem;
+    top: 73.2%;
+    left: 60.2%;
+    width: 100%;
+  `,
 
+  ButtonContents: styled.button`
     flex-shrink: 0;
 
     width: 15.8rem;
