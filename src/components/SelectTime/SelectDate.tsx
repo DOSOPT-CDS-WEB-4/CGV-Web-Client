@@ -125,11 +125,13 @@ const St = {
   Day: styled.span`
     ${({ theme }) => theme.fonts.body_regular_13};
 
-    color: ${({ $DateColor, theme }) =>
-      $DateColor === 'blue_1'
-        ? theme.colors.blue_1
-        : $DateColor === 'red'
-          ? theme.colors.red
-          : theme.colors.gray600};
+    color: ${({ $isSelected, $DateColor, theme }) =>
+      $isSelected
+        ? theme.colors.red
+        : $DateColor === 'blue_1'
+          ? theme.colors.blue_1
+          : $DateColor === 'red'
+            ? theme.colors.red
+            : theme.colors.gray600};
   `,
 };
