@@ -1,9 +1,9 @@
-import MovieChartHeader from '../components/Home/MovieChartHeader';
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
     <div>
-      <MovieChartHeader />
+      <MenuBar />
     </div>
   );
 };
