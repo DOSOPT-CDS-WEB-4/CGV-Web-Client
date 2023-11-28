@@ -6,45 +6,33 @@ const DATA_LIST = {
   region_names: '홍대',
   region_far: '1.3km',
   screen_types: ['전체', '일반관', 'IMAX관', '컴포트관', 'GOLD CLASS관', '4DX관'],
-  movie_screen_schedules: [
-    {
-      screenType: '컴포트관',
-      place: '8층 1관',
-      moivetype: '자막',
-      screenactive: '2D',
-      startTime: '2023-11-22T12:15:00',
-      endTime: '2023-11-22T14:00:00',
-      totalSeats: 200,
-      emptySeats: 200,
-      reservationAvailability: true,
-    },
-    {
-      screenType: '컴포트관',
-      place: '8층 1관',
-      moivetype: '자막',
-      screenactive: '2D',
-      startTime: '2023-11-22T14:35:00',
-      endTime: '2023-11-22T16:20:00',
-      totalSeats: 200,
-      emptySeats: 180,
-      reservationAvailability: true,
-    },
-    {
-      screenType: 'IMAX관',
-      place: '8층 2관',
-      moivetype: '자막',
-      screenactive: '2D',
-      startTime: '2023-11-22T12:15:00',
-      endTime: '2023-11-22T14:00:00',
-      totalSeats: 200,
-      emptySeats: 185,
-      reservationAvailability: true,
-    },
-  ],
+  movie_screen_schedules: {
+    screenType: '컴포트관',
+    place: '1관 8층',
+    moivetype: '자막',
+    screenactive: '2D',
+    startTime: '12:15',
+    endTime: '14:00',
+    totalSeats: 200,
+    emptySeats: 200,
+    reservationAvailability: true,
+  },
 };
 
 const SelectMovieTime = () => {
   const { region_names, region_far, screen_types } = DATA_LIST;
+  const {
+    screenType,
+    place,
+    moivetype,
+    screenactive,
+    totalSeats,
+    startTime,
+    endTime,
+    emptySeats,
+    reservationAvailability,
+  } = DATA_LIST.movie_screen_schedules;
+
   return (
     <St.SelectMovieWrapper>
       <St.SelectedRegion>
@@ -59,13 +47,23 @@ const SelectMovieTime = () => {
           <St.EachType key={type}>{type}</St.EachType>
         ))}
       </St.ScreenTypeWrapper>
-      <div>
-        <div>
-          <div>place info left</div>
-          <div>place info right</div>
-        </div>
-        <div>moviecard mapping</div>
-      </div>
+      <St.SelectTime>
+        <St.Info>
+          <St.InfoLeft>
+            {moivetype},{screenactive},{screenType}
+          </St.InfoLeft>
+          <St.InfoRight>
+            <St.TotalSeats>{totalSeats}석 &nbsp;</St.TotalSeats>
+            <St.Location>{place}</St.Location>
+          </St.InfoRight>
+        </St.Info>
+        <St.TimeTable>
+          <div>
+            {startTime}~{endTime}
+          </div>
+          <div>잔여 {emptySeats}</div>
+        </St.TimeTable>
+      </St.SelectTime>
     </St.SelectMovieWrapper>
   );
 };
@@ -102,6 +100,7 @@ const St = {
     flex-shrink: 0;
     display: flex;
     padding: 0 1.6rem;
+    margin-bottom: 2.4rem;
     gap: 0.9rem;
 
     overflow: auto;
@@ -129,5 +128,45 @@ const St = {
     border-radius: 1.6rem;
     border: 1px solid ${({ theme }) => theme.colors.gray600};
     color: ${({ theme }) => theme.colors.gray600};
+  `,
+
+  SelectTime: styled.section`
+    width: 37.5rem;
+  `,
+
+  Info: styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.6rem;
+  `,
+
+  InfoLeft: styled.div`
+    color: ${({ theme }) => theme.colors.gray900};
+    ${({ theme }) => theme.fonts.body_bold_14};
+  `,
+
+  InfoRight: styled.div`
+    display: flex;
+    ${({ theme }) => theme.fonts.body_medium_12};
+    color: ${({ theme }) => theme.colors.gray800};
+  `,
+
+  TotalSeats: styled.span`
+    color: ${({ theme }) => theme.colors.gray800};
+    ${({ theme }) => theme.fonts.body_medium_12};
+  `,
+
+  Location: styled.span`
+    color: ${({ theme }) => theme.colors.gray700};
+    ${({ theme }) => theme.fonts.body_medium_12};
+  `,
+
+  TimeTable: styled.div`
+    width: 10.7rem;
+    height: 6.8rem;
+    flex-shrink: 0;
+    border-radius: 0.6rem;
+    border: 1px solid ${({ theme }) => theme.colors.red};
   `,
 };
