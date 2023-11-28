@@ -2,13 +2,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const SelectDate = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [isSelected, setIsSelected] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<number>();
+  // const [isSelected, setIsSelected] = useState(false);
 
   const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
   const todayDate = new Date();
 
-  const checkDay = dayOfWeek => {
+  const checkDay = (dayOfWeek: string) => {
     if (dayOfWeek === '토') {
       return 'blue_1';
     } else if (dayOfWeek === '일') {
@@ -41,10 +41,10 @@ const SelectDate = () => {
 
   const handleClickDate = (id: number) => {
     setSelectedDate(id);
-    setIsSelected(true);
+    // setIsSelected(true);
   };
 
-  const { id, day, dayOfWeek, color } = DATE_LIST;
+  // const { id, day, dayOfWeek, color } = DATE_LIST;
 
   return (
     <St.SelectDateWapper>
@@ -105,7 +105,7 @@ const St = {
     }
   `,
 
-  Date: styled.span`
+  Date: styled.span<{ $isSelected: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,22 +116,22 @@ const St = {
     color: ${({ $isSelected, theme }) => ($isSelected ? theme.colors.white : theme.colors.black)};
 
     background: ${({ $isSelected, theme }) =>
-      $isSelected ? theme.colors.gradient : theme.colors.white};
+    $isSelected ? theme.colors.gradient : theme.colors.white};
     border-radius: 5rem;
 
     ${({ theme }) => theme.fonts.body_bold_16};
   `,
 
-  Day: styled.span`
+  Day: styled.span<{ $isSelected: boolean; $DateColor: string }>`
     ${({ theme }) => theme.fonts.body_regular_13};
 
     color: ${({ $isSelected, $DateColor, theme }) =>
-      $isSelected
-        ? theme.colors.red
-        : $DateColor === 'blue_1'
-          ? theme.colors.blue_1
-          : $DateColor === 'red'
-            ? theme.colors.red
-            : theme.colors.gray600};
+    $isSelected
+      ? theme.colors.red
+      : $DateColor === 'blue_1'
+        ? theme.colors.blue_1
+        : $DateColor === 'red'
+          ? theme.colors.red
+          : theme.colors.gray600};
   `,
 };
