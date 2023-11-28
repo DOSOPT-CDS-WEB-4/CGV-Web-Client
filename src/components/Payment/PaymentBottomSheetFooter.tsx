@@ -18,6 +18,7 @@ export default PaymentBottomSheetFooter;
 const St = {
   PaymentBottomSheetFooterWrapper: styled.footer`
     position: fixed;
+    z-index: 10rem;
     bottom: 0;
 
     display: flex;
@@ -30,6 +31,7 @@ const St = {
     height: 8.8rem;
     padding-bottom: 2.3rem;
 
+    background-color: ${({ theme }) => theme.colors.white};
     border-radius: 1.8rem 1.8rem 0 0;
     box-shadow: 0 -0.4rem 0.4rem rgba(0, 0, 0, 0.15);
   `,
