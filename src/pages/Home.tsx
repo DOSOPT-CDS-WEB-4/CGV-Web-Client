@@ -1,9 +1,9 @@
-import MyCgvMenu from '../components/Home/MyCgvMenu';
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
     <div>
-      <MyCgvMenu />
+      <MenuBar />
     </div>
   );
 };
