@@ -53,7 +53,7 @@ const SelectMovieTime = () => {
             {moivetype},{screenactive},{screenType}
           </St.InfoLeft>
           <St.InfoRight>
-            <St.TotalSeats>{totalSeats}석 &nbsp;</St.TotalSeats>
+            <St.TotalSeats>{totalSeats}석</St.TotalSeats>
             <St.Location>{place}</St.Location>
           </St.InfoRight>
         </St.Info>
@@ -163,6 +163,7 @@ const St = {
   TotalSeats: styled.span`
     color: ${({ theme }) => theme.colors.gray800};
     ${({ theme }) => theme.fonts.body_medium_12};
+    margin-right: 0.2rem;
   `,
 
   Location: styled.span`
