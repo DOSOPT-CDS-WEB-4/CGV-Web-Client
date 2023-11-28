@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const SelectDate = () => {
   const [selectedDate, setSelectedDate] = useState<number>();
-  // const [isSelected, setIsSelected] = useState(false);
 
   const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
   const todayDate = new Date();
@@ -41,10 +40,7 @@ const SelectDate = () => {
 
   const handleClickDate = (id: number) => {
     setSelectedDate(id);
-    // setIsSelected(true);
   };
-
-  // const { id, day, dayOfWeek, color } = DATE_LIST;
 
   return (
     <St.SelectDateWapper>
