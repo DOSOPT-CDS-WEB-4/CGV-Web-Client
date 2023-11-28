@@ -1,9 +1,9 @@
-import TopButton from '../components/Home/TopButton';
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
     <div>
-      <TopButton />
+      <MenuBar />
     </div>
   );
 };
