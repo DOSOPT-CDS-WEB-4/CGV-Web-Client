@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
 
-export interface MovieCardContents {
+export interface MovieCardProps {
   posterImg: string;
   title: string;
   ranking: string;
@@ -13,9 +13,7 @@ export interface MovieCardContents {
   like: number;
 }
 
-const MovieCard: React.FC<MovieCardContents> = (props) => {
-  const { posterImg, title, ranking, audience, like } = props;
-
+const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
 
