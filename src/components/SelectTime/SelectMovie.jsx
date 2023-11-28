@@ -176,9 +176,8 @@ const St = {
 
     border-radius: 1.6rem;
     border: 1px solid
-      ${({ $isClicked, theme }) => ($isClicked ? theme.colors.gradient : theme.colors.gray600)};
-    color: ${({ $isClicked, theme }) =>
-      $isClicked ? theme.colors.gradient : theme.colors.gray600};
+      ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
+    color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
   `,
 
   SelectTime: styled.section`
