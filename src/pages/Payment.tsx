@@ -27,6 +27,6 @@ const St = {
     align-items: center;
 
     height: 100dvh;
-    margin-bottom: 6.5rem;
+    margin-bottom: 8.8rem;
   `,
 };
