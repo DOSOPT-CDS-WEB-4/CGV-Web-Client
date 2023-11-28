@@ -1,9 +1,9 @@
-import MovieCardSlider from '../components/Home/MovieCardSlider';
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
     <div>
-      <MovieCardSlider />
+      <MenuBar />
     </div>
   );
 };
