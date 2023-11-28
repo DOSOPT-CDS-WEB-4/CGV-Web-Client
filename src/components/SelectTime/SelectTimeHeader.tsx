@@ -43,10 +43,9 @@ const St = {
 
   PageTitle: styled.h1`
     width: 5.6rem;
+    color: ${({ theme }) => theme.colors.white};
     text-align: center;
 
     ${({ theme }) => theme.fonts.body_medium_15};
-
-    color: ${({ theme }) => theme.colors.white};
   `,
 };
