@@ -9,7 +9,7 @@ const MyPage = () => {
   const [clickedBtn, setClickedBtn] = useState<boolean>(false);
 
   const handleButton = () => {
-    setClickedBtn(true);
+    setClickedBtn(!clickedBtn);
   };
 
   return (
@@ -28,13 +28,15 @@ const MyPage = () => {
         </St.IconWrapper>
       </St.TitleWrapper>
 
-      {MYDATA.map((data) => (
-        <St.ContentWrapper key={data.id}>
-          <img src={data.image} alt={data.title} />
-          <St.MyMovie>{data.title}</St.MyMovie>
-          <St.MovieCount>{data.count}</St.MovieCount>
-        </St.ContentWrapper>
-      ))}
+      <St.MyContentWrapper>
+        {MYDATA.map((data) => (
+          <St.ContentWrapper key={data.id}>
+            <img src={data.image} alt={data.title} />
+            <St.MyMovie>{data.title}</St.MyMovie>
+            <St.MovieCount>{data.count}</St.MovieCount>
+          </St.ContentWrapper>
+        ))}
+      </St.MyContentWrapper>
       
       <St.ButtonWrapper>
         <St.DetailButton 
@@ -58,6 +60,7 @@ export default MyPage;
 const St = {
   TitleWrapper: styled.div`
     display: flex;
+    width: 100%;
     padding: 1.9rem 1.5rem 2.4rem 2.3rem;
   `,
 
@@ -65,24 +68,29 @@ const St = {
         color: ${({ theme }) => theme.colors.gray900};
         ${({ theme }) => theme.fonts.body_semibold_18};
 
-    & p.user {
-      display: inline;
-      color: ${({ theme }) => theme.colors.red};
-      ${({ theme }) => theme.fonts.body_semibold_18};
-    }
+      & p.user {
+        display: inline;
+        color: ${({ theme }) => theme.colors.red};
+        ${({ theme }) => theme.fonts.body_semibold_18};
+      }
 
-    & span.first-line {
-      ${({ theme }) => theme.fonts.body_semibold_18};
-    }
+      & span.first-line {
+        ${({ theme }) => theme.fonts.body_semibold_18};
+      }
 
-    & p.second-line {
-      ${({ theme }) => theme.fonts.body_semibold_18};
-    } 
-    `,
+      & p.second-line {
+        ${({ theme }) => theme.fonts.body_semibold_18};
+      } 
+      `,
   
   IconWrapper: styled.div`
       display: inline;
       margin-left: auto;
+  `,
+
+  MyContentWrapper: styled.div`
+    width: 100%;
+    padding: 0rem 1.9rem 0rem 0.8rem;
   `,
 
   ContentWrapper: styled.section`
@@ -90,7 +98,7 @@ const St = {
         flex-shrink: 0;
         align-items: center;
 
-        width: 34.4rem;
+        width: 100%;
         height: 4.4rem;
         margin: 0.8rem 1.7rem 0.4rem 1.4rem;
         padding: 0rem 1.9rem 0rem 0.8rem;
