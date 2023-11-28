@@ -23,7 +23,7 @@ const MyPage = () => {
             <p className='second-line'>진짜 안 본 영화가 없으시군요?</p>
           </div>
         </St.UserWrapper>
-        <St.IconWrapper className=''>
+        <St.IconWrapper>
           <IcMembership/>
         </St.IconWrapper>
       </St.TitleWrapper>
