@@ -1,10 +1,11 @@
-import HomeHeader from '../components/Home/HomeHeader';
+
+import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
   return (
-    <>
-      <HomeHeader />
-    </>
+    <div>
+      <MenuBar />
+    </div>
   );
 };
 
