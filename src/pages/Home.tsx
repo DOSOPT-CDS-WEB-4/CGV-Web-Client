@@ -1,3 +1,4 @@
+
 import MenuBar from '../components/Home/MenuBar';
 
 const Home = () => {
