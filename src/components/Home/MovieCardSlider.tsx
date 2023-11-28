@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 
 import DATA from '../../constants/Movie';
-import MovieCard, { MovieCardContents } from "./MovieCard";
+import MovieCard, { MovieCardProps } from "./MovieCard";
 
 const MovieCardSlider = () => {
   const settings = {
@@ -22,7 +22,7 @@ const MovieCardSlider = () => {
   return (
     <St.MovieListWrapper>
       <St.MovieCardSlider {...settings}>
-        {DATA.slice(0, 5).map((movie: MovieCardContents, index: number) => (
+        {DATA.slice(0, 5).map((movie: MovieCardProps, index: number) => (
           <MovieCard key={index}
             posterImg={movie.posterImg}
             title={movie.title}
