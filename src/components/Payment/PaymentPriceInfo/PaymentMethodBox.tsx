@@ -38,7 +38,7 @@ const St = {
     align-items: center;
     justify-content: center;
 
-    width: 11.2rem;
+    min-width: 11.2rem;
     height: 6.2rem;
 
     background-color: ${({ theme }) => theme.colors.white};
