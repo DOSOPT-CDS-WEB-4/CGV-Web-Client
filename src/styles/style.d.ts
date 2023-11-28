@@ -19,6 +19,7 @@ declare module 'styled-components' {
       red: string;
       coral: string;
       gradient: string;
+      gradient2: string;
 
       green_1: string;
       green_2: string;
