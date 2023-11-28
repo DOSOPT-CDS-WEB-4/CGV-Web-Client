@@ -14,7 +14,7 @@ const PaymentPriceOptions = () => {
       <St.PriceOptionMenuContainer>
         {PRICE_OPTIONS.map(({ id, description }) => {
           return (
-            <St.PriceOptionMenuBox key={id} $id={id}>
+            <St.PriceOptionMenuBox key={id}>
               <St.MenuBoxIndexCircle>{id}</St.MenuBoxIndexCircle>
               <St.MenuBoxDescription>{description}</St.MenuBoxDescription>
               <IcArrowBottom />
@@ -51,9 +51,11 @@ const St = {
   PriceOptionMenuContainer: styled.article`
     display: flex;
     flex-direction: column;
+    gap: 0.1rem;
+    background-color: ${({ theme }) => theme.colors.gray200};
   `,
 
-  PriceOptionMenuBox: styled.div<{ $id: number }>`
+  PriceOptionMenuBox: styled.div`
     display: flex;
     gap: 1.2rem;
     align-items: center;
@@ -62,7 +64,7 @@ const St = {
     height: 5.9rem;
     padding: 0 1.6rem;
 
-    border-bottom: ${({ $id, theme }) => $id !== 3 && `0.1rem solid ${theme.colors.gray200}`};
+    background-color: ${({ theme }) => theme.colors.white};
 
     & > svg {
       margin-left: auto;
