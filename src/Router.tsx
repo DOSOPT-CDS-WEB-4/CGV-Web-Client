@@ -1,8 +1,9 @@
-import { Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from './pages/Home';
 import Payment from './pages/Payment';
+import SelectPersonTest from './pages/SelectPersonTest';
 import SelectTime from './pages/SelectTime';
 
 const Router = () => {
@@ -13,6 +14,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/select-time" element={<SelectTime />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/select-person-test" element={<SelectPersonTest />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

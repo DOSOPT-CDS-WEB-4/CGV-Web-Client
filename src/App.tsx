@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 
 import Router from './Router';
@@ -30,7 +31,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router />
+      <RecoilRoot>
+        <Router />
+      </RecoilRoot>
     </ThemeProvider>
   );
 }
