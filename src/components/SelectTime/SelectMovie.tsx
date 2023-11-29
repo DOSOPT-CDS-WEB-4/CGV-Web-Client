@@ -171,12 +171,12 @@ const St = {
     height: 3rem;
     padding: 1rem;
 
-    color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
+    color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.coral : theme.colors.gray600)};
     text-wrap: nowrap;
     vertical-align: center;
 
     border: 1px solid
-      ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
+      ${({ $isClicked, theme }) => ($isClicked ? theme.colors.coral : theme.colors.gray600)};
     border-radius: 1.6rem;
 
     ${({ theme }) => theme.fonts.body_regular_13};
