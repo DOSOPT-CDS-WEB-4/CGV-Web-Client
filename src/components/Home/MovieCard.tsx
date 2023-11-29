@@ -30,8 +30,12 @@ const MovieCard = ({ title, poster_url, ranking, total_audience, like_count }: m
       onClick={() => {handleCard();}}
       className={selectedCard ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
+
+    <St.MovieTitleWrapper>
       <St.AllImg src={img_all} alt="all-img" />
-      <St.MovieTitle>{title}</St.MovieTitle>
+      < St.MovieTitle>{title}</St.MovieTitle>
+    </St.MovieTitleWrapper>
+
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
@@ -81,20 +85,25 @@ const St = {
     border-radius: 1.4rem;
   `,
 
+  MovieTitleWrapper: styled.div`
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row; 
+    align-items: center; 
+  `,
+  
   AllImg: styled.img`
-    display: inline;
     width: 1.6rem;
     height: 1.6rem;
     margin-right: 0.5rem;
   `,
 
   MovieTitle: styled.p`
-    display: inline;
     margin-top: 0.2rem;
     ${({ theme }) => theme.fonts.body_medium_12};
   `,
 
-  Ranking: styled.p`
+  Ranking: styled.div`
     margin: 0.8rem 1rem 0.8rem 2rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
