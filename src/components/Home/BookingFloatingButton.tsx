@@ -35,7 +35,7 @@ const St = {
   ButtonWrapper: styled.div`
     position: fixed;
     top: 73.2%;
-    left: 60.2%;
+    left: 65.2%;
     width: 100%;
   `,
 
