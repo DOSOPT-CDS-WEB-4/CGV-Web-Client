@@ -4,17 +4,10 @@ import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
+import { movieInfoTypes } from '../../types/movieInfo';
 
-export interface MovieCardProps {
-  id: number;
-  posterImg: string;
-  title: string;
-  ranking: string;
-  audience: string;
-  like: number;
-}
+const MovieCard = ({ title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
 
-const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
 
@@ -36,18 +29,18 @@ const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps
     <St.MovieCardWrapper
       onClick={() => {handleCard();}}
       className={selectedCard ? 'selected' : 'not-selected'}>
-      <St.MoviePoster src={posterImg} alt="Movie-Poster" />
+      <St.MoviePoster src={poster_url} alt="Movie-Poster" />
       <St.AllImg src={img_all} alt="all-img" />
       <St.MovieTitle>{title}</St.MovieTitle>
       <St.Ranking>{ranking}</St.Ranking>
-      <St.Audience>누적관객 {audience}</St.Audience>
+      <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
         onClick={handleBooking}>예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
         <IcHeartOn />
-        <St.LikeNumber>{like}</St.LikeNumber>
+        <St.LikeNumber>{like_count}</St.LikeNumber>
       </St.LikeBtn>
     </St.MovieCardWrapper>
   );
