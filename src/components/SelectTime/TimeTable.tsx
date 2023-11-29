@@ -48,7 +48,7 @@ const St = {
 
   StartTime: styled.span`
     color: ${({ $activeState, theme }) =>
-      $activeState ? theme.colors.gray900 : theme.colors.gray600};
+    $activeState ? theme.colors.gray900 : theme.colors.gray600};
     ${({ theme }) => theme.fonts.body_semibold_16};
   `,
 

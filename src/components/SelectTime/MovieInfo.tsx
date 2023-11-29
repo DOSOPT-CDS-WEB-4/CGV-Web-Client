@@ -18,7 +18,7 @@ const DATA = {
 };
 
 const MovieInfo = () => {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState<boolean>(false);
   const { posterImgUrl, title, date, genre, country, runningTime, content } = DATA;
 
   const handleSetClicked = () => {
@@ -144,7 +144,6 @@ const St = {
     &::-webkit-scrollbar {
       display: none;
     }
-
   `,
 
   ViewMoreBtn: styled.button`
