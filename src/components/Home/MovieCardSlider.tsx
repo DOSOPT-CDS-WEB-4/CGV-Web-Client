@@ -23,7 +23,7 @@ const MovieCardSlider = () => {
   useEffect(() => {
     getMovieInfoData().then((response) => {
       if (response.data) {
-        setMovieData(response.data.slice(0, 5));
+        setMovieData(response.data);
       }
     }).catch((err) => {
       console.log(err);
