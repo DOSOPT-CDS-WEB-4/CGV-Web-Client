@@ -10,6 +10,7 @@ import IcClose from './ic_close.svg?react';
 import ICFavoriteOff from './ic_favorite_off.svg?react';
 import ICFavoriteOn from './ic_favorite_on.svg?react';
 import IcHamburger from './ic_hamburger_black.svg?react';
+import IcHamburgerWhite from './ic_hamburger_white.svg?react';
 import IcHeartOff from './ic_heart_off.svg?react';
 import IcHeartOn from './ic_heart_on.svg?react';
 import IcMembership from './ic_membership.svg?react';
@@ -30,6 +31,7 @@ export {
   IcCheck,
   IcClose,
   IcHamburger,
+  IcHamburgerWhite,
   IcHeartOff,
   IcHeartOn,
   IcMembership,

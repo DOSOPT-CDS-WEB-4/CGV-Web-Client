@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { ICHamburger } from '../../assets/icon';
+import { IcHamburgerWhite } from '../../assets/icon';
 const SelectTimeHeader = () => {
   return (
     <St.HeaderWrapper>
       <St.MenuIcon type="button">
-        <ICHamburger />
+        <IcHamburgerWhite />
       </St.MenuIcon>
       <St.PageTitle>빠른 예매</St.PageTitle>
     </St.HeaderWrapper>
