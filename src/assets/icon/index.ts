@@ -1,5 +1,6 @@
 import IcArrowBottom from './ic_arrow_bottom.svg?react';
 import IcArrowFront from './ic_arrow_front.svg?react';
+import IcArrowRight from './ic_arrow_right.svg?react';
 import IcArrowUp from './ic_arrow_up.svg?react';
 import IcBtnUp from './ic_btn_up.svg?react';
 import IcCardDefault from './ic_card_default.svg?react';
@@ -21,9 +22,7 @@ import IcToss from './ic_toss.svg?react';
 export {
   ICFavoriteOff,
   ICFavoriteOn,
-  IcArrowBottom,
-  IcArrowFront,
-  IcArrowUp,
+  IcArrowBottom, IcArrowFront, IcArrowRight, IcArrowUp,
   IcBtnUp,
   IcCardDefault,
   IcCardSelcted,
@@ -37,5 +36,6 @@ export {
   IcMembership,
   IcSearch,
   IcTicket,
-  IcToss,
+  IcToss
 };
+

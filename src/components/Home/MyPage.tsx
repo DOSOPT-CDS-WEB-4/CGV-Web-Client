@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { IcArrowBottom, IcMembership } from '../../assets/icon';
+import { IcArrowRight, IcMembership } from '../../assets/icon';
 import MYDATA from '../../constants/Dummy';
 
 const MyPage = () => {
@@ -46,7 +46,7 @@ const MyPage = () => {
         >
           <St.ButtonText
           >더 자세히 보기</St.ButtonText>
-          <IcArrowBottom/>
+          <IcArrowRight/>
         </St.DetailButton>
       </St.ButtonWrapper>
 
