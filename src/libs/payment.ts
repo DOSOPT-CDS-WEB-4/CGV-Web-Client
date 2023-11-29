@@ -7,7 +7,6 @@ export const patchPaymentScheduleData = async (scheduleId: number) => {
     const { data } = await api.patch<apiResponse<paymentScheduleTypes>>('/schedule/reserve', {
       schedule_id: scheduleId,
     });
-    console.log(data);
     return { message: data.message, isError: false };
   } catch (err) {
     return { isError: true };
