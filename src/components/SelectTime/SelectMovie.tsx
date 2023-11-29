@@ -149,7 +149,7 @@ const St = {
     overflow: scroll;
     display: flex;
     flex-shrink: 0;
-    gap: 0.9rem;
+    gap: 0.7rem;
 
     width: 37.5rem;
     height: 3rem;
