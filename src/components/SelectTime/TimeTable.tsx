@@ -32,6 +32,7 @@ export default TimeTable;
 const St = {
   TimeTable: styled.button<{ $activeState: boolean }>`
     cursor: auto;
+    cursor: ${({ $activeState }) => ($activeState ? 'pointer' : 'auto')};
 
     overflow: hidden;
     display: flex;

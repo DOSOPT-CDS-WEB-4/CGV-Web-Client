@@ -164,6 +164,8 @@ const St = {
   `,
 
   EachType: styled.li<{ $isClicked: boolean }>`
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
