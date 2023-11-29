@@ -22,7 +22,10 @@ import IcToss from './ic_toss.svg?react';
 export {
   ICFavoriteOff,
   ICFavoriteOn,
-  IcArrowBottom, IcArrowFront, IcArrowRight, IcArrowUp,
+  IcArrowBottom,
+  IcArrowFront,
+  IcArrowRight,
+  IcArrowUp,
   IcBtnUp,
   IcCardDefault,
   IcCardSelcted,
@@ -36,6 +39,5 @@ export {
   IcMembership,
   IcSearch,
   IcTicket,
-  IcToss
+  IcToss,
 };
-
