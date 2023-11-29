@@ -122,7 +122,7 @@ export default SelectMovieTime;
 const St = {
   SelectMovieWrapper: styled.article`
     width: 37.5rem;
-    height: 32.2rem;
+    height: 35.2rem;
   `,
 
   SelectedRegion: styled.section`
