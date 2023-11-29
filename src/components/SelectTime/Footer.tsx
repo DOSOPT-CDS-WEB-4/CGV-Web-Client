@@ -28,16 +28,17 @@ const St = {
   `,
 
   FooterButton: styled.button`
-    width: 8.2rem;
-    height: 3.9rem;
+    cursor: pointer;
 
     flex-shrink: 0;
 
-    background-color: transparent;
-
-    cursor: pointer;
-    ${({ theme }) => theme.fonts.body_medium_13};
+    width: 8.2rem;
+    height: 3.9rem;
 
     color: ${({ theme }) => theme.colors.gray900};
+
+    background-color: transparent;
+
+    ${({ theme }) => theme.fonts.body_medium_13};
   `,
 };
