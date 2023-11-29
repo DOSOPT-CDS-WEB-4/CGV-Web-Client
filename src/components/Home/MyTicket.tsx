@@ -3,16 +3,19 @@ import styled from 'styled-components';
 
 import img_ticket from '../../assets/image/img_ticket.png';
 
-const MyTicket = forwardRef<HTMLDivElement>((props, ref) => {
+type MyTicketProps = JSX.IntrinsicElements['div'];
+
+const MyTicket = forwardRef<HTMLDivElement, MyTicketProps>((props, ref) => {
   return (
     <St.ImgWrapper ref={ref}>
-      <img src={img_ticket} alt='티켓 이미지' />
-      <img src={img_ticket} alt='티켓 이미지' />
+      {props.children}
+      <img src={img_ticket} alt="티켓 이미지" />
+      <img src={img_ticket} alt="티켓 이미지" />
     </St.ImgWrapper>
   );
 });
 
-MyTicket.displayName = 'MyTicket'; 
+MyTicket.displayName = 'MyTicket';
 
 const St = {
   ImgWrapper: styled.div`

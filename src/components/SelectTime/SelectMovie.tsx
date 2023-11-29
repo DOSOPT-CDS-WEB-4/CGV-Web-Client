@@ -33,7 +33,7 @@ const DATA_LIST = {
 
 const SelectMovieTime = () => {
   const [clickLike, setClickLike] = useState(false);
-  const [typeClick, setTypeClick] = useState([]);
+  const [typeClick, setTypeClick] = useState<Array<string>>([]);
 
   const {
     region_names,
@@ -50,7 +50,7 @@ const SelectMovieTime = () => {
     setClickLike(!clickLike);
   };
 
-  const handleTypeClick = type => {
+  const handleTypeClick = (type: string) => {
     if (typeClick.includes(type)) {
       setTypeClick(typeClick.filter(elm => elm !== type));
     } else {
@@ -62,13 +62,13 @@ const SelectMovieTime = () => {
     <St.SelectMovieWrapper>
       <St.SelectedRegion>
         {clickLike ? (
-          <i onClick={handleOnClickLike}>
+          <button onClick={handleOnClickLike}>
             <ICFavoriteOn />
-          </i>
+          </button>
         ) : (
-          <i onClick={handleOnClickLike}>
+          <button onClick={handleOnClickLike}>
             <ICFavoriteOff />
-          </i>
+          </button>
         )}
 
         <St.Region>{region_names}</St.Region>
@@ -126,11 +126,12 @@ const St = {
   `,
 
   SelectedRegion: styled.section`
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+
     width: 37.5rem;
     padding: 1.8rem 0 1.4rem 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
   `,
 
   Region: styled.span`
@@ -144,24 +145,25 @@ const St = {
   `,
 
   ScreenTypeWrapper: styled.section`
-    width: 37.5rem;
-    height: 3rem;
-    flex-shrink: 0;
+    overflow: auto;
+    overflow: scroll;
     display: flex;
-    padding: 0 1.6rem;
-    margin-bottom: 2.4rem;
+    flex-shrink: 0;
     gap: 0.9rem;
 
-    overflow: auto;
+    width: 37.5rem;
+    height: 3rem;
+    margin-bottom: 2.4rem;
+    padding: 0 1.6rem;
+
     white-space: nowrap;
-    overflow: scroll;
 
     &::-webkit-scrollbar {
       display: none;
     }
   `,
 
-  EachType: styled.li`
+  EachType: styled.li<{ $isClicked: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,29 +171,30 @@ const St = {
     height: 3rem;
     padding: 1rem;
 
-    ${({ theme }) => theme.fonts.body_regular_13};
-
+    color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
     text-wrap: nowrap;
     vertical-align: center;
 
-    border-radius: 1.6rem;
     border: 1px solid
       ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
-    color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.red : theme.colors.gray600)};
+    border-radius: 1.6rem;
+
+    ${({ theme }) => theme.fonts.body_regular_13};
   `,
 
   SelectTime: styled.section`
-    width: 37.5rem;
-    padding: 0 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+
+    width: 37.5rem;
+    padding: 0 1.6rem;
   `,
 
   Info: styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   `,
 
   InfoLeft: styled.div`
@@ -202,6 +205,7 @@ const St = {
   InfoRight: styled.div`
     display: flex;
     ${({ theme }) => theme.fonts.body_medium_12};
+
     color: ${({ theme }) => theme.colors.gray800};
   `,
 

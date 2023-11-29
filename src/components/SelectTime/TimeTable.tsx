@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }) => {
-  const [activeState, setActiveState] = useState(reservationAvailability);
+interface TimeTableProps {
+  startTime: string;
+  endTime: string;
+  emptySeats: number;
+  reservationAvailability: boolean;
+}
+
+const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }: TimeTableProps) => {
+  const [activeState] = useState(reservationAvailability);
 
   return (
     <St.TimeTable $activeState={activeState}>
@@ -23,7 +30,7 @@ const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }) 
 export default TimeTable;
 
 const St = {
-  TimeTable: styled.button`
+  TimeTable: styled.button<{ $activeState: boolean }>`
     cursor: auto;
 
     overflow: hidden;
@@ -46,9 +53,9 @@ const St = {
     height: 4.2rem;
   `,
 
-  StartTime: styled.span`
+  StartTime: styled.span<{ $activeState: boolean }>`
     color: ${({ $activeState, theme }) =>
-    $activeState ? theme.colors.gray900 : theme.colors.gray600};
+      $activeState ? theme.colors.gray900 : theme.colors.gray600};
     ${({ theme }) => theme.fonts.body_semibold_16};
   `,
 
@@ -68,7 +75,7 @@ const St = {
     background-color: ${({ theme }) => theme.colors.gray100};
   `,
 
-  EmptySeats: styled.span`
+  EmptySeats: styled.span<{ $activeState: boolean }>`
     color: ${({ $activeState, theme }) => ($activeState ? theme.colors.red : theme.colors.gray600)};
     ${({ theme }) => theme.fonts.body_semibold_12};
   `,
