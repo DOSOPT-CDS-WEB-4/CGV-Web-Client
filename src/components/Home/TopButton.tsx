@@ -24,8 +24,8 @@ export default TopButton;
 const St = {
   ButtonWrapper: styled.div`
       position: fixed;
-      top: 83%;
-      left: 75.5%;
+      top: 82%;
+      left: 74%;
       width: 100%;
     & > svg {
       top: 70.1rem;

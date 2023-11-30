@@ -128,7 +128,6 @@ const St = {
 
     color: ${({ theme }) => theme.colors.gray400};
 
-    /* 폰트 적용 수정 후 추후 적용 */
-    /* ${({ theme }) => theme.fonts.body_regular_10}; */
+    ${({ theme }) => theme.fonts.body_regular_10};
   `,
 };

@@ -142,35 +142,35 @@ export const reset = css`
 export const GlobalStyle = createGlobalStyle`
 
 ${reset}
-@font-face {
+/* @font-face {
   font-family: 'Pretendard Variable';
   src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable.css");
   unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;  //영문, 숫자만
-}
+} */
 
 
 @font-face {
   font-family: 'Apple SD Gothic Neo Regular';
   src: url('./AppleSDGGothicNeo/AppleSDGothicNeoR.woff2') format('font-woff2');
-  unicode-range: U+AC00-D7A3; //한글만
+  /* unicode-range: U+AC00-D7A3; //한글만 */
 }
 
 @font-face {
   font-family: 'Apple SD Gothic Neo Medium';
   src: url('./AppleSDGGothicNeo/AppleSDGothicNeoM.woff2') format('font-woff2');
-  unicode-range: U+AC00-D7A3; //한글만
+  /* unicode-range: U+AC00-D7A3; //한글만 */
 }
 
 @font-face {
   font-family: 'Apple SD Gothic Neo SemiBold';
   src: url('./AppleSDGGothicNeo/AppleSDGothicNeoSB.woff2') format('font-woff2');
-  unicode-range: U+AC00-D7A3; //한글만
+  /* unicode-range: U+AC00-D7A3; //한글만 */
 }
 
 @font-face {
   font-family: 'Apple SD Gothic Neo Bold';
   src: url('./AppleSDGGothicNeo/AppleSDGothicNeoSB.woff2') format('font-woff2');
-  unicode-range: U+AC00-D7A3; //한글만
+  /* unicode-range: U+AC00-D7A3; //한글만 */
 }
 
 

@@ -10,7 +10,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "lint-front": "lint-staged",
-    "stylelint": "stylelint --ignore-path .gitignore '**/*.(ts|ts|js|jsx)' --fix"
+    "stylelint": "stylelint --ignore-path .gitignore '**/*.(ts|ts|js|jsx)' --fix",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "lint-staged": {
     "**/*.tsx": "eslint --fix",
@@ -24,6 +27,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
     "react-slick": "^0.29.0",
+    "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
     "styled-components": "^6.1.1",
     "styled-reset": "^4.5.1",
     "vite-plugin-svgr": "^4.2.0"

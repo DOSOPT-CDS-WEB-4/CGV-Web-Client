@@ -2,9 +2,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const SelectRegion = () => {
-  const [checkedRegions, setCheckedRegions] = useState([]);
+  const [checkedRegions, setCheckedRegions] = useState<Array<string>>([]);
 
-  const handleOnClick = region => {
+  const handleOnClick = (region: string) => {
     setCheckedRegions([region]);
   };
 
@@ -32,37 +32,38 @@ export default SelectRegion;
 
 const St = {
   SelectRegion: styled.section`
-    width: 37.5rem;
-    display: flex;
-
-    padding: 1.6rem;
-    gap: 0.8rem;
     overflow: auto;
-    white-space: nowrap;
     overflow: scroll;
+    display: flex;
+    gap: 0.8rem;
+
+    width: 37.5rem;
+    padding: 1.6rem;
+
+    white-space: nowrap;
 
     &::-webkit-scrollbar {
       display: none;
     }
   `,
 
-  RegionButton: styled.button`
+  RegionButton: styled.button<{ $isChecked: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
+
     height: 3rem;
     padding: 1rem;
     ${({ theme }) => theme.fonts.body_regular_13};
 
+    color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.white : theme.colors.gray700)};
     text-wrap: nowrap;
     vertical-align: center;
 
-    border-radius: 1.6rem;
-
-    border: 1px solid
-      ${({ $isChecked, theme }) => ($isChecked ? theme.colors.gradient : theme.colors.gray300)};
     background: ${({ $isChecked, theme }) =>
       $isChecked ? theme.colors.gradient : theme.colors.gray100};
-    color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.white : theme.colors.gray700)};
+    border: 1px solid
+      ${({ $isChecked, theme }) => ($isChecked ? theme.colors.gradient : theme.colors.gray300)};
+    border-radius: 1.6rem;
   `,
 };
