@@ -14,7 +14,7 @@ const SelectRegion = () => {
   const setHowFar = useSetRecoilState(distance);
   const setMovieSchedule = useSetRecoilState(movieSchedules);
 
-  const [checkedRegions, setCheckedRegions] = useState<Array<string>>([]);
+  const [checkedRegions, setCheckedRegions] = useState<Array<string>>(['홍대']);
 
   const handleOnClick = (region: string) => {
     setCheckedRegions([region]);
@@ -35,8 +35,6 @@ const SelectRegion = () => {
         setKeyToApi('SHINCHON');
         break;
     }
-    console.log(region);
-    console.log(KeyToApi);
   };
 
   useEffect(() => {
