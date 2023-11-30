@@ -1,17 +1,47 @@
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useEffect, useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
-import { regionNames } from '../../recoil/atom';
+import { getSelectRegion } from '../../libs/getSelectRegion';
+import { currentRegion, distance, movieSchedules, regionNames } from '../../recoil/atom';
 
 const SelectRegion = () => {
   const RegionNames = useRecoilValue(regionNames);
+  const [KeyToApi, setKeyToApi] = useState<string>('HONGDAE');
+
+  const setRegionNames = useSetRecoilState(regionNames);
+  const setCurRegion = useSetRecoilState(currentRegion);
+  const setHowFar = useSetRecoilState(distance);
+  const setMovieSchedule = useSetRecoilState(movieSchedules);
 
   const [checkedRegions, setCheckedRegions] = useState<Array<string>>([]);
 
   const handleOnClick = (region: string) => {
     setCheckedRegions([region]);
+    switch (region) {
+      case '홍대':
+        setKeyToApi('HONGDAE');
+        break;
+      case '청담씨네시티':
+        setKeyToApi('CHEONGDAM');
+        break;
+      case '목동':
+        setKeyToApi('MOKDONG');
+        break;
+      case '피카디리1958':
+        setKeyToApi('PIKADILI');
+        break;
+      case '신촌아트레온':
+        setKeyToApi('SHINCHON');
+        break;
+    }
+    console.log(region);
+    console.log(KeyToApi);
   };
+
+  useEffect(() => {
+    getSelectRegion(KeyToApi, [], setRegionNames, setCurRegion, setHowFar, setMovieSchedule);
+  }, [checkedRegions]);
 
   return (
     <>
