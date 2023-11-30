@@ -9,7 +9,8 @@ const BookingFloatingButton = () => {
   const movieId = useRecoilValue(movieInfoState).movie_id;
 
   const handleBtn = () => {
-    navigate('/select-time');
+    if (movieId !== 0) navigate('/select-time');
+    console.log(movieId);
     return movieId;
   };
 
@@ -20,6 +21,7 @@ const BookingFloatingButton = () => {
         onClick={() => {
           handleBtn();
         }}
+        disabled={(movieId === 0) ? true : false}
       >
         <St.TextWrapper>
           <St.SmallTxt>빠르고 쉽게</St.SmallTxt>
