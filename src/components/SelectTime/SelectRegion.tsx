@@ -1,19 +1,22 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
+import { regionNames } from '../../recoil/atom';
+
 const SelectRegion = () => {
+  const RegionNames = useRecoilValue(regionNames);
+
   const [checkedRegions, setCheckedRegions] = useState<Array<string>>([]);
 
   const handleOnClick = (region: string) => {
     setCheckedRegions([region]);
   };
 
-  const REGION_LIST = ['홍대', '청담씨네시티', '목동', '피카디리1958', '신촌아트레온'];
-
   return (
     <>
       <St.SelectRegion>
-        {REGION_LIST.map(region => (
+        {RegionNames.map(region => (
           <St.RegionButton
             key={region}
             onClick={() => handleOnClick(region)}

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import Footer from '../components/SelectTime/Footer';
@@ -6,10 +8,13 @@ import SelectDate from '../components/SelectTime/SelectDate';
 import SelectMovieTime from '../components/SelectTime/SelectMovie';
 import SelectRegion from '../components/SelectTime/SelectRegion';
 import { api } from '../libs/axios';
+import { regionNames } from '../recoil/atom';
 import { apiResponse } from '../types/axios';
 import { SelectTimeResponse } from '../types/SelectTimeResponse';
 
 const SelectTime = () => {
+  const [RegionNames, setRegionNames] = useRecoilState(regionNames);
+
   const getSelectTimeAPI = async (regionName: string, screenTypes: string[]) => {
     let newURL: string = `region=${regionName}`;
     if (regionName !== '' && screenTypes.length !== 0) {
@@ -38,12 +43,19 @@ const SelectTime = () => {
         region_names,
         screen_types,
       );
+
+      setRegionNames(region_names);
+
+      console.log(RegionNames);
+      // console.log(ScreenTypes);
     } catch (err) {
       console.log(err);
     }
   };
 
-  getSelectTimeAPI('HONGDAE', []);
+  useEffect(() => {
+    getSelectTimeAPI('HONGDAE', []);
+  }, []);
 
   return (
     <>
