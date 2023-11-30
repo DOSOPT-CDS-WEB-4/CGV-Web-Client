@@ -4,12 +4,14 @@ import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
+import { patchLikeData } from '../../libs/like';
 import { movieInfoTypes } from '../../types/movieInfo';
 
 const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
 
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
+  const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleCard = () => {
     setSelectedCard(!selectedCard);
@@ -17,7 +19,19 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    setIsLike(!isLike);
+    const patchData = async () => {
+      const { message, isError } = await patchLikeData(movie_id);
+      if (!isError) setIsLike(!isLike);
+    
+      if (message === '영화 좋아요에 성공했습니다.') {
+        setLikeCount(likeCount + 1);
+        console.log("성공", like_count);
+      } else {
+        setLikeCount(likeCount - 1);
+        console.log("취소", like_count);
+      }
+    };
+    patchData();
   };
 
   const navigate = useNavigate();
@@ -46,7 +60,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
         <IcHeartOn />
-        <St.LikeNumber>{like_count}</St.LikeNumber>
+        <St.LikeNumber>{likeCount}</St.LikeNumber>
       </St.LikeBtn>
     </St.MovieCardWrapper>
   );
