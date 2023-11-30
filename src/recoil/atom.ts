@@ -3,6 +3,7 @@ import { recoilPersist } from 'recoil-persist';
 
 import { movieInfoTypes } from '../types/movieInfo';
 import { paymentMovieInfo } from '../types/paymentMovieInfo';
+import { ScheduleType } from '../types/ScheduleType';
 import { SelectTimeMovieInfo } from '../types/SelectTimeMovieInfo';
 
 const { persistAtom } = recoilPersist();
@@ -69,6 +70,22 @@ export const selectTimeMovieInfo = atom<SelectTimeMovieInfo>({
     country: '',
     poster: '',
     background: '',
+  },
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const movieSchedules = atom<ScheduleType[]>({
+  key: 'movieSchedules',
+  default: {
+    schedule_id: 0,
+    screen_type: '',
+    place: '',
+    date: '',
+    start_time: '',
+    end_time: '',
+    total_seats: '',
+    empty_seats: '',
+    reservation_availability: false,
   },
   effects_UNSTABLE: [persistAtom],
 });
