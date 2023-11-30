@@ -25,6 +25,12 @@ export const screenTypes = atom<string[]>({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const regionNames = atom<string[]>({
+  key: 'regionNames',
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const paymentMovieInfoState = atom<paymentMovieInfo>({
   key: 'paymentMovieInfo',
   default: {
