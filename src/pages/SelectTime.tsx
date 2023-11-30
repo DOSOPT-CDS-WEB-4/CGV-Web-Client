@@ -8,12 +8,13 @@ import SelectDate from '../components/SelectTime/SelectDate';
 import SelectMovieTime from '../components/SelectTime/SelectMovie';
 import SelectRegion from '../components/SelectTime/SelectRegion';
 import { api } from '../libs/axios';
-import { regionNames } from '../recoil/atom';
+import { regionNames, screenTypes } from '../recoil/atom';
 import { apiResponse } from '../types/axios';
 import { SelectTimeResponse } from '../types/SelectTimeResponse';
 
 const SelectTime = () => {
   const [RegionNames, setRegionNames] = useRecoilState(regionNames);
+  const [ScreenTypes, setScreenTypes] = useRecoilState(screenTypes);
 
   const getSelectTimeAPI = async (regionName: string, screenTypes: string[]) => {
     let newURL: string = `region=${regionName}`;
@@ -45,9 +46,10 @@ const SelectTime = () => {
       );
 
       setRegionNames(region_names);
+      setScreenTypes(screen_types);
 
       console.log(RegionNames);
-      // console.log(ScreenTypes);
+      console.log(ScreenTypes);
     } catch (err) {
       console.log(err);
     }

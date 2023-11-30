@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import { ICFavoriteOff, ICFavoriteOn } from '../../assets/icon';
+import { screenTypes } from '../../recoil/atom';
 import TimeTable from './TimeTable';
 
 const DATA_LIST = {
   region_names: '홍대',
   region_far: '1.3km',
-  screen_types: ['전체', '일반관', 'IMAX관', '컴포트관', 'GOLD CLASS관', '4DX관'],
   movie_screen_schedules: [
     {
       startTime: '12:15',
@@ -32,19 +33,13 @@ const DATA_LIST = {
 };
 
 const SelectMovieTime = () => {
+  const ScreenTypes = useRecoilValue(screenTypes);
+
   const [clickLike, setClickLike] = useState(false);
   const [typeClick, setTypeClick] = useState<Array<string>>([]);
 
-  const {
-    region_names,
-    region_far,
-    screen_types,
-    screenType,
-    place,
-    moivetype,
-    screenactive,
-    totalSeats,
-  } = DATA_LIST;
+  const { region_names, region_far, screenType, place, moivetype, screenactive, totalSeats } =
+    DATA_LIST;
 
   const handleOnClickLike = () => {
     setClickLike(!clickLike);
@@ -75,7 +70,7 @@ const SelectMovieTime = () => {
         <St.Distance>{region_far}</St.Distance>
       </St.SelectedRegion>
       <St.ScreenTypeWrapper>
-        {screen_types.map(type => (
+        {ScreenTypes.map(type => (
           <St.EachType
             key={type}
             onClick={() => {
