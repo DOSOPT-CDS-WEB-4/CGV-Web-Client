@@ -20,6 +20,18 @@ export const movieInfoState = atom<movieInfoTypes>({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const currentRegion = atom<string>({
+  key: 'currentRegion',
+  default: '홍대',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const distance = atom<number>({
+  key: 'distance',
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const screenTypes = atom<string[]>({
   key: 'screenTypes',
   default: [],
