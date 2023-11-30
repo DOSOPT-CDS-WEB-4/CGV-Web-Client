@@ -34,7 +34,6 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       ...prev,
       movie_id: movieId,
     }));
-    console.log(movieId);
   };
 
   return (

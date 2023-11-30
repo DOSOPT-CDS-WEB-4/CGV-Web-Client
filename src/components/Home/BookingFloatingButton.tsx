@@ -10,7 +10,7 @@ const BookingFloatingButton = () => {
 
   const handleBtn = () => {
     navigate('/select-time');
-    console.log(movieId);
+    return movieId;
   };
 
   return (
