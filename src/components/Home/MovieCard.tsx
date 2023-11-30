@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
+import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 
 const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
 
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
+  const setMovieId = useSetRecoilState(movieInfoState);
 
-  const handleCard = () => {
+  const handleMovieCard = () => {
     setSelectedCard(!selectedCard);
   };
 
@@ -21,15 +24,18 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
   };
 
   const navigate = useNavigate();
-  const handleBooking = () => {
-    navigate('/select-time', {
-      state: { movie_id },
-    });
+  const handleBooking = (movieId : number) => {
+    navigate('/select-time');
+    setMovieId(prev => ({
+      ...prev,
+      movie_id: movieId,
+    }));
+    console.log(movieId);
   };
 
   return (
     <St.MovieCardWrapper
-      onClick={() => {handleCard();}}
+      onClick={() => {handleMovieCard();}}
       className={selectedCard ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
 
@@ -41,7 +47,10 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
-        onClick={handleBooking}>예매하기</St.BookingBtn>
+        onClick={() =>{
+          handleBooking(movie_id);
+          }}
+          >예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
