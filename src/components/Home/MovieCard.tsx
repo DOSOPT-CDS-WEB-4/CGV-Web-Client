@@ -4,17 +4,10 @@ import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
+import { movieInfoTypes } from '../../types/movieInfo';
 
-export interface MovieCardProps {
-  id: number;
-  posterImg: string;
-  title: string;
-  ranking: string;
-  audience: string;
-  like: number;
-}
+const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
 
-const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
 
@@ -29,25 +22,31 @@ const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps
 
   const navigate = useNavigate();
   const handleBooking = () => {
-    navigate('/select-time');
+    navigate('/select-time', {
+      state: { movie_id },
+    });
   };
 
   return (
     <St.MovieCardWrapper
       onClick={() => {handleCard();}}
       className={selectedCard ? 'selected' : 'not-selected'}>
-      <St.MoviePoster src={posterImg} alt="Movie-Poster" />
+      <St.MoviePoster src={poster_url} alt="Movie-Poster" />
+
+    <St.MovieTitleWrapper>
       <St.AllImg src={img_all} alt="all-img" />
-      <St.MovieTitle>{title}</St.MovieTitle>
+      < St.MovieTitle>{title}</St.MovieTitle>
+    </St.MovieTitleWrapper>
+
       <St.Ranking>{ranking}</St.Ranking>
-      <St.Audience>누적관객 {audience}</St.Audience>
+      <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
         onClick={handleBooking}>예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
         <IcHeartOn />
-        <St.LikeNumber>{like}</St.LikeNumber>
+        <St.LikeNumber>{like_count}</St.LikeNumber>
       </St.LikeBtn>
     </St.MovieCardWrapper>
   );
@@ -88,20 +87,25 @@ const St = {
     border-radius: 1.4rem;
   `,
 
+  MovieTitleWrapper: styled.div`
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row; 
+    align-items: center; 
+  `,
+  
   AllImg: styled.img`
-    display: inline;
     width: 1.6rem;
     height: 1.6rem;
     margin-right: 0.5rem;
   `,
 
   MovieTitle: styled.p`
-    display: inline;
     margin-top: 0.2rem;
     ${({ theme }) => theme.fonts.body_medium_12};
   `,
 
-  Ranking: styled.p`
+  Ranking: styled.div`
     margin: 0.8rem 1rem 0.8rem 2rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,

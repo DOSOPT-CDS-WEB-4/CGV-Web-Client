@@ -1,35 +1,47 @@
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-
+import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-import DATA from '../../constants/Movie';
-import MovieCard, { MovieCardProps } from "./MovieCard";
+import { getMovieInfoData } from '../../libs/movieCardInfo';
+import { movieInfoTypes } from '../../types/movieInfo';
+import MovieCard from './MovieCard';
 
 const MovieCardSlider = () => {
+  const [movieData, setMovieData] = useState<movieInfoTypes[]>([]);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 200,
-    slidesToShow: 1, 
+    slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: true, // Enable center mode
-    variableWidth: true, // Allow variable width of slides
+    centerMode: true,
+    variableWidth: true,
     arrows: false,
   };
+
+  useEffect(() => {
+    getMovieInfoData().then((response) => {
+      if (response.data) {
+        setMovieData(response.data);
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
 
   return (
     <St.MovieListWrapper>
       <St.MovieCardSlider {...settings}>
-        {DATA.map(({ id, posterImg, title, ranking, audience, like } : MovieCardProps) => (
-          <MovieCard key={id}
-            id={id}
-            posterImg={posterImg}
+        {movieData.map(({ movie_id, poster_url, title, ranking, total_audience, like_count }: movieInfoTypes) => (
+          <MovieCard
+            key={movie_id}
+            movie_id={movie_id}
+            poster_url={poster_url}
             title={title}
             ranking={ranking}
-            audience={audience}
-            like={like}
+            total_audience={total_audience}
+            like_count={like_count}
           />
         ))}
       </St.MovieCardSlider>
@@ -58,7 +70,5 @@ const St = {
     .slick-dots {
       padding: 2.2rem;
     }
-
   `,
-
 };
