@@ -1,23 +1,25 @@
 import { useNavigate } from 'react-router';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
-interface BookingFloatingButtonProps {
-  selectedCard: boolean;
-}
+import { movieInfoState } from '../../recoil/atom';
 
-const BookingFloatingButton = ({ selectedCard } : BookingFloatingButtonProps) => {
+const BookingFloatingButton = () => {
   const navigate = useNavigate();
+  const movieId = useRecoilValue(movieInfoState).movie_id;
 
   const handleBtn = () => {
     navigate('/select-time');
+    console.log(movieId);
   };
 
   return (
     <St.ButtonWrapper>
       <St.ButtonContents
         type='button'
-        onClick={handleBtn}
-        disabled={selectedCard}
+        onClick={() => {
+          handleBtn();
+        }}
       >
         <St.TextWrapper>
           <St.SmallTxt>빠르고 쉽게</St.SmallTxt>
