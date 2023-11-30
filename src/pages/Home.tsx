@@ -32,7 +32,7 @@ const Home = () => {
       <MyPage />
       <MyTicket ref={myTicketSectionRef} />
       <TopButton />
-      <BookingFloatingButton selectedCard={false}/>
+      <BookingFloatingButton />
     </St.HomePageWrapper>
   );
 };
