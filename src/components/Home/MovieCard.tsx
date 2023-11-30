@@ -54,6 +54,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
         onClick={() =>{
           handleBooking(movie_id);
           }}
+        disabled={!selectedCard}
           >예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
