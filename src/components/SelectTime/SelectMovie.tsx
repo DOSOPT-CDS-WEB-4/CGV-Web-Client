@@ -3,43 +3,17 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import { ICFavoriteOff, ICFavoriteOn } from '../../assets/icon';
-import { screenTypes } from '../../recoil/atom';
+import { currentRegion, distance, movieSchedules, screenTypes } from '../../recoil/atom';
 import TimeTable from './TimeTable';
-
-const DATA_LIST = {
-  region_names: '홍대',
-  region_far: '1.3km',
-  movie_screen_schedules: [
-    {
-      startTime: '12:15',
-      endTime: '14:00',
-      emptySeats: 200,
-      reservationAvailability: false,
-    },
-    {
-      startTime: '12:15',
-      endTime: '14:00',
-
-      emptySeats: 200,
-      reservationAvailability: true,
-    },
-  ],
-
-  screenType: '컴포트관',
-  place: '1관 8층',
-  moivetype: '자막',
-  screenactive: '2D',
-  totalSeats: 200,
-};
 
 const SelectMovieTime = () => {
   const ScreenTypes = useRecoilValue(screenTypes);
+  const curRegion = useRecoilValue(currentRegion);
+  const howFar = useRecoilValue(distance);
+  const movieScheduleList = useRecoilValue(movieSchedules);
 
   const [clickLike, setClickLike] = useState(false);
   const [typeClick, setTypeClick] = useState<Array<string>>([]);
-
-  const { region_names, region_far, screenType, place, moivetype, screenactive, totalSeats } =
-    DATA_LIST;
 
   const handleOnClickLike = () => {
     setClickLike(!clickLike);
@@ -66,8 +40,8 @@ const SelectMovieTime = () => {
           </button>
         )}
 
-        <St.Region>{region_names}</St.Region>
-        <St.Distance>{region_far}</St.Distance>
+        <St.Region>{curRegion}</St.Region>
+        <St.Distance>{howFar}</St.Distance>
       </St.SelectedRegion>
       <St.ScreenTypeWrapper>
         {ScreenTypes.map(type => (
@@ -84,25 +58,23 @@ const SelectMovieTime = () => {
       </St.ScreenTypeWrapper>
       <St.SelectTime>
         <St.Info>
-          <St.InfoLeft>
-            {moivetype},{screenactive},{screenType}
-          </St.InfoLeft>
+          <St.InfoLeft>자막,2D,일반관</St.InfoLeft>
           <St.InfoRight>
-            <St.TotalSeats>{totalSeats}석 &nbsp;</St.TotalSeats>
-            <St.Location>{place}</St.Location>
+            <St.TotalSeats>200석 &nbsp;</St.TotalSeats>
+            <St.Location>3관 8층</St.Location>
           </St.InfoRight>
         </St.Info>
         <St.TimeTableList>
-          {DATA_LIST.movie_screen_schedules.map((movieSchedules, index) => {
-            const { reservationAvailability, startTime, endTime, emptySeats } = movieSchedules;
+          {movieScheduleList.map((movieSchedules, index) => {
+            const { reservation_availability, start_time, end_time, empty_seats } = movieSchedules;
 
             return (
               <TimeTable
                 key={index}
-                startTime={startTime}
-                endTime={endTime}
-                emptySeats={emptySeats}
-                reservationAvailability={reservationAvailability}
+                startTime={start_time}
+                endTime={end_time}
+                emptySeats={empty_seats}
+                reservationAvailability={reservation_availability}
               />
             );
           })}
