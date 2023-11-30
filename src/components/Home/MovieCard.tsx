@@ -14,8 +14,12 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
   const [isLike, setIsLike] = useState<boolean>(false);
   const setMovieId = useSetRecoilState(movieInfoState);
 
-  const handleMovieCard = () => {
+  const handleMovieCard = (movieId : number) => {
     setSelectedCard(!selectedCard);
+    setMovieId(prev => ({
+      ...prev,
+      movie_id: movieId,
+    }));
   };
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,7 +39,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
 
   return (
     <St.MovieCardWrapper
-      onClick={() => {handleMovieCard();}}
+      onClick={() => {handleMovieCard(movie_id);}}
       className={selectedCard ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
 
