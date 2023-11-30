@@ -6,7 +6,7 @@ import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
 import { movieInfoTypes } from '../../types/movieInfo';
 
-const MovieCard = ({ title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
+const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
 
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
@@ -22,7 +22,9 @@ const MovieCard = ({ title, poster_url, ranking, total_audience, like_count }: m
 
   const navigate = useNavigate();
   const handleBooking = () => {
-    navigate('/select-time');
+    navigate('/select-time', {
+      state: { movie_id },
+    });
   };
 
   return (
