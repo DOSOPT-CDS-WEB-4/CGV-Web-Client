@@ -8,18 +8,29 @@ import img_all from '../../assets/image/img_all.png';
 import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 
-const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
+interface MovieCardProps {
+  isSelected: boolean;
+}
 
+const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count, isSelected }: movieInfoTypes & MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
   const setMovieId = useSetRecoilState(movieInfoState);
 
   const handleMovieCard = (movieId : number) => {
+    if (!isSelected) {
+      setMovieId((prev) => ({
+        ...prev,
+        movie_id: movie_id,
+      }));
+    } else {
+      setMovieId((prev) => ({
+        ...prev,
+        movie_id: 0,
+      }));
+    }
     setSelectedCard(!selectedCard);
-    setMovieId(prev => ({
-      ...prev,
-      movie_id: movieId,
-    }));
+    console.log(movieId);
   };
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,7 +51,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
   return (
     <St.MovieCardWrapper
       onClick={() => {handleMovieCard(movie_id);}}
-      className={selectedCard ? 'selected' : 'not-selected'}>
+      className={isSelected ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
 
     <St.MovieTitleWrapper>
