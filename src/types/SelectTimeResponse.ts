@@ -7,5 +7,5 @@ export interface SelectTimeResponse {
   current_region: string;
   distance: number;
   screen_types: string[];
-  movie_screen_schedules: ScheduleType;
+  movie_screen_schedules: ScheduleType[];
 }
