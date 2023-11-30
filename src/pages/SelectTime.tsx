@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import Footer from '../components/SelectTime/Footer';
@@ -8,13 +8,15 @@ import SelectDate from '../components/SelectTime/SelectDate';
 import SelectMovieTime from '../components/SelectTime/SelectMovie';
 import SelectRegion from '../components/SelectTime/SelectRegion';
 import { api } from '../libs/axios';
-import { regionNames, screenTypes } from '../recoil/atom';
+import { currentRegion, distance, regionNames, screenTypes } from '../recoil/atom';
 import { apiResponse } from '../types/axios';
 import { SelectTimeResponse } from '../types/SelectTimeResponse';
 
 const SelectTime = () => {
-  const [RegionNames, setRegionNames] = useRecoilState(regionNames);
-  const [ScreenTypes, setScreenTypes] = useRecoilState(screenTypes);
+  const setRegionNames = useSetRecoilState(regionNames);
+  const setScreenTypes = useSetRecoilState(screenTypes);
+  const setCurRegion = useSetRecoilState(currentRegion);
+  const setHowFar = useSetRecoilState(distance);
 
   const getSelectTimeAPI = async (regionName: string, screenTypes: string[]) => {
     let newURL: string = `region=${regionName}`;
@@ -47,9 +49,8 @@ const SelectTime = () => {
 
       setRegionNames(region_names);
       setScreenTypes(screen_types);
-
-      console.log(RegionNames);
-      console.log(ScreenTypes);
+      setCurRegion(current_region);
+      setHowFar(distance);
     } catch (err) {
       console.log(err);
     }
