@@ -15,6 +15,7 @@ const colors = {
   gray900: '#222222',
 
   red: '#FA4357',
+  red50: 'rgba(255, 99, 98, 0.5)',
   coral: '#FF6362',
   gradient: 'linear-gradient(90deg, #FB4458 11.4%, #F06330 89.47%)',
   gradient2:
