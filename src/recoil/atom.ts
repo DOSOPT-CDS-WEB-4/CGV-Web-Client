@@ -76,17 +76,19 @@ export const selectTimeMovieInfo = atom<SelectTimeMovieInfo>({
 
 export const movieSchedules = atom<ScheduleType[]>({
   key: 'movieSchedules',
-  default: {
-    schedule_id: 0,
-    screen_type: '',
-    place: '',
-    date: '',
-    start_time: '',
-    end_time: '',
-    total_seats: 0,
-    empty_seats: 0,
-    reservation_availability: true,
-  },
+  default: [
+    {
+      schedule_id: 0,
+      screen_type: '',
+      place: '',
+      date: '',
+      start_time: '',
+      end_time: '',
+      total_seats: 0,
+      empty_seats: 0,
+      reservation_availability: true,
+    },
+  ],
   effects_UNSTABLE: [persistAtom],
 });
 
