@@ -8,11 +8,11 @@ import img_all from '../../assets/image/img_all.png';
 import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 
-interface MovieCardProps {
+interface MovieCardProps extends movieInfoTypes{
   isSelected: boolean;
 }
 
-const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count, isSelected }: movieInfoTypes & MovieCardProps) => {
+const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count, isSelected }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
   const setMovieId = useSetRecoilState(movieInfoState);
