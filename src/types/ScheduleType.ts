@@ -9,3 +9,7 @@ export interface ScheduleType {
   empty_seats: number;
   reservation_availability: boolean;
 }
+
+export interface SelectScheduleType extends ScheduleType {
+  day?: string;
+}
