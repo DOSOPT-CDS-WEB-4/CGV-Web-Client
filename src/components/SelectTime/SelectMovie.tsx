@@ -15,9 +15,13 @@ import TimeTable from './TimeTable';
 
 interface SelectMovieTimeProps {
   selectedDate: string;
+  handleOpenBottomSheet: () => void;
 }
 
-const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
+const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({
+  selectedDate,
+  handleOpenBottomSheet,
+}) => {
   const ScreenTypes = useRecoilValue(screenTypesData);
   const curRegion = useRecoilValue(currentRegionData);
   const howFar = useRecoilValue(distanceData);
@@ -92,6 +96,7 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
                     endTime={end_time}
                     emptySeats={empty_seats}
                     reservationAvailability={reservation_availability}
+                    handleOpenBottomSheet={handleOpenBottomSheet}
                   />
                 );
               }
@@ -124,6 +129,7 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
                     endTime={end_time}
                     emptySeats={empty_seats}
                     reservationAvailability={reservation_availability}
+                    handleOpenBottomSheet={handleOpenBottomSheet}
                   />
                 );
               }
@@ -156,6 +162,7 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
                     endTime={end_time}
                     emptySeats={empty_seats}
                     reservationAvailability={reservation_availability}
+                    handleOpenBottomSheet={handleOpenBottomSheet}
                   />
                 );
               }

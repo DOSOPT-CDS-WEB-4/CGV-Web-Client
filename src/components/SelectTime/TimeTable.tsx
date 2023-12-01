@@ -6,24 +6,41 @@ interface TimeTableProps {
   endTime: string;
   emptySeats: number;
   reservationAvailability: boolean;
+  handleOpenBottomSheet: () => void;
 }
-const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }: TimeTableProps) => {
+const TimeTable = ({
+  startTime,
+  endTime,
+  emptySeats,
+  reservationAvailability,
+  handleOpenBottomSheet,
+}: TimeTableProps) => {
   const [activeState] = useState(reservationAvailability);
 
   return (
-    <St.TimeTable $activeState={activeState}>
-      <St.TimeWrapper>
-        <St.StartTime $activeState={activeState}>{startTime}</St.StartTime>
-        <St.EndTime>~{endTime}</St.EndTime>
-      </St.TimeWrapper>
-      <St.EmptySeatsWrapper>
-        {activeState ? (
-          <St.EmptySeats $activeState={activeState}>잔여 {emptySeats}석</St.EmptySeats>
-        ) : (
-          <St.EmptySeats $activeState={activeState}>예매종료</St.EmptySeats>
-        )}
-      </St.EmptySeatsWrapper>
-    </St.TimeTable>
+    <>
+      {activeState ? (
+        <St.TimeTable $activeState={activeState} onClick={handleOpenBottomSheet}>
+          <St.TimeWrapper>
+            <St.StartTime $activeState={activeState}>{startTime}</St.StartTime>
+            <St.EndTime>~{endTime}</St.EndTime>
+          </St.TimeWrapper>
+          <St.EmptySeatsWrapper>
+            <St.EmptySeats $activeState={activeState}>잔여 {emptySeats}석</St.EmptySeats>
+          </St.EmptySeatsWrapper>
+        </St.TimeTable>
+      ) : (
+        <St.TimeTable $activeState={activeState}>
+          <St.TimeWrapper>
+            <St.StartTime $activeState={activeState}>{startTime}</St.StartTime>
+            <St.EndTime>~{endTime}</St.EndTime>
+          </St.TimeWrapper>
+          <St.EmptySeatsWrapper>
+            <St.EmptySeats $activeState={activeState}>판매 종료</St.EmptySeats>
+          </St.EmptySeatsWrapper>
+        </St.TimeTable>
+      )}
+    </>
   );
 };
 export default TimeTable;
