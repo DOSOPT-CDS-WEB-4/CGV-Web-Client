@@ -11,7 +11,6 @@ const BookingFloatingButton = () => {
 
   const handleBtn = () => {
     if (movieId !== 0) navigate('/select-time');
-    console.log(movieId);
   };
 
   return (
