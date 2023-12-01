@@ -32,7 +32,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       }));
     }
   };
-        
+
   const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -62,12 +62,10 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       onClick={() => {handleMovieCard();}}
       className={isSelected ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
-
     <St.MovieTitleWrapper>
-      <St.AllImg src={img_all} alt="all-img" />
+    <St.AllImg src={img_all} alt="all-img" />
       < St.MovieTitle>{title}</St.MovieTitle>
     </St.MovieTitleWrapper>
-
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
@@ -79,15 +77,13 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
-        <IcHeartOn />
+                  <IcHeartOn />
         <St.LikeNumber>{likeCount}</St.LikeNumber>
       </St.LikeBtn>
     </St.MovieCardWrapper>
   );
 };
-
 export default MovieCard;
-
 const St = {
   MovieCardWrapper: styled.div`
     display: flex;
@@ -102,25 +98,21 @@ const St = {
 
     border-radius: 2rem;
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.20);
-
     &.selected {
         color: ${({ theme }) => theme.colors.white};
         background: ${({ theme }) => theme.colors.gradient};
     }
-
     &.selected > button {
         color: ${({ theme }) => theme.colors.red};
         background-color: ${({ theme }) => theme.colors.white};
     }
   `,
-
   MoviePoster: styled.img`
     width: 15.4rem;
     height: 21.9rem;
     margin-bottom: 1rem;
     border-radius: 1.4rem;
   `,
-
   MovieTitleWrapper: styled.div`
     display: flex;
     flex-basis: 100%;
@@ -133,22 +125,18 @@ const St = {
     height: 1.6rem;
     margin-right: 0.5rem;
   `,
-
   MovieTitle: styled.p`
     margin-top: 0.2rem;
     ${({ theme }) => theme.fonts.body_medium_12};
   `,
-
-  Ranking: styled.div`
+    Ranking: styled.div`
     margin: 0.8rem 1rem 0.8rem 2rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
-
   Audience: styled.p`
     margin-top: 0.8rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
-
   BookingBtn: styled.button`
     flex-shrink: 0;
 
@@ -162,7 +150,6 @@ const St = {
     border: 1px solid ${({ theme }) => theme.colors.red};
     border-radius: 5rem;
   `,
-
   LikeBtn: styled.button`
     display: flex;
 
@@ -174,15 +161,13 @@ const St = {
 
     border: 1px solid ${({ theme }) => theme.colors.red};
     border-radius: 5rem;
-
     &.empty-heart > svg {
         path {
             fill: none;
             stroke: ${({ theme }) => theme.colors.red};
-        }
+          }
     }
   `,
-
   LikeNumber: styled.p`
     ${({ theme }) => theme.fonts.body_regular_12};
 
