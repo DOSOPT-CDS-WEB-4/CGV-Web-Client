@@ -1,37 +1,37 @@
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
+import {
+  currentRegionData,
+  selectedMovieScheduleData,
+  selectTimeMovieInfoState,
+} from '../../recoil/atom';
+
 const PaymentMovieInfo = () => {
-  // 영화, 상영관, 인원, 결제 정보 더미데이터
-  const DUMMY_MOVIE_INFO = {
-    movie_title: '그대들은 어떻게 살것인가',
-    movie_date: '2023.10.31',
-    movie_day: '화요일',
-    start_time: '22:35',
-    end_time: '24:49',
-    region: '홍대',
-    place: '3관 7층',
+  //서버에서 안주는 데이터
+  const PRICE = 28000;
+  const PERSON = '일반2';
 
-    person: '일반2',
-
-    price: 28000,
-  };
-
-  const { movie_title, movie_date, movie_day, start_time, end_time, region, place, person, price } =
-    DUMMY_MOVIE_INFO;
+  // 지역 가져오기
+  const region = useRecoilValue(currentRegionData);
+  //영화 제목 가져오기
+  const { title } = useRecoilValue(selectTimeMovieInfoState);
+  //영화 스케줄 정보 가져오기
+  const { day, date, place, start_time, end_time } = useRecoilValue(selectedMovieScheduleData);
 
   return (
     <St.PaymentMovieInfoWrapper>
-      <St.MovieInfoTitle>{movie_title}</St.MovieInfoTitle>
+      <St.MovieInfoTitle>{title}</St.MovieInfoTitle>
       <St.MovieInfoDetailBox>
         <St.MovieInfoDetailText>
-          {movie_date} <span className="detailDay">{movie_day} </span>· {start_time}~{end_time}
+          {date} <span className="detailDay">{day}요일 </span>· {start_time}~{end_time}
         </St.MovieInfoDetailText>
         <St.MovieInfoDetailText>
           {region} · {place}
         </St.MovieInfoDetailText>
       </St.MovieInfoDetailBox>
-      <St.MovieInfoPersonText>{person}</St.MovieInfoPersonText>
-      <St.MovieInfoPriceText>{price.toLocaleString()}원</St.MovieInfoPriceText>
+      <St.MovieInfoPersonText>{PERSON}</St.MovieInfoPersonText>
+      <St.MovieInfoPriceText>{PRICE.toLocaleString()}원</St.MovieInfoPriceText>
     </St.PaymentMovieInfoWrapper>
   );
 };
