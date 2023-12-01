@@ -92,5 +92,5 @@ export const movieSchedules = atom<ScheduleType[]>({
 
 export const clickedTypes = atom<string[]>({
   key: 'clickedTypes',
-  default: [],
+  default: ['전체'],
 });
