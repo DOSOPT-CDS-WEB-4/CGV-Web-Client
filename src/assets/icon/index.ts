@@ -1,3 +1,4 @@
+import IcBtnFloating from './btn_floating.svg?react';
 import IcArrowBottom from './ic_arrow_bottom.svg?react';
 import IcArrowFront from './ic_arrow_front.svg?react';
 import IcArrowRight from './ic_arrow_right.svg?react';
@@ -25,8 +26,7 @@ export {
   IcArrowBottom,
   IcArrowFront,
   IcArrowRight,
-  IcArrowUp,
-  IcBtnUp,
+  IcArrowUp, IcBtnFloating, IcBtnUp,
   IcCardDefault,
   IcCardSelcted,
   IcCgvLogo,
@@ -39,5 +39,6 @@ export {
   IcMembership,
   IcSearch,
   IcTicket,
-  IcToss,
+  IcToss
 };
+
