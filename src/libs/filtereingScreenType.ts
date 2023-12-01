@@ -1,4 +1,4 @@
-export const filteringScreenType = clickedTypeList => {
+export const filteringScreenType = (clickedTypeList: string[]) => {
   const typeClickKey: string[] = [];
 
   clickedTypeList.forEach(type => {

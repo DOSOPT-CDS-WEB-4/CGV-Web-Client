@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+interface TimeTableProps {
+  startTime: string;
+  endTime: string;
+  emptySeats: number;
+  reservationAvailability: boolean;
+}
 const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }: TimeTableProps) => {
   const [activeState] = useState(reservationAvailability);
 

@@ -25,9 +25,9 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
   const [clickedTypeList, setclickedTypeList] = useRecoilState(clickedTypes);
 
   const [clickLike, setClickLike] = useState(false);
-  const [normalTypeList, setNormalTypeList] = useState([]);
-  const [imaxTypeList, setImaxTypeList] = useState([]);
-  const [comfortTypeList, setComfortTypeList] = useState([]);
+  const [normalTypeList, setNormalTypeList] = useState<ScheduleType[]>([]);
+  const [imaxTypeList, setImaxTypeList] = useState<ScheduleType[]>([]);
+  const [comfortTypeList, setComfortTypeList] = useState<ScheduleType[]>([]);
 
   const sortByType = () => {
     const TODAY_SCHEDULE = movieScheduleList.filter(schedule => {
