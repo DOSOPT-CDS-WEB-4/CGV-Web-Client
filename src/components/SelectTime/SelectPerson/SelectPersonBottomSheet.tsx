@@ -11,7 +11,7 @@ const SelectPersonBottomSheet = ({ handleCloseBottomSheet }: SelectPersonBottomS
     <>
       <SelectPersonBottomSheetHeader handleCloseBottomSheet={handleCloseBottomSheet} />
       <SelectPersonBottomSheetContents />
-      <SelectPersonBottomSheetBtn handleCloseBottomSheet={handleCloseBottomSheet} />
+      <SelectPersonBottomSheetBtn />
     </>
   );
 };
