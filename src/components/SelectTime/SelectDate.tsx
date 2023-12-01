@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
+interface SelectDateProps {
+  selectedDate: string;
+  setSelectedDate: Dispatch<SetStateAction<string>>;
+}
 
-const SelectDate = () => {
-  const [selectedDate, setSelectedDate] = useState<number>();
-
+const SelectDate: React.FC<SelectDateProps> = ({ selectedDate, setSelectedDate }) => {
   const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
   const todayDate = new Date();
 
@@ -28,36 +30,41 @@ const SelectDate = () => {
 
     const label = i === 0 ? '오늘' : i === 1 ? '내일' : dayOfWeek;
 
+    const year = futureDate.getFullYear();
+    const month = futureDate.getMonth() + 1;
+    const day = futureDate.getDate().toString().padStart(2, '0');
+
     DATE_LIST.push({
       id: i,
-      year: futureDate.getFullYear(),
-      month: futureDate.getMonth() + 1,
-      day: futureDate.getDate(),
+      year: year,
+      month: month,
+      day: day,
       dayOfWeek: label,
       color: dayColor,
+      fullDate: `${year}.${month}.${day}`,
     });
   }
 
-  const handleClickDate = (id: number) => {
-    setSelectedDate(id);
+  const handleClickDate = (fullDate: string) => {
+    setSelectedDate(fullDate);
   };
 
   return (
     <St.SelectDateWapper>
-      {DATE_LIST.map(({ id, day, dayOfWeek, color }, idx) =>
+      {DATE_LIST.map(({ day, dayOfWeek, color, fullDate }, idx) =>
         idx < 6 ? (
-          <St.DateWrapper key={id} onClick={() => handleClickDate(id)}>
-            <St.Date $isSelected={id === selectedDate}>{day}</St.Date>
-            <St.Day $DateColor={color} $isSelected={id === selectedDate}>
+          <St.DateWrapper key={fullDate} onClick={() => handleClickDate(fullDate)}>
+            <St.Date $isSelected={fullDate === selectedDate}>{day}</St.Date>
+            <St.Day $DateColor={color} $isSelected={fullDate === selectedDate}>
               {dayOfWeek}
             </St.Day>
           </St.DateWrapper>
         ) : (
-          <St.DateWrapper key={id} onClick={() => handleClickDate(id)} disabled>
-            <St.Date $isSelected={id === selectedDate} className="not-main">
+          <St.DateWrapper key={fullDate} onClick={() => handleClickDate(fullDate)} disabled>
+            <St.Date $isSelected={fullDate === selectedDate} className="not-main">
               {day}
             </St.Date>
-            <St.Day $DateColor={color} $isSelected={id === selectedDate} className="not-main">
+            <St.Day $DateColor={color} $isSelected={fullDate === selectedDate} className="not-main">
               {dayOfWeek}
             </St.Day>
           </St.DateWrapper>

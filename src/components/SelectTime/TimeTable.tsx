@@ -7,7 +7,6 @@ interface TimeTableProps {
   emptySeats: number;
   reservationAvailability: boolean;
 }
-
 const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }: TimeTableProps) => {
   const [activeState] = useState(reservationAvailability);
 

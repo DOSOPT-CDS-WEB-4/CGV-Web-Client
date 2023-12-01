@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import Footer from '../components/SelectTime/Footer';
@@ -5,15 +6,18 @@ import MovieInfo from '../components/SelectTime/MovieInfo';
 import SelectDate from '../components/SelectTime/SelectDate';
 import SelectMovieTime from '../components/SelectTime/SelectMovie';
 import SelectRegion from '../components/SelectTime/SelectRegion';
+import { getInitDate } from '../libs/getInitDate';
 
 const SelectTime = () => {
+  const [selectedDate, setSelectedDate] = useState<string>(getInitDate());
+
   return (
     <>
       <MovieInfo />
       <SelectRegion />
-      <SelectDate />
+      <SelectDate selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       <St.MiddleLine />
-      <SelectMovieTime />
+      <SelectMovieTime selectedDate={selectedDate} />
       <Footer />
     </>
   );

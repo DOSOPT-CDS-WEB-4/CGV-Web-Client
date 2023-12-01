@@ -1,61 +1,169 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import { ICFavoriteOff, ICFavoriteOn } from '../../assets/icon';
+import {
+  clickedTypesData,
+  currentRegionData,
+  distanceData,
+  movieSchedulesData,
+  screenTypesData,
+} from '../../recoil/atom';
+import { ScheduleType } from '../../types/ScheduleType';
 import TimeTable from './TimeTable';
 
-const DATA_LIST = {
-  region_names: '홍대',
-  region_far: '1.3km',
-  screen_types: ['전체', '일반관', 'IMAX관', '컴포트관', 'GOLD CLASS관', '4DX관'],
-  movie_screen_schedules: [
-    {
-      startTime: '12:15',
-      endTime: '14:00',
-      emptySeats: 200,
-      reservationAvailability: false,
-    },
-    {
-      startTime: '12:15',
-      endTime: '14:00',
+interface SelectMovieTimeProps {
+  selectedDate: string;
+}
 
-      emptySeats: 200,
-      reservationAvailability: true,
-    },
-  ],
+const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
+  const ScreenTypes = useRecoilValue(screenTypesData);
+  const curRegion = useRecoilValue(currentRegionData);
+  const howFar = useRecoilValue(distanceData);
+  const movieScheduleList = useRecoilValue(movieSchedulesData);
+  const [clickedTypeList, setclickedTypeList] = useRecoilState(clickedTypesData);
 
-  screenType: '컴포트관',
-  place: '1관 8층',
-  moivetype: '자막',
-  screenactive: '2D',
-  totalSeats: 200,
-};
-
-const SelectMovieTime = () => {
   const [clickLike, setClickLike] = useState(false);
-  const [typeClick, setTypeClick] = useState<Array<string>>([]);
+  const [normalTypeList, setNormalTypeList] = useState<ScheduleType[]>([]);
+  const [imaxTypeList, setImaxTypeList] = useState<ScheduleType[]>([]);
+  const [comfortTypeList, setComfortTypeList] = useState<ScheduleType[]>([]);
 
-  const {
-    region_names,
-    region_far,
-    screen_types,
-    screenType,
-    place,
-    moivetype,
-    screenactive,
-    totalSeats,
-  } = DATA_LIST;
+  const sortByType = () => {
+    const TODAY_SCHEDULE = movieScheduleList.filter(({ date }) => {
+      return date === selectedDate;
+    });
+
+    const normalType: ScheduleType[] = TODAY_SCHEDULE.filter(schedule => {
+      const { screen_type } = schedule;
+      return screen_type === '일반관' && schedule;
+    });
+    const comfortType: ScheduleType[] = TODAY_SCHEDULE.filter(schedule => {
+      const { screen_type } = schedule;
+      return screen_type === '컴포트관' && schedule;
+    });
+    const imaxType: ScheduleType[] = TODAY_SCHEDULE.filter(schedule => {
+      const { screen_type } = schedule;
+      return screen_type === 'IMAX관' && schedule;
+    });
+    setNormalTypeList(normalType);
+    setImaxTypeList(imaxType);
+    setComfortTypeList(comfortType);
+  };
 
   const handleOnClickLike = () => {
     setClickLike(!clickLike);
   };
 
   const handleTypeClick = (type: string) => {
-    if (typeClick.includes(type)) {
-      setTypeClick(typeClick.filter(elm => elm !== type));
+    if (clickedTypeList.includes(type)) {
+      setclickedTypeList(clickedTypeList.filter(elm => elm !== type));
     } else {
-      setTypeClick([...typeClick, type]);
+      setclickedTypeList(prev => {
+        return [...prev, type];
+      });
     }
+  };
+
+  useEffect(() => {
+    sortByType();
+  }, [selectedDate]);
+
+  const renderNormalType = () => {
+    return (
+      <>
+        <St.TimeTableList>
+          <St.Info>
+            <St.InfoLeft>자막,2D,일반관</St.InfoLeft>
+            <St.InfoRight>
+              <St.TotalSeats>200석</St.TotalSeats>
+              <St.Location>3관 8층</St.Location>
+            </St.InfoRight>
+          </St.Info>
+          <St.EachTimeTable>
+            {normalTypeList?.map((movieSchedules: ScheduleType, index: number) => {
+              const { reservation_availability, start_time, end_time, empty_seats } =
+                movieSchedules;
+              if (selectedDate === movieSchedules.date) {
+                return (
+                  <TimeTable
+                    key={index}
+                    startTime={start_time}
+                    endTime={end_time}
+                    emptySeats={empty_seats}
+                    reservationAvailability={reservation_availability}
+                  />
+                );
+              }
+            })}
+          </St.EachTimeTable>
+        </St.TimeTableList>
+      </>
+    );
+  };
+  const renderComfortType = () => {
+    return (
+      <>
+        <St.TimeTableList>
+          <St.Info>
+            <St.InfoLeft>자막,2D,컴포트관</St.InfoLeft>
+            <St.InfoRight>
+              <St.TotalSeats>200석</St.TotalSeats>
+              <St.Location>1관 8층</St.Location>
+            </St.InfoRight>
+          </St.Info>
+          <St.EachTimeTable>
+            {comfortTypeList?.map((movieSchedules: ScheduleType, index: number) => {
+              const { reservation_availability, start_time, end_time, empty_seats } =
+                movieSchedules;
+              if (selectedDate === movieSchedules.date) {
+                return (
+                  <TimeTable
+                    key={index}
+                    startTime={start_time}
+                    endTime={end_time}
+                    emptySeats={empty_seats}
+                    reservationAvailability={reservation_availability}
+                  />
+                );
+              }
+            })}
+          </St.EachTimeTable>
+        </St.TimeTableList>
+      </>
+    );
+  };
+  const renderIMAXType = () => {
+    return (
+      <>
+        <St.TimeTableList>
+          <St.Info>
+            <St.InfoLeft>자막,2D,IMAX관</St.InfoLeft>
+            <St.InfoRight>
+              <St.TotalSeats>200석</St.TotalSeats>
+              <St.Location>2관 8층</St.Location>
+            </St.InfoRight>
+          </St.Info>
+          <St.EachTimeTable>
+            {imaxTypeList?.map((movieSchedules: ScheduleType, index: number) => {
+              const { reservation_availability, start_time, end_time, empty_seats } =
+                movieSchedules;
+              if (selectedDate === movieSchedules.date) {
+                return (
+                  <TimeTable
+                    key={index}
+                    startTime={start_time}
+                    endTime={end_time}
+                    emptySeats={empty_seats}
+                    reservationAvailability={reservation_availability}
+                  />
+                );
+              }
+            })}
+          </St.EachTimeTable>
+        </St.TimeTableList>
+      </>
+    );
   };
 
   return (
@@ -71,47 +179,30 @@ const SelectMovieTime = () => {
           </button>
         )}
 
-        <St.Region>{region_names}</St.Region>
-        <St.Distance>{region_far}</St.Distance>
+        <St.Region>{curRegion}</St.Region>
+        <St.Distance>{howFar}km</St.Distance>
       </St.SelectedRegion>
       <St.ScreenTypeWrapper>
-        {screen_types.map(type => (
+        {ScreenTypes.map(type => (
           <St.EachType
             key={type}
             onClick={() => {
               handleTypeClick(type);
             }}
-            $isClicked={typeClick.includes(type)}
+            $isClicked={clickedTypeList.includes(type)}
           >
             {type}
           </St.EachType>
         ))}
       </St.ScreenTypeWrapper>
-      <St.SelectTime>
-        <St.Info>
-          <St.InfoLeft>
-            {moivetype},{screenactive},{screenType}
-          </St.InfoLeft>
-          <St.InfoRight>
-            <St.TotalSeats>{totalSeats}석 &nbsp;</St.TotalSeats>
-            <St.Location>{place}</St.Location>
-          </St.InfoRight>
-        </St.Info>
-        <St.TimeTableList>
-          {DATA_LIST.movie_screen_schedules.map((movieSchedules, index) => {
-            const { reservationAvailability, startTime, endTime, emptySeats } = movieSchedules;
 
-            return (
-              <TimeTable
-                key={index}
-                startTime={startTime}
-                endTime={endTime}
-                emptySeats={emptySeats}
-                reservationAvailability={reservationAvailability}
-              />
-            );
-          })}
-        </St.TimeTableList>
+      <St.SelectTime>
+        {(clickedTypeList.includes('전체') || clickedTypeList.includes('일반관')) &&
+          renderNormalType()}
+        {(clickedTypeList.includes('전체') || clickedTypeList.includes('컴포트관')) &&
+          renderComfortType()}
+        {(clickedTypeList.includes('전체') || clickedTypeList.includes('IMAX관')) &&
+          renderIMAXType()}
       </St.SelectTime>
     </St.SelectMovieWrapper>
   );
@@ -121,6 +212,7 @@ export default SelectMovieTime;
 
 const St = {
   SelectMovieWrapper: styled.article`
+    overflow: scroll;
     width: 37.5rem;
     height: 35.2rem;
   `,
@@ -183,7 +275,6 @@ const St = {
 
     ${({ theme }) => theme.fonts.body_regular_13};
   `,
-
   SelectTime: styled.section`
     display: flex;
     flex-direction: column;
@@ -222,6 +313,12 @@ const St = {
   `,
 
   TimeTableList: styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  `,
+
+  EachTimeTable: styled.div`
     display: flex;
     gap: 0.8rem;
   `,
