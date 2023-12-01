@@ -2,6 +2,7 @@ import { SetterOrUpdater } from 'recoil';
 
 import { apiResponse } from '../types/axios';
 import { ScheduleType } from '../types/ScheduleType';
+import { SelectTimeMovieInfo } from '../types/SelectTimeMovieInfo';
 import { SelectTimeResponse } from '../types/SelectTimeResponse';
 import { api } from './axios';
 
