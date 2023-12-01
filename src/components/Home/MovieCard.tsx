@@ -22,11 +22,9 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
     const patchData = async () => {
       const { message, isError } = await patchLikeData(movie_id);
       if (!isError) setIsLike(!isLike);
-      if (message === '영화 좋아요에 성공했습니다.') {
-        setLikeCount(likeCount + 1);
-      } else {
-        setLikeCount(likeCount - 1);
-      }
+      message === '영화 좋아요에 성공했습니다.' 
+      ? setLikeCount(likeCount + 1) 
+      : setLikeCount(likeCount - 1);
     };
     patchData();
   };
