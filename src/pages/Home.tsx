@@ -32,7 +32,7 @@ const Home = () => {
       <MyPage />
       <MyTicket ref={myTicketSectionRef} />
       <TopButton />
-      <BookingFloatingButton selectedCard={false}/>
+      <BookingFloatingButton />
     </St.HomePageWrapper>
   );
 };
@@ -41,9 +41,11 @@ export default Home;
 
 const St = {
   HomePageWrapper: styled.div`
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     width: 100%;
   `,
 };

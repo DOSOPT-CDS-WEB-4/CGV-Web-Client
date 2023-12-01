@@ -1,12 +1,11 @@
 import { atom } from 'recoil';
-import { recoilPersist } from 'recoil-persist';
 
 import { movieInfoTypes } from '../types/movieInfo';
 import { paymentMovieInfo } from '../types/paymentMovieInfo';
 import { ScheduleType } from '../types/ScheduleType';
 import { SelectTimeMovieInfo } from '../types/SelectTimeMovieInfo';
 
-const { persistAtom } = recoilPersist();
+// const { persistAtom } = recoilPersist();
 
 export const movieInfoState = atom<movieInfoTypes>({
   key: 'movieInfoState',
@@ -18,7 +17,7 @@ export const movieInfoState = atom<movieInfoTypes>({
     total_audience: '',
     like_count: 0,
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
 export const currentRegionData = atom<string>({

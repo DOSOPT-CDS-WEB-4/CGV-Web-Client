@@ -1,53 +1,86 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
+import { patchLikeData } from '../../libs/like';
+import { movieInfoState } from '../../recoil/atom';
+import { movieInfoTypes } from '../../types/movieInfo';
 
-export interface MovieCardProps {
-  id: number;
-  posterImg: string;
-  title: string;
-  ranking: string;
-  audience: string;
-  like: number;
+interface MovieCardProps extends movieInfoTypes{
+  isSelected: boolean;
 }
 
-const MovieCard = ({ posterImg, title, ranking, audience, like }: MovieCardProps) => {
+const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count, isSelected }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
+  const setMovieId = useSetRecoilState(movieInfoState);
 
-  const handleCard = () => {
-    setSelectedCard(!selectedCard);
+  const handleMovieCard = () => {
+    if (!isSelected) {
+      setSelectedCard(!selectedCard);
+      setMovieId((prev) => ({
+        ...prev,
+        movie_id: movie_id,
+      }));
+    } else {
+      setMovieId((prev) => ({
+        ...prev,
+        movie_id: 0,
+      }));
+    }
   };
+        
+  const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    setIsLike(!isLike);
+    const patchData = async () => {
+      const { message, isError } = await patchLikeData(movie_id);
+      if (!isError) setIsLike(!isLike);
+      message === '영화 좋아요에 성공했습니다.' 
+      ? setLikeCount(likeCount + 1) 
+      : setLikeCount(likeCount - 1);
+    };
+    patchData();
   };
 
   const navigate = useNavigate();
-  const handleBooking = () => {
+  const handleBooking = (movieId : number) => {
     navigate('/select-time');
+    setMovieId(prev => ({
+      ...prev,
+      movie_id: movieId,
+    }));
+    return setMovieId;
   };
 
   return (
     <St.MovieCardWrapper
-      onClick={() => {handleCard();}}
-      className={selectedCard ? 'selected' : 'not-selected'}>
-      <St.MoviePoster src={posterImg} alt="Movie-Poster" />
+      onClick={() => {handleMovieCard();}}
+      className={isSelected ? 'selected' : 'not-selected'}>
+      <St.MoviePoster src={poster_url} alt="Movie-Poster" />
+
+    <St.MovieTitleWrapper>
       <St.AllImg src={img_all} alt="all-img" />
-      <St.MovieTitle>{title}</St.MovieTitle>
+      < St.MovieTitle>{title}</St.MovieTitle>
+    </St.MovieTitleWrapper>
+
       <St.Ranking>{ranking}</St.Ranking>
-      <St.Audience>누적관객 {audience}</St.Audience>
+      <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
-        onClick={handleBooking}>예매하기</St.BookingBtn>
+        onClick={() =>{
+          handleBooking(movie_id);
+          }}
+        disabled={!selectedCard}
+          >예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
         <IcHeartOn />
-        <St.LikeNumber>{like}</St.LikeNumber>
+        <St.LikeNumber>{likeCount}</St.LikeNumber>
       </St.LikeBtn>
     </St.MovieCardWrapper>
   );
@@ -88,20 +121,25 @@ const St = {
     border-radius: 1.4rem;
   `,
 
+  MovieTitleWrapper: styled.div`
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row; 
+    align-items: center; 
+  `,
+  
   AllImg: styled.img`
-    display: inline;
     width: 1.6rem;
     height: 1.6rem;
     margin-right: 0.5rem;
   `,
 
   MovieTitle: styled.p`
-    display: inline;
     margin-top: 0.2rem;
     ${({ theme }) => theme.fonts.body_medium_12};
   `,
 
-  Ranking: styled.p`
+  Ranking: styled.div`
     margin: 0.8rem 1rem 0.8rem 2rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
