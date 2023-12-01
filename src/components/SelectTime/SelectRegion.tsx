@@ -63,7 +63,7 @@ const St = {
     background: ${({ $isChecked, theme }) =>
       $isChecked ? theme.colors.gradient : theme.colors.gray100};
     border: 1px solid
-      ${({ $isChecked, theme }) => ($isChecked ? theme.colors.gradient : theme.colors.gray300)};
+      ${({ $isChecked, theme }) => ($isChecked ? theme.colors.coral : theme.colors.gray300)};
     border-radius: 1.6rem;
   `,
 };
