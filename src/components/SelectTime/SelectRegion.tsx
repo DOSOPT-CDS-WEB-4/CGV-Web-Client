@@ -5,24 +5,24 @@ import styled from 'styled-components';
 import { filteringScreenType } from '../../libs/filtereingScreenType';
 import { getSelectRegion } from '../../libs/getSelectRegion';
 import {
-  clickedTypes,
-  currentRegion,
-  distance,
-  movieSchedules,
-  regionNames,
+  clickedTypesData,
+  currentRegionData,
+  distanceData,
+  movieSchedulesData,
+  regionNamesData,
 } from '../../recoil/atom';
 
 const SelectRegion = () => {
-  const RegionNames = useRecoilValue(regionNames);
+  const RegionNames = useRecoilValue(regionNamesData);
   const [KeyToApi, setKeyToApi] = useState<string>('HONGDAE');
 
-  const setRegionNames = useSetRecoilState(regionNames);
-  const setCurRegion = useSetRecoilState(currentRegion);
-  const setHowFar = useSetRecoilState(distance);
-  const setMovieSchedule = useSetRecoilState(movieSchedules);
+  const setRegionNames = useSetRecoilState(regionNamesData);
+  const setCurRegion = useSetRecoilState(currentRegionData);
+  const setHowFar = useSetRecoilState(distanceData);
+  const setMovieSchedule = useSetRecoilState(movieSchedulesData);
 
   const [checkedRegions, setCheckedRegions] = useState<Array<string>>(['홍대']);
-  const clickedTypeList = useRecoilValue(clickedTypes);
+  const clickedTypeList = useRecoilValue(clickedTypesData);
 
   const handleOnClick = (region: string) => {
     setCheckedRegions([region]);

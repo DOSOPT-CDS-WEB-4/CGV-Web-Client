@@ -3,11 +3,11 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import ALLImgUrl from '../../assets/image/img_all.png';
-import { selectTimeMovieInfo } from '../../recoil/atom';
+import { selectTimeMovieInfoState } from '../../recoil/atom';
 import SelectTimeHeader from './SelectTimeHeader';
 
 const MovieInfo = () => {
-  const movieInfo = useRecoilValue(selectTimeMovieInfo);
+  const movieInfo = useRecoilValue(selectTimeMovieInfoState);
 
   const [clicked, setClicked] = useState<boolean>(false);
   const { title, summary, opening_date, genre, running_time, country, poster, background } =

@@ -21,26 +21,26 @@ export const movieInfoState = atom<movieInfoTypes>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const currentRegion = atom<string>({
-  key: 'currentRegion',
+export const currentRegionData = atom<string>({
+  key: 'currentRegionData',
   default: '홍대',
   effects_UNSTABLE: [persistAtom],
 });
 
-export const distance = atom<number>({
-  key: 'distance',
+export const distanceData = atom<number>({
+  key: 'distanceData',
   default: 0,
   effects_UNSTABLE: [persistAtom],
 });
 
-export const screenTypes = atom<string[]>({
-  key: 'screenTypes',
+export const screenTypesData = atom<string[]>({
+  key: 'screenTypesData',
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
 
-export const regionNames = atom<string[]>({
-  key: 'regionNames',
+export const regionNamesData = atom<string[]>({
+  key: 'regionNamesData',
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
@@ -59,7 +59,7 @@ export const paymentMovieInfoState = atom<paymentMovieInfo>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const selectTimeMovieInfo = atom<SelectTimeMovieInfo>({
+export const selectTimeMovieInfoState = atom<SelectTimeMovieInfo>({
   key: 'selectTimeMovieInfo',
   default: {
     title: '',
@@ -74,7 +74,7 @@ export const selectTimeMovieInfo = atom<SelectTimeMovieInfo>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const movieSchedules = atom<ScheduleType[]>({
+export const movieSchedulesData = atom<ScheduleType[]>({
   key: 'movieSchedules',
   default: [
     {
@@ -92,7 +92,7 @@ export const movieSchedules = atom<ScheduleType[]>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const clickedTypes = atom<string[]>({
+export const clickedTypesData = atom<string[]>({
   key: 'clickedTypes',
   default: ['전체'],
 });

@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 import { ICFavoriteOff, ICFavoriteOn } from '../../assets/icon';
 import {
-  clickedTypes,
-  currentRegion,
-  distance,
-  movieSchedules,
-  screenTypes,
+  clickedTypesData,
+  currentRegionData,
+  distanceData,
+  movieSchedulesData,
+  screenTypesData,
 } from '../../recoil/atom';
 import { ScheduleType } from '../../types/ScheduleType';
 import TimeTable from './TimeTable';
@@ -18,11 +18,11 @@ interface SelectMovieTimeProps {
 }
 
 const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
-  const ScreenTypes = useRecoilValue(screenTypes);
-  const curRegion = useRecoilValue(currentRegion);
-  const howFar = useRecoilValue(distance);
-  const movieScheduleList = useRecoilValue(movieSchedules);
-  const [clickedTypeList, setclickedTypeList] = useRecoilState(clickedTypes);
+  const ScreenTypes = useRecoilValue(screenTypesData);
+  const curRegion = useRecoilValue(currentRegionData);
+  const howFar = useRecoilValue(distanceData);
+  const movieScheduleList = useRecoilValue(movieSchedulesData);
+  const [clickedTypeList, setclickedTypeList] = useRecoilState(clickedTypesData);
 
   const [clickLike, setClickLike] = useState(false);
   const [normalTypeList, setNormalTypeList] = useState<ScheduleType[]>([]);
