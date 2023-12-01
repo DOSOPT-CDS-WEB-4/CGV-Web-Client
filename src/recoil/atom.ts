@@ -89,3 +89,8 @@ export const movieSchedules = atom<ScheduleType[]>({
   },
   effects_UNSTABLE: [persistAtom],
 });
+
+export const clickedTypes = atom<string[]>({
+  key: 'clickedTypes',
+  default: [],
+});

@@ -1,31 +1,81 @@
-import React, { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import React, { useEffect, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import { ICFavoriteOff, ICFavoriteOn } from '../../assets/icon';
-import { currentRegion, distance, movieSchedules, screenTypes } from '../../recoil/atom';
-import TimeTable from './TimeTable';
+import {
+  clickedTypes,
+  currentRegion,
+  distance,
+  movieSchedules,
+  screenTypes,
+} from '../../recoil/atom';
+import { ScheduleType } from '../../types/ScheduleType';
+import SelectTimeTable from './SelectTimeTable';
 
-const SelectMovieTime: React.FC<string> = ({ selectedDate }) => {
+interface SelectMovieTimeProps {
+  selectedDate: string;
+}
+
+const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
   const ScreenTypes = useRecoilValue(screenTypes);
   const curRegion = useRecoilValue(currentRegion);
   const howFar = useRecoilValue(distance);
   const movieScheduleList = useRecoilValue(movieSchedules);
+  const [clickedTypeList, setclickedTypeList] = useRecoilState(clickedTypes);
 
   const [clickLike, setClickLike] = useState(false);
-  const [typeClick, setTypeClick] = useState<Array<string>>([]);
+
+  const screenTypeList: string[] = [];
+
+  movieScheduleList.forEach(schedule => {
+    screenTypeList.includes(schedule.screen_type)
+      ? null
+      : screenTypeList.push(schedule.screen_type);
+  });
+
+  const sortByTypeList = [];
+
+  const sortByType = () => {
+    const normalType: ScheduleType[] = [];
+    const comfortType: ScheduleType[] = [];
+    const imaxType: ScheduleType[] = [];
+
+    for (let i = 0; i < movieScheduleList.length; i++) {
+      switch (movieScheduleList[i].screen_type) {
+        case '일반관':
+          normalType.push(movieScheduleList[i]);
+          break;
+        case 'IMAX관':
+          imaxType.push(movieScheduleList[i]);
+          break;
+        case '컴포트관':
+          comfortType.push(movieScheduleList[i]);
+          break;
+      }
+    }
+    sortByTypeList.push(normalType, imaxType, comfortType);
+    return sortByTypeList;
+  };
 
   const handleOnClickLike = () => {
     setClickLike(!clickLike);
   };
 
   const handleTypeClick = (type: string) => {
-    if (typeClick.includes(type)) {
-      setTypeClick(typeClick.filter(elm => elm !== type));
+    if (clickedTypeList.includes(type)) {
+      setclickedTypeList(clickedTypeList.filter(elm => elm !== type));
     } else {
-      setTypeClick([...typeClick, type]);
+      setclickedTypeList([...clickedTypeList, type]);
     }
+    console.log(clickedTypeList);
   };
+
+  useEffect(() => {
+    sortByType();
+    handleOnClickLike();
+    // handleTypeClick();
+  }, [clickedTypeList]);
 
   return (
     <St.SelectMovieWrapper>
@@ -50,37 +100,16 @@ const SelectMovieTime: React.FC<string> = ({ selectedDate }) => {
             onClick={() => {
               handleTypeClick(type);
             }}
-            $isClicked={typeClick.includes(type)}
+            $isClicked={clickedTypeList.includes(type)}
           >
             {type}
           </St.EachType>
         ))}
       </St.ScreenTypeWrapper>
-      <St.SelectTime>
-        <St.Info>
-          <St.InfoLeft>자막,2D,일반관</St.InfoLeft>
-          <St.InfoRight>
-            <St.TotalSeats>200석 &nbsp;</St.TotalSeats>
-            <St.Location>3관 8층</St.Location>
-          </St.InfoRight>
-        </St.Info>
-        <St.TimeTableList>
-          {movieScheduleList.map((movieSchedules, index) => {
-            const { reservation_availability, start_time, end_time, empty_seats } = movieSchedules;
-            if (selectedDate === movieSchedules.date) {
-              return (
-                <TimeTable
-                  key={index}
-                  startTime={start_time}
-                  endTime={end_time}
-                  emptySeats={empty_seats}
-                  reservationAvailability={reservation_availability}
-                />
-              );
-            }
-          })}
-        </St.TimeTableList>
-      </St.SelectTime>
+
+      {sortByTypeList.map((elm, idx) => {
+        return <SelectTimeTable key={idx} selectedDate={selectedDate} />;
+      })}
     </St.SelectMovieWrapper>
   );
 };
@@ -148,47 +177,5 @@ const St = {
     border-radius: 1.6rem;
 
     ${({ theme }) => theme.fonts.body_regular_13};
-  `,
-
-  SelectTime: styled.section`
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-
-    width: 37.5rem;
-    padding: 0 1.6rem;
-  `,
-
-  Info: styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  `,
-
-  InfoLeft: styled.div`
-    color: ${({ theme }) => theme.colors.gray900};
-    ${({ theme }) => theme.fonts.body_bold_14};
-  `,
-
-  InfoRight: styled.div`
-    display: flex;
-    ${({ theme }) => theme.fonts.body_medium_12};
-
-    color: ${({ theme }) => theme.colors.gray800};
-  `,
-
-  TotalSeats: styled.span`
-    color: ${({ theme }) => theme.colors.gray800};
-    ${({ theme }) => theme.fonts.body_medium_12};
-  `,
-
-  Location: styled.span`
-    color: ${({ theme }) => theme.colors.gray700};
-    ${({ theme }) => theme.fonts.body_medium_12};
-  `,
-
-  TimeTableList: styled.div`
-    display: flex;
-    gap: 0.8rem;
   `,
 };
