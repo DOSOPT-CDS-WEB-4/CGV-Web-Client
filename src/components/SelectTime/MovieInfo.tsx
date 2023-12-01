@@ -51,7 +51,7 @@ export default MovieInfo;
 
 const St = {
   MovieInfoWrapper: styled.section<{ background: string }>`
-    width: 37.5rem;
+    width: 100%;
     height: 26.3rem;
     background-image: url(${({ background }) => background});
     background-size: cover;
@@ -60,8 +60,9 @@ const St = {
   MovieInfo: styled.div`
     display: flex;
     gap: 1.2rem;
+    justify-content: center;
 
-    width: 37.5rem;
+    width: 100%;
     padding: 0.5rem 1.6rem;
 
     heigth: 21.5rem;
