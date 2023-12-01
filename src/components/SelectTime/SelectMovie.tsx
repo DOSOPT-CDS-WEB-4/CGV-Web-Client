@@ -30,8 +30,7 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
   const [comfortTypeList, setComfortTypeList] = useState<ScheduleType[]>([]);
 
   const sortByType = () => {
-    const TODAY_SCHEDULE = movieScheduleList.filter(schedule => {
-      const { date } = schedule;
+    const TODAY_SCHEDULE = movieScheduleList.filter(({ date }) => {
       return date === selectedDate;
     });
 
