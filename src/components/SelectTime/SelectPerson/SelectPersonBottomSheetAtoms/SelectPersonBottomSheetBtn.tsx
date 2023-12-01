@@ -1,15 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-interface SelectPersonBottomSheetBtnProps {
-  handleCloseBottomSheet: () => void;
-}
+const SelectPersonBottomSheetBtn = () => {
+  const navigate = useNavigate();
 
-const SelectPersonBottomSheetBtn = ({
-  handleCloseBottomSheet,
-}: SelectPersonBottomSheetBtnProps) => {
   return (
     <>
-      <St.BottomSheetSelectPersonBtn type="button" onClick={handleCloseBottomSheet}>
+      <St.BottomSheetSelectPersonBtn type="button" onClick={() => navigate('/payment')}>
         인원선택
       </St.BottomSheetSelectPersonBtn>
     </>

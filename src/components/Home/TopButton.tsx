@@ -14,6 +14,7 @@ const TopButton = () => {
   return (
     <St.ButtonWrapper>
       <IcBtnUp
+        type="button"
         onClick={handleToTop} />
     </St.ButtonWrapper>
   );
@@ -23,13 +24,9 @@ export default TopButton;
 
 const St = {
   ButtonWrapper: styled.div`
-      position: fixed;
-      top: 82%;
-      left: 74%;
-      width: 100%;
-    & > svg {
-      top: 70.1rem;
-      left: 31.5rem;
-    }
+    position: fixed;
+    float: right;
+    margin-top: 71.5rem;
+    margin-left: 32rem;
   `,
 };
