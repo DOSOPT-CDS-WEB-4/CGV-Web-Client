@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import { getMovieInfoData } from '../../libs/movieCardInfo';
+import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 import MovieCard from './MovieCard';
 
 const MovieCardSlider = () => {
   const [movieData, setMovieData] = useState<movieInfoTypes[]>([]);
+  const selectedMovieId = useRecoilValue(movieInfoState).movie_id;
 
   const settings = {
     dots: true,
@@ -42,6 +45,7 @@ const MovieCardSlider = () => {
             ranking={ranking}
             total_audience={total_audience}
             like_count={like_count}
+            isSelected={selectedMovieId === movie_id}
           />
         ))}
       </St.MovieCardSlider>

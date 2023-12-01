@@ -1,21 +1,39 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
 import { patchLikeData } from '../../libs/like';
+import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 
-const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count }: movieInfoTypes) => {
+interface MovieCardProps extends movieInfoTypes{
+  isSelected: boolean;
+}
 
+const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count, isSelected }: MovieCardProps) => {
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
-  const [likeCount, setLikeCount] = useState<number>(like_count);
+  const setMovieId = useSetRecoilState(movieInfoState);
 
-  const handleCard = () => {
-    setSelectedCard(!selectedCard);
+  const handleMovieCard = () => {
+    if (!isSelected) {
+      setSelectedCard(!selectedCard);
+      setMovieId((prev) => ({
+        ...prev,
+        movie_id: movie_id,
+      }));
+    } else {
+      setMovieId((prev) => ({
+        ...prev,
+        movie_id: 0,
+      }));
+    }
   };
+        
+  const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -30,16 +48,19 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
   };
 
   const navigate = useNavigate();
-  const handleBooking = () => {
-    navigate('/select-time', {
-      state: { movie_id },
-    });
+  const handleBooking = (movieId : number) => {
+    navigate('/select-time');
+    setMovieId(prev => ({
+      ...prev,
+      movie_id: movieId,
+    }));
+    return setMovieId;
   };
 
   return (
     <St.MovieCardWrapper
-      onClick={() => {handleCard();}}
-      className={selectedCard ? 'selected' : 'not-selected'}>
+      onClick={() => {handleMovieCard();}}
+      className={isSelected ? 'selected' : 'not-selected'}>
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
 
     <St.MovieTitleWrapper>
@@ -50,7 +71,11 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
-        onClick={handleBooking}>예매하기</St.BookingBtn>
+        onClick={() =>{
+          handleBooking(movie_id);
+          }}
+        disabled={!selectedCard}
+          >예매하기</St.BookingBtn>
       <St.LikeBtn
         onClick={(e) => {handleButton(e);}}
         className={isLike ? 'fill-heart' : 'empty-heart'}>
