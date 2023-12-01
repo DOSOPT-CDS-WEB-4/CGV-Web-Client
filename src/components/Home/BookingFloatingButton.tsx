@@ -20,7 +20,7 @@ const BookingFloatingButton = () => {
         onClick={() => {
           handleBtn();
         }}
-        disabled={(movieId === 0) ? true : false}
+        disabled={(movieId === 0)}
       >
         <St.TextWrapper>
           <St.SmallTxt>빠르고 쉽게</St.SmallTxt>
