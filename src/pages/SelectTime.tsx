@@ -47,7 +47,7 @@ const SelectTime = () => {
       <SelectRegion />
       <SelectDate selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       <St.MiddleLine />
-      <SelectMovieTime />
+      <SelectMovieTime selectedDate={selectedDate} />
       <Footer />
     </>
   );
