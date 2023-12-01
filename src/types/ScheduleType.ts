@@ -11,5 +11,5 @@ export interface ScheduleType {
 }
 
 export interface SelectScheduleType extends ScheduleType {
-  day: string;
+  day?: string;
 }
