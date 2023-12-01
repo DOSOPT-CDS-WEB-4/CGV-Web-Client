@@ -223,7 +223,7 @@ export default SelectMovieTime;
 const St = {
   SelectMovieWrapper: styled.article`
     overflow: scroll;
-    width: 37.5rem;
+    width: 100%;
     height: 35.2rem;
   `,
 
@@ -232,7 +232,7 @@ const St = {
     gap: 0.8rem;
     align-items: center;
 
-    width: 37.5rem;
+    width: 100%;
     padding: 1.8rem 0 1.4rem 1.6rem;
   `,
 
@@ -253,7 +253,7 @@ const St = {
     flex-shrink: 0;
     gap: 0.7rem;
 
-    width: 37.5rem;
+    width: 100%;
     height: 3rem;
     margin-bottom: 2.4rem;
     padding: 0 1.6rem;
@@ -290,7 +290,7 @@ const St = {
     flex-direction: column;
     gap: 1.2rem;
 
-    width: 37.5rem;
+    width: 100%;
     padding: 0 1.6rem;
   `,
 
