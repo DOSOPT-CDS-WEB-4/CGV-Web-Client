@@ -2,8 +2,15 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
+import { filteringScreenType } from '../../libs/filtereingScreenType';
 import { getSelectRegion } from '../../libs/getSelectRegion';
-import { currentRegion, distance, movieSchedules, regionNames } from '../../recoil/atom';
+import {
+  clickedTypes,
+  currentRegion,
+  distance,
+  movieSchedules,
+  regionNames,
+} from '../../recoil/atom';
 
 const SelectRegion = () => {
   const RegionNames = useRecoilValue(regionNames);
@@ -15,6 +22,7 @@ const SelectRegion = () => {
   const setMovieSchedule = useSetRecoilState(movieSchedules);
 
   const [checkedRegions, setCheckedRegions] = useState<Array<string>>(['홍대']);
+  const clickedTypeList = useRecoilValue(clickedTypes);
 
   const handleOnClick = (region: string) => {
     setCheckedRegions([region]);
@@ -38,8 +46,16 @@ const SelectRegion = () => {
   };
 
   useEffect(() => {
-    getSelectRegion(KeyToApi, [], setRegionNames, setCurRegion, setHowFar, setMovieSchedule);
-  }, [checkedRegions]);
+    const clickedList = filteringScreenType(clickedTypeList);
+    getSelectRegion(
+      KeyToApi,
+      clickedList,
+      setRegionNames,
+      setCurRegion,
+      setHowFar,
+      setMovieSchedule,
+    );
+  }, [checkedRegions, clickedTypeList]);
 
   return (
     <>
