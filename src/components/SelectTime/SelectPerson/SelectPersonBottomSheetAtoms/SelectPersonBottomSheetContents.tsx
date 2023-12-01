@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import img_seat from '../../../../assets/image/img_seat.png';
@@ -7,16 +7,17 @@ import { currentRegionData, selectedMovieScheduleData } from '../../../../recoil
 
 const BottomSheetContents = () => {
   const region = useRecoilValue(currentRegionData);
-  const scheduleInfo = useRecoilValue(selectedMovieScheduleData);
+  const [scheduleInfo, setScheduleInfo] = useRecoilState(selectedMovieScheduleData);
 
-  const { date, place, start_time, end_time, empty_seats } = scheduleInfo;
-  const [day, setDay] = useState('');
+  const { day, date, place, start_time, end_time, empty_seats } = scheduleInfo;
 
   // 요일 만드는 함수
   const getDayofWeek = () => {
     const week = ['일', '월', '화', '수', '목', '금', '토'];
     const dayOfWeek = week[new Date(date).getDay()];
-    setDay(dayOfWeek);
+    setScheduleInfo(prev => {
+      return { ...prev, day: dayOfWeek };
+    });
   };
 
   useEffect(() => {

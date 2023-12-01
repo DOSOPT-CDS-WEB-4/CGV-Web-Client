@@ -3,7 +3,7 @@ import { recoilPersist } from 'recoil-persist';
 
 import { movieInfoTypes } from '../types/movieInfo';
 import { paymentMovieInfo } from '../types/paymentMovieInfo';
-import { ScheduleType } from '../types/ScheduleType';
+import { ScheduleType, SelectScheduleType } from '../types/ScheduleType';
 import { SelectTimeMovieInfo } from '../types/SelectTimeMovieInfo';
 
 const { persistAtom } = recoilPersist();
@@ -97,13 +97,14 @@ export const clickedTypesData = atom<string[]>({
   default: ['전체'],
 });
 
-export const selectedMovieScheduleData = atom<ScheduleType>({
+export const selectedMovieScheduleData = atom<SelectScheduleType>({
   key: 'selectedMovieScheduleData',
   default: {
     schedule_id: 0,
     screen_type: '',
     place: '',
     date: '',
+    day: '',
     start_time: '',
     end_time: '',
     total_seats: 0,
