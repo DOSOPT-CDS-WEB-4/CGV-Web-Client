@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
@@ -7,6 +7,7 @@ import MovieInfo from '../components/SelectTime/MovieInfo';
 import SelectDate from '../components/SelectTime/SelectDate';
 import SelectMovieTime from '../components/SelectTime/SelectMovie';
 import SelectRegion from '../components/SelectTime/SelectRegion';
+import { getInitDate } from '../libs/getInitDate';
 import { getSelectTimeAPI } from '../libs/getSelectTimeApi';
 import {
   currentRegion,
@@ -18,6 +19,8 @@ import {
 } from '../recoil/atom';
 
 const SelectTime = () => {
+  const [selectedDate, setSelectedDate] = useState<string>(getInitDate());
+
   const setRegionNames = useSetRecoilState(regionNames);
   const setScreenTypes = useSetRecoilState(screenTypes);
   const setCurRegion = useSetRecoilState(currentRegion);
@@ -42,7 +45,7 @@ const SelectTime = () => {
     <>
       <MovieInfo />
       <SelectRegion />
-      <SelectDate />
+      <SelectDate selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       <St.MiddleLine />
       <SelectMovieTime />
       <Footer />
