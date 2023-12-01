@@ -23,12 +23,10 @@ export const getSelectRegion = async (
     });
   }
   try {
-    console.log(movie_id);
     const response = await api.get<apiResponse<SelectTimeResponse>>(
       `/reservation/${movie_id}?${newURL}`,
     );
     const { data } = response.data;
-    console.log(data);
 
     const { movie_info, current_region, distance, movie_screen_schedules, region_names } = data;
 
