@@ -96,3 +96,19 @@ export const clickedTypesData = atom<string[]>({
   key: 'clickedTypes',
   default: ['전체'],
 });
+
+export const selectedMovieScheduleData = atom<ScheduleType>({
+  key: 'selectedMovieScheduleData',
+  default: {
+    schedule_id: 0,
+    screen_type: '',
+    place: '',
+    date: '',
+    start_time: '',
+    end_time: '',
+    total_seats: 0,
+    empty_seats: 0,
+    reservation_availability: true,
+  },
+  effects_UNSTABLE: [persistAtom],
+});

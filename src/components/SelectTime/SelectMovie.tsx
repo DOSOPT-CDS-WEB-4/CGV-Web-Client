@@ -15,7 +15,7 @@ import TimeTable from './TimeTable';
 
 interface SelectMovieTimeProps {
   selectedDate: string;
-  handleOpenBottomSheet: () => void;
+  handleOpenBottomSheet: (value: number) => void;
 }
 
 const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({
@@ -85,13 +85,14 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({
             </St.InfoRight>
           </St.Info>
           <St.EachTimeTable>
-            {normalTypeList?.map((movieSchedules: ScheduleType, index: number) => {
-              const { reservation_availability, start_time, end_time, empty_seats } =
+            {normalTypeList?.map((movieSchedules: ScheduleType) => {
+              const { reservation_availability, start_time, end_time, empty_seats, schedule_id } =
                 movieSchedules;
               if (selectedDate === movieSchedules.date) {
                 return (
                   <TimeTable
-                    key={index}
+                    key={schedule_id}
+                    id={schedule_id}
                     startTime={start_time}
                     endTime={end_time}
                     emptySeats={empty_seats}
@@ -118,13 +119,14 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({
             </St.InfoRight>
           </St.Info>
           <St.EachTimeTable>
-            {comfortTypeList?.map((movieSchedules: ScheduleType, index: number) => {
-              const { reservation_availability, start_time, end_time, empty_seats } =
+            {comfortTypeList?.map((movieSchedules: ScheduleType) => {
+              const { reservation_availability, start_time, end_time, empty_seats, schedule_id } =
                 movieSchedules;
               if (selectedDate === movieSchedules.date) {
                 return (
                   <TimeTable
-                    key={index}
+                    key={schedule_id}
+                    id={schedule_id}
                     startTime={start_time}
                     endTime={end_time}
                     emptySeats={empty_seats}
@@ -151,13 +153,14 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({
             </St.InfoRight>
           </St.Info>
           <St.EachTimeTable>
-            {imaxTypeList?.map((movieSchedules: ScheduleType, index: number) => {
-              const { reservation_availability, start_time, end_time, empty_seats } =
+            {imaxTypeList?.map((movieSchedules: ScheduleType) => {
+              const { reservation_availability, start_time, end_time, empty_seats, schedule_id } =
                 movieSchedules;
               if (selectedDate === movieSchedules.date) {
                 return (
                   <TimeTable
-                    key={index}
+                    key={schedule_id}
+                    id={schedule_id}
                     startTime={start_time}
                     endTime={end_time}
                     emptySeats={empty_seats}

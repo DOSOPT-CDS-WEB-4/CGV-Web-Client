@@ -2,13 +2,15 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 interface TimeTableProps {
+  id: number;
   startTime: string;
   endTime: string;
   emptySeats: number;
   reservationAvailability: boolean;
-  handleOpenBottomSheet: () => void;
+  handleOpenBottomSheet: (value: number) => void;
 }
 const TimeTable = ({
+  id,
   startTime,
   endTime,
   emptySeats,
@@ -20,7 +22,7 @@ const TimeTable = ({
   return (
     <>
       {activeState ? (
-        <St.TimeTable $activeState={activeState} onClick={handleOpenBottomSheet}>
+        <St.TimeTable $activeState={activeState} onClick={() => handleOpenBottomSheet(id)}>
           <St.TimeWrapper>
             <St.StartTime $activeState={activeState}>{startTime}</St.StartTime>
             <St.EndTime>~{endTime}</St.EndTime>

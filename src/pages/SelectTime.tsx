@@ -30,7 +30,10 @@ const SelectTime = () => {
       <SelectMovieTime selectedDate={selectedDate} handleOpenBottomSheet={handleOpenBottomSheet} />
       <Footer />
       <BottomSheet>
-        <SelectPersonBottomSheet handleCloseBottomSheet={handleCloseBottomSheet} />
+        <SelectPersonBottomSheet
+          handleCloseBottomSheet={handleCloseBottomSheet}
+          selectedDate={selectedDate}
+        />
       </BottomSheet>
     </>
   );
