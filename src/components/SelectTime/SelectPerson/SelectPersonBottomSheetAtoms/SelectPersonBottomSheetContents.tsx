@@ -5,24 +5,23 @@ import styled from 'styled-components';
 import img_seat from '../../../../assets/image/img_seat.png';
 import { currentRegionData, selectedMovieScheduleData } from '../../../../recoil/atom';
 
-const BottomSheetContents = ({ selectedDate }: { selectedDate: string }) => {
+const BottomSheetContents = () => {
+  const region = useRecoilValue(currentRegionData);
+  const scheduleInfo = useRecoilValue(selectedMovieScheduleData);
+
+  const { date, place, start_time, end_time, empty_seats } = scheduleInfo;
   const [day, setDay] = useState('');
 
   // 요일 만드는 함수
   const getDayofWeek = () => {
     const week = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayOfWeek = week[new Date(selectedDate).getDay()];
+    const dayOfWeek = week[new Date(date).getDay()];
     setDay(dayOfWeek);
   };
 
   useEffect(() => {
     getDayofWeek();
   }, []);
-
-  const region = useRecoilValue(currentRegionData);
-  const scheduleInfo = useRecoilValue(selectedMovieScheduleData);
-
-  const { place, start_time, end_time, empty_seats } = scheduleInfo;
 
   return (
     <St.BottomSheetContentsWrapper>
@@ -32,7 +31,7 @@ const BottomSheetContents = ({ selectedDate }: { selectedDate: string }) => {
           {place}
         </St.MovieInfoText>
         <St.MovieInfoText>
-          {selectedDate}({day}) 7회 {start_time}~{end_time}
+          {date}({day}) 7회 {start_time}~{end_time}
         </St.MovieInfoText>
       </St.ContentsMovieInfoContainer>
 

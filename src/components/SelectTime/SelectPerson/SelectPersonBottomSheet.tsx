@@ -4,17 +4,13 @@ import SelectPersonBottomSheetHeader from './SelectPersonBottomSheetAtoms/Select
 
 interface SelectPersonBottomSheetProps {
   handleCloseBottomSheet: () => void;
-  selectedDate: string;
 }
 
-const SelectPersonBottomSheet = ({
-  handleCloseBottomSheet,
-  selectedDate,
-}: SelectPersonBottomSheetProps) => {
+const SelectPersonBottomSheet = ({ handleCloseBottomSheet }: SelectPersonBottomSheetProps) => {
   return (
     <>
       <SelectPersonBottomSheetHeader handleCloseBottomSheet={handleCloseBottomSheet} />
-      <SelectPersonBottomSheetContents selectedDate={selectedDate} />
+      <SelectPersonBottomSheetContents />
       <SelectPersonBottomSheetBtn />
     </>
   );
