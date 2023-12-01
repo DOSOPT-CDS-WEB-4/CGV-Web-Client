@@ -13,9 +13,7 @@ export const getSelectRegion = async (
   setHowFar: SetterOrUpdater<number>,
   setMovieSchedule: SetterOrUpdater<ScheduleType[]>,
 ) => {
-  console.log(regionName);
   let newURL: string = `region=${regionName}`;
-  console.log(newURL);
   if (regionName !== '' && screenTypes.length !== 0) {
     screenTypes.forEach(type => {
       newURL += `&type=${type}`;
@@ -24,7 +22,6 @@ export const getSelectRegion = async (
   try {
     const response = await api.get<apiResponse<SelectTimeResponse>>(`/reservation/1?${newURL}`);
     const { data } = response.data;
-    console.log(data);
 
     const { current_region, distance, movie_screen_schedules, region_names } = data;
 
