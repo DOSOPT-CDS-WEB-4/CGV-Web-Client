@@ -83,7 +83,7 @@ const St = {
     display: inline-flex;
     align-items: center;
 
-    width: 37.5rem;
+    width: 100%;
     height: 6.2rem;
     margin-bottom: 2.1rem;
     padding: 0rem 0.2rem 0rem 1rem;

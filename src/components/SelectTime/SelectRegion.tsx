@@ -94,7 +94,7 @@ const St = {
     display: flex;
     gap: 0.8rem;
 
-    width: 37.5rem;
+    width: 100%;
     padding: 1.6rem;
 
     white-space: nowrap;

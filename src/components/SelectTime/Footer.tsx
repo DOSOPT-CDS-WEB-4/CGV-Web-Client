@@ -15,13 +15,14 @@ export default SelectTimeFooter;
 
 const St = {
   FooterWrapper: styled.section`
-    top: 801px;
+    top: 80.1rem;
 
     display: flex;
     gap: 0.5rem;
 
-    width: 37.5rem;
+    width: 100%rem;
     height: 3.9rem;
+    margin-top: 1rem;
     padding: 0 1.6rem;
 
     background-color: ${({ theme }) => theme.colors.gray200};

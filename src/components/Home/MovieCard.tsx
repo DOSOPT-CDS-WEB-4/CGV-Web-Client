@@ -22,25 +22,17 @@ const MovieCard = ({
   like_count,
   isSelected,
 }: MovieCardProps) => {
-  // const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
   const [movieId, setMovieId] = useRecoilState(movieInfoState);
   const [likeCount, setLikeCount] = useState<number>(like_count);
-
-  // console.log(movieId.movie_id, '!!!');
+  const [selectedCard, setSelectedCard] = useState<boolean>(false);
 
   const handleMovieCard = () => {
-    // if (!isSelected) {
-    //   setSelectedCard(!selectedCard);
-    //   setMovieId(prev => ({
-    //     ...prev,
-    //     movie_id: movie_id,
-    //   }));
-    // }
     setMovieId(prev => ({
       ...prev,
       movie_id: movie_id,
     }));
+    setSelectedCard(!selectedCard);
   };
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -65,7 +57,7 @@ const MovieCard = ({
       onClick={() => {
         handleMovieCard();
       }}
-      className={isSelected ? 'selected' : 'not-selected'}
+      className={selectedCard && isSelected ? 'selected' : 'not-selected'}
     >
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
       <St.MovieTitleWrapper>
