@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { Keyframes } from 'styled-components/dist/types';
 
 import BottomSheetFrames from '../components/Common/bottomSheet/BottomSheetFrames';
+import { movieSchedulesData, selectedMovieScheduleData } from '../recoil/atom';
 
 const useBottomSheet = (
   height: number,
@@ -12,7 +14,14 @@ const useBottomSheet = (
   const [isOpen, setIsOpen] = useState(false);
   const [isUnmount, setIsUnmount] = useState(false);
 
-  const handleOpenBottomSheet = () => {
+  const setSelectedMovie = useSetRecoilState(selectedMovieScheduleData);
+  const movieSchedules = useRecoilValue(movieSchedulesData);
+
+  const handleOpenBottomSheet = (id?: number) => {
+    const selectedMovie = movieSchedules.filter(el => el.schedule_id === id)[0];
+
+    // console.log(selectedMovie, '&&&&&&&');
+    setSelectedMovie(selectedMovie);
     setIsUnmount(false);
     setIsOpen(true);
   };

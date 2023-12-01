@@ -1,18 +1,28 @@
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import img_seat from '../../../../assets/image/img_seat.png';
+import { currentRegionData, selectedMovieScheduleData } from '../../../../recoil/atom';
 
 const BottomSheetContents = () => {
-  const DUMMY_MOVIE_INFO = {
-    region: '홍대',
-    place: '4관 6층',
-    date: '2023.10.31(화)',
-    start_time: '15:30',
-    end_time: '17:40',
-    rest_seat: 144,
+  const region = useRecoilValue(currentRegionData);
+  const scheduleInfo = useRecoilValue(selectedMovieScheduleData);
+
+  const { date, place, start_time, end_time, empty_seats } = scheduleInfo;
+  const [day, setDay] = useState('');
+
+  // 요일 만드는 함수
+  const getDayofWeek = () => {
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayOfWeek = week[new Date(date).getDay()];
+    setDay(dayOfWeek);
   };
 
-  const { region, place, date, start_time, end_time, rest_seat } = DUMMY_MOVIE_INFO;
+  useEffect(() => {
+    getDayofWeek();
+  }, []);
+
   return (
     <St.BottomSheetContentsWrapper>
       <St.ContentsMovieInfoContainer>
@@ -21,7 +31,7 @@ const BottomSheetContents = () => {
           {place}
         </St.MovieInfoText>
         <St.MovieInfoText>
-          {date} 4회 {start_time}~{end_time}
+          {date}({day}) 7회 {start_time}~{end_time}
         </St.MovieInfoText>
       </St.ContentsMovieInfoContainer>
 
@@ -30,7 +40,7 @@ const BottomSheetContents = () => {
           <span>screen</span>
         </St.RestSeatInfoScreen>
         <St.RestSeatImg src={img_seat} alt="잔여-좌석-이미지" />
-        <St.RestSeatText>잔여 {rest_seat}석</St.RestSeatText>
+        <St.RestSeatText>잔여 {empty_seats}석</St.RestSeatText>
       </St.RestSeatInfoContainer>
 
       <St.MovieInfoDetailTextContainer>
