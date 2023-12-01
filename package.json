@@ -10,7 +10,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "lint-front": "lint-staged",
-    "stylelint": "stylelint --ignore-path .gitignore '**/*.(ts|ts|js|jsx)' --fix"
+    "stylelint": "stylelint --ignore-path .gitignore '**/*.(ts|ts|js|jsx)' --fix",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "lint-staged": {
     "**/*.tsx": "eslint --fix",
