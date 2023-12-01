@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
 import img_all from '../../assets/image/img_all.png';
-import { movieInfoState } from '../../recoil/atom';
 import { patchLikeData } from '../../libs/like';
+import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 
 interface MovieCardProps extends movieInfoTypes{
@@ -20,6 +20,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
 
   const handleMovieCard = () => {
     if (!isSelected) {
+      setSelectedCard(!selectedCard);
       setMovieId((prev) => ({
         ...prev,
         movie_id: movie_id,
@@ -30,12 +31,9 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
         movie_id: 0,
       }));
     }
+  };
         
   const [likeCount, setLikeCount] = useState<number>(like_count);
-
-  const handleCard = () => {
-    setSelectedCard(!selectedCard);
-  };
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
