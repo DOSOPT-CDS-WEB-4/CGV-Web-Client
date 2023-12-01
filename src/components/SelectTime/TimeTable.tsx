@@ -7,7 +7,6 @@ interface TimeTableProps {
   emptySeats: number;
   reservationAvailability: boolean;
 }
-
 const TimeTable = ({ startTime, endTime, emptySeats, reservationAvailability }: TimeTableProps) => {
   const [activeState] = useState(reservationAvailability);
 
@@ -32,6 +31,7 @@ export default TimeTable;
 const St = {
   TimeTable: styled.button<{ $activeState: boolean }>`
     cursor: auto;
+    cursor: ${({ $activeState }) => ($activeState ? 'pointer' : 'auto')};
 
     overflow: hidden;
     display: flex;
