@@ -18,7 +18,7 @@ const MovieInfo = () => {
   };
 
   return (
-    <St.MovieInfoWrapper background={background}>
+    <St.MovieInfoWrapper $background={background}>
       <SelectTimeHeader />
       <St.MovieInfo>
         <St.Poster src={poster} alt="영화포스터이미지" />
@@ -50,10 +50,10 @@ const MovieInfo = () => {
 export default MovieInfo;
 
 const St = {
-  MovieInfoWrapper: styled.section<{ background: string }>`
+  MovieInfoWrapper: styled.section<{ $background: string }>`
     width: 100%;
     height: 26.3rem;
-    background-image: url(${({ background }) => background});
+    background-image: url(${({ $background }) => $background});
     background-size: cover;
   `,
 
@@ -63,9 +63,8 @@ const St = {
     justify-content: center;
 
     width: 100%;
+    height: 21.5rem;
     padding: 0.5rem 1.6rem;
-
-    heigth: 21.5rem;
   `,
 
   Poster: styled.img`
