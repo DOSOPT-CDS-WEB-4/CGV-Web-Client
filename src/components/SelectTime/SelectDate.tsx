@@ -1,17 +1,13 @@
-import { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
+interface SelectDateProps {
+  selectedDate: string;
+  setSelectedDate: Dispatch<SetStateAction<string>>;
+}
 
-const SelectDate = () => {
+const SelectDate: React.FC<SelectDateProps> = ({ selectedDate, setSelectedDate }) => {
   const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
   const todayDate = new Date();
-  const initDate =
-    todayDate.getFullYear() +
-    '.' +
-    (todayDate.getMonth() + 1) +
-    '.' +
-    todayDate.getDate().toString().padStart(2, '0');
-
-  const [selectedDate, setSelectedDate] = useState<string>(initDate);
 
   const checkDay = (dayOfWeek: string) => {
     if (dayOfWeek === '토') {
@@ -51,7 +47,6 @@ const SelectDate = () => {
 
   const handleClickDate = (fullDate: string) => {
     setSelectedDate(fullDate);
-    console.log(selectedDate);
   };
 
   return (

@@ -85,7 +85,7 @@ export const movieSchedules = atom<ScheduleType[]>({
     end_time: '',
     total_seats: '',
     empty_seats: '',
-    reservation_availability: false,
+    reservation_availability: true,
   },
   effects_UNSTABLE: [persistAtom],
 });

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
@@ -6,7 +6,7 @@ import { ICFavoriteOff, ICFavoriteOn } from '../../assets/icon';
 import { currentRegion, distance, movieSchedules, screenTypes } from '../../recoil/atom';
 import TimeTable from './TimeTable';
 
-const SelectMovieTime = () => {
+const SelectMovieTime: React.FC<string> = ({ selectedDate }) => {
   const ScreenTypes = useRecoilValue(screenTypes);
   const curRegion = useRecoilValue(currentRegion);
   const howFar = useRecoilValue(distance);
@@ -41,7 +41,7 @@ const SelectMovieTime = () => {
         )}
 
         <St.Region>{curRegion}</St.Region>
-        <St.Distance>{howFar}</St.Distance>
+        <St.Distance>{howFar}km</St.Distance>
       </St.SelectedRegion>
       <St.ScreenTypeWrapper>
         {ScreenTypes.map(type => (
@@ -67,16 +67,17 @@ const SelectMovieTime = () => {
         <St.TimeTableList>
           {movieScheduleList.map((movieSchedules, index) => {
             const { reservation_availability, start_time, end_time, empty_seats } = movieSchedules;
-
-            return (
-              <TimeTable
-                key={index}
-                startTime={start_time}
-                endTime={end_time}
-                emptySeats={empty_seats}
-                reservationAvailability={reservation_availability}
-              />
-            );
+            if (selectedDate === movieSchedules.date) {
+              return (
+                <TimeTable
+                  key={index}
+                  startTime={start_time}
+                  endTime={end_time}
+                  emptySeats={empty_seats}
+                  reservationAvailability={reservation_availability}
+                />
+              );
+            }
           })}
         </St.TimeTableList>
       </St.SelectTime>
