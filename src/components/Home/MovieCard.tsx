@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { IcHeartOn } from '../../assets/icon';
@@ -9,85 +9,91 @@ import { patchLikeData } from '../../libs/like';
 import { movieInfoState } from '../../recoil/atom';
 import { movieInfoTypes } from '../../types/movieInfo';
 
-interface MovieCardProps extends movieInfoTypes{
+interface MovieCardProps extends movieInfoTypes {
   isSelected: boolean;
 }
 
-const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_count, isSelected }: MovieCardProps) => {
-  const [selectedCard, setSelectedCard] = useState<boolean>(false);
+const MovieCard = ({
+  movie_id,
+  title,
+  poster_url,
+  ranking,
+  total_audience,
+  like_count,
+  isSelected,
+}: MovieCardProps) => {
+  // const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
-  const setMovieId = useSetRecoilState(movieInfoState);
+  const [movieId, setMovieId] = useRecoilState(movieInfoState);
+  const [likeCount, setLikeCount] = useState<number>(like_count);
+
+  // console.log(movieId.movie_id, '!!!');
 
   const handleMovieCard = () => {
-    if (!isSelected) {
-      setSelectedCard(!selectedCard);
-      setMovieId((prev) => ({
-        ...prev,
-        movie_id: movie_id,
-      }));
-    } else {
-      setMovieId((prev) => ({
-        ...prev,
-        movie_id: 0,
-      }));
-    }
+    // if (!isSelected) {
+    //   setSelectedCard(!selectedCard);
+    //   setMovieId(prev => ({
+    //     ...prev,
+    //     movie_id: movie_id,
+    //   }));
+    // }
+    setMovieId(prev => ({
+      ...prev,
+      movie_id: movie_id,
+    }));
   };
-        
-  const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     const patchData = async () => {
       const { message, isError } = await patchLikeData(movie_id);
       if (!isError) setIsLike(!isLike);
-      message === '영화 좋아요에 성공했습니다.' 
-      ? setLikeCount(likeCount + 1) 
-      : setLikeCount(likeCount - 1);
+      message === '영화 좋아요에 성공했습니다.'
+        ? setLikeCount(likeCount + 1)
+        : setLikeCount(likeCount - 1);
     };
     patchData();
   };
 
   const navigate = useNavigate();
-  const handleBooking = (movieId : number) => {
-    navigate('/select-time');
-    setMovieId(prev => ({
-      ...prev,
-      movie_id: movieId,
-    }));
-    return setMovieId;
+  const handleBooking = () => {
+    if (movieId.movie_id !== 0) navigate('/select-time');
   };
 
   return (
     <St.MovieCardWrapper
-      onClick={() => {handleMovieCard();}}
-      className={isSelected ? 'selected' : 'not-selected'}>
+      onClick={() => {
+        handleMovieCard();
+      }}
+      className={isSelected ? 'selected' : 'not-selected'}
+    >
       <St.MoviePoster src={poster_url} alt="Movie-Poster" />
-
-    <St.MovieTitleWrapper>
-      <St.AllImg src={img_all} alt="all-img" />
-      < St.MovieTitle>{title}</St.MovieTitle>
-    </St.MovieTitleWrapper>
-
+      <St.MovieTitleWrapper>
+        <St.AllImg src={img_all} alt="all-img" />
+        <St.MovieTitle>{title}</St.MovieTitle>
+      </St.MovieTitleWrapper>
       <St.Ranking>{ranking}</St.Ranking>
       <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
-        onClick={() =>{
-          handleBooking(movie_id);
-          }}
-        disabled={!selectedCard}
-          >예매하기</St.BookingBtn>
+        onClick={() => {
+          handleBooking();
+        }}
+      >
+        예매하기
+      </St.BookingBtn>
       <St.LikeBtn
-        onClick={(e) => {handleButton(e);}}
-        className={isLike ? 'fill-heart' : 'empty-heart'}>
+        onClick={e => {
+          handleButton(e);
+        }}
+        className={isLike ? 'fill-heart' : 'empty-heart'}
+      >
         <IcHeartOn />
         <St.LikeNumber>{likeCount}</St.LikeNumber>
       </St.LikeBtn>
     </St.MovieCardWrapper>
   );
 };
-
 export default MovieCard;
-
 const St = {
   MovieCardWrapper: styled.div`
     display: flex;
@@ -101,54 +107,46 @@ const St = {
     padding: 1rem 1.1rem 0.9rem 1.1rem;
 
     border-radius: 2rem;
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.20);
-
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
     &.selected {
-        color: ${({ theme }) => theme.colors.white};
-        background: ${({ theme }) => theme.colors.gradient};
+      color: ${({ theme }) => theme.colors.white};
+      background: ${({ theme }) => theme.colors.gradient};
     }
-
     &.selected > button {
-        color: ${({ theme }) => theme.colors.red};
-        background-color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.red};
+      background-color: ${({ theme }) => theme.colors.white};
     }
   `,
-
   MoviePoster: styled.img`
     width: 15.4rem;
     height: 21.9rem;
     margin-bottom: 1rem;
     border-radius: 1.4rem;
   `,
-
   MovieTitleWrapper: styled.div`
     display: flex;
     flex-basis: 100%;
-    flex-direction: row; 
-    align-items: center; 
+    flex-direction: row;
+    align-items: center;
   `,
-  
+
   AllImg: styled.img`
     width: 1.6rem;
     height: 1.6rem;
     margin-right: 0.5rem;
   `,
-
   MovieTitle: styled.p`
     margin-top: 0.2rem;
     ${({ theme }) => theme.fonts.body_medium_12};
   `,
-
   Ranking: styled.div`
     margin: 0.8rem 1rem 0.8rem 2rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
-
   Audience: styled.p`
     margin-top: 0.8rem;
     ${({ theme }) => theme.fonts.body_regular_12};
   `,
-
   BookingBtn: styled.button`
     flex-shrink: 0;
 
@@ -162,7 +160,6 @@ const St = {
     border: 1px solid ${({ theme }) => theme.colors.red};
     border-radius: 5rem;
   `,
-
   LikeBtn: styled.button`
     display: flex;
 
@@ -174,15 +171,13 @@ const St = {
 
     border: 1px solid ${({ theme }) => theme.colors.red};
     border-radius: 5rem;
-
     &.empty-heart > svg {
-        path {
-            fill: none;
-            stroke: ${({ theme }) => theme.colors.red};
-        }
+      path {
+        fill: none;
+        stroke: ${({ theme }) => theme.colors.red};
+      }
     }
   `,
-
   LikeNumber: styled.p`
     ${({ theme }) => theme.fonts.body_regular_12};
 

@@ -28,12 +28,9 @@ const BookingFloatingButton = () => {
         </St.TextWrapper>
       </St.ButtonContents>
     </St.ButtonWrapper>
-
   );
 };
-
 export default BookingFloatingButton;
-
 const St = {
   ButtonWrapper: styled.div`
     position: fixed;
@@ -41,7 +38,6 @@ const St = {
     left: 65.2%;
     width: 100%;
   `,
-
   ButtonContents: styled.button`
     flex-shrink: 0;
 
@@ -52,7 +48,6 @@ const St = {
     border-radius: 5rem;
     box-shadow: 5px 6px 6px 0px rgba(0, 0, 0, 0.40);
   `,
-
   TextWrapper: styled.div`
     flex-direction: column;
     flex-shrink: 0;
@@ -62,12 +57,10 @@ const St = {
 
     text-align: left;
   `,
-
   SmallTxt: styled.div`
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.body_regular_10};
   `,
-
   BigTxt: styled.div`
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.body_semibold_16};

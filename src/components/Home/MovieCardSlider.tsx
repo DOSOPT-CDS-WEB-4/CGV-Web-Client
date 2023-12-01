@@ -22,7 +22,7 @@ const MovieCardSlider = () => {
     variableWidth: true,
     arrows: false,
   };
-
+  
   useEffect(() => {
     getMovieInfoData().then((response) => {
       if (response.data) {
@@ -32,7 +32,6 @@ const MovieCardSlider = () => {
       console.log(err);
     });
   }, []);
-
   return (
     <St.MovieListWrapper>
       <St.MovieCardSlider {...settings}>
@@ -52,25 +51,20 @@ const MovieCardSlider = () => {
     </St.MovieListWrapper>
   );
 };
-
 export default MovieCardSlider;
-
 const St = {
   MovieListWrapper: styled.div`
     width: 100%;
     height: auto;
     padding: 1.6rem 0rem 1.3rem 0rem;
   `,
-
   MovieCardSlider: styled(Slider)`
     .slick-slide > div {
       padding-right: 0.4rem;
     }
-
     .slick-track {
       height: 35.2rem;
     }
-
     .slick-dots {
       padding: 2.2rem;
     }
