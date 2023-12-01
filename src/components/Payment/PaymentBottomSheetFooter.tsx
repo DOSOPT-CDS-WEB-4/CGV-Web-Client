@@ -1,18 +1,22 @@
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import { IcArrowUp } from '../../assets/icon';
 import { patchPaymentScheduleData } from '../../libs/payment';
+import { selectedMovieScheduleData } from '../../recoil/atom';
 
 const PaymentBottomSheetFooter = () => {
+  //서버에서 안주는 값 - 28000원 결제하기
+  const CHARGE_AMOUNT = 28000;
+
   const navigate = useNavigate();
 
-  const CHARGE_AMOUNT = 28000;
-  const MOVIE_ID = 1;
+  const { schedule_id } = useRecoilValue(selectedMovieScheduleData);
 
   const hanldeClickpayBtn = () => {
     const patchPaymentSchedule = async () => {
-      const { message, isError } = await patchPaymentScheduleData(MOVIE_ID);
+      const { message, isError } = await patchPaymentScheduleData(schedule_id);
 
       const alert_message = message ? message : '결제에 실패했습니다. 다시 시도해주세요';
       alert(alert_message);
