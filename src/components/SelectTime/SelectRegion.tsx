@@ -8,11 +8,15 @@ import {
   clickedTypesData,
   currentRegionData,
   distanceData,
+  movieInfoState,
   movieSchedulesData,
   regionNamesData,
+  screenTypesData,
+  selectTimeMovieInfoState,
 } from '../../recoil/atom';
 
 const SelectRegion = () => {
+  const homeMovieInfo = useRecoilValue(movieInfoState);
   const RegionNames = useRecoilValue(regionNamesData);
   const [KeyToApi, setKeyToApi] = useState<string>('HONGDAE');
 
@@ -20,6 +24,8 @@ const SelectRegion = () => {
   const setCurRegion = useSetRecoilState(currentRegionData);
   const setHowFar = useSetRecoilState(distanceData);
   const setMovieSchedule = useSetRecoilState(movieSchedulesData);
+  const setSelectTimeMovieInfo = useSetRecoilState(selectTimeMovieInfoState);
+  const setScreenTypeList = useSetRecoilState(screenTypesData);
 
   const [checkedRegions, setCheckedRegions] = useState<Array<string>>(['홍대']);
   const clickedTypeList = useRecoilValue(clickedTypesData);
@@ -45,17 +51,21 @@ const SelectRegion = () => {
     }
   };
 
+  const { movie_id } = homeMovieInfo;
   useEffect(() => {
     const clickedList = filteringScreenType(clickedTypeList);
     getSelectRegion(
+      movie_id,
       KeyToApi,
       clickedList,
       setRegionNames,
       setCurRegion,
       setHowFar,
       setMovieSchedule,
+      setSelectTimeMovieInfo,
+      setScreenTypeList,
     );
-  }, [checkedRegions, clickedTypeList]);
+  }, [checkedRegions, clickedTypeList, movie_id]);
 
   return (
     <>
