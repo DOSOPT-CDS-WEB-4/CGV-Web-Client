@@ -18,7 +18,7 @@ export const movieInfoState = atom<movieInfoTypes>({
     total_audience: '',
     like_count: 0,
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
 export const currentRegionData = atom<string>({

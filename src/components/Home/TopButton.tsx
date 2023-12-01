@@ -25,7 +25,7 @@ const St = {
   ButtonWrapper: styled.div`
       position: fixed;
       top: 82%;
-      left: 74%;
+      left: 83%;
       width: 100%;
     & > svg {
       top: 70.1rem;
