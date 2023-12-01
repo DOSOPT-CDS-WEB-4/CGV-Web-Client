@@ -67,7 +67,7 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
 
   useEffect(() => {
     sortByType();
-  }, [selectedDate, movieScheduleList]);
+  }, [selectedDate, movieScheduleList, ScreenTypes]);
 
   const renderNormalType = () => {
     return (

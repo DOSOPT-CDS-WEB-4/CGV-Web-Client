@@ -11,6 +11,7 @@ import {
   movieInfoState,
   movieSchedulesData,
   regionNamesData,
+  screenTypesData,
   selectTimeMovieInfoState,
 } from '../../recoil/atom';
 
@@ -24,6 +25,7 @@ const SelectRegion = () => {
   const setHowFar = useSetRecoilState(distanceData);
   const setMovieSchedule = useSetRecoilState(movieSchedulesData);
   const setSelectTimeMovieInfo = useSetRecoilState(selectTimeMovieInfoState);
+  const setScreenTypeList = useSetRecoilState(screenTypesData);
 
   const [checkedRegions, setCheckedRegions] = useState<Array<string>>(['홍대']);
   const clickedTypeList = useRecoilValue(clickedTypesData);
@@ -61,6 +63,7 @@ const SelectRegion = () => {
       setHowFar,
       setMovieSchedule,
       setSelectTimeMovieInfo,
+      setScreenTypeList,
     );
   }, [checkedRegions, clickedTypeList, movie_id]);
 

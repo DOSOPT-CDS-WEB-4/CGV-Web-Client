@@ -15,6 +15,7 @@ export const getSelectRegion = async (
   setHowFar: SetterOrUpdater<number>,
   setMovieSchedule: SetterOrUpdater<ScheduleType[]>,
   setSelectTimeMovieInfo: SetterOrUpdater<SelectTimeMovieInfo>,
+  setScreenTypeList: SetterOrUpdater<string[]>,
 ) => {
   let newURL: string = `region=${regionName}`;
   if (regionName !== '' && screenTypes.length !== 0) {
@@ -28,13 +29,21 @@ export const getSelectRegion = async (
     );
     const { data } = response.data;
 
-    const { movie_info, current_region, distance, movie_screen_schedules, region_names } = data;
+    const {
+      screen_types,
+      movie_info,
+      current_region,
+      distance,
+      movie_screen_schedules,
+      region_names,
+    } = data;
 
     setRegionNames(region_names);
     setCurRegion(current_region);
     setHowFar(distance);
     setMovieSchedule(movie_screen_schedules);
     setSelectTimeMovieInfo(movie_info);
+    setScreenTypeList(screen_types);
   } catch (err) {
     console.log(err);
   }
