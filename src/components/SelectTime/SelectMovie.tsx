@@ -66,15 +66,15 @@ const SelectMovieTime: React.FC<SelectMovieTimeProps> = ({ selectedDate }) => {
     if (clickedTypeList.includes(type)) {
       setclickedTypeList(clickedTypeList.filter(elm => elm !== type));
     } else {
-      setclickedTypeList([...clickedTypeList, type]);
+      setclickedTypeList(prev => {
+        return [...prev, type];
+      });
     }
-    console.log(clickedTypeList);
   };
 
   useEffect(() => {
     sortByType();
-    handleOnClickLike();
-    // handleTypeClick();
+    console.log(clickedTypeList, 'list');
   }, [clickedTypeList]);
 
   return (
