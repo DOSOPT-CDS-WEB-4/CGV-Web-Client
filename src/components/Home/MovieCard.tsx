@@ -17,6 +17,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
   const [selectedCard, setSelectedCard] = useState<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(false);
   const setMovieId = useSetRecoilState(movieInfoState);
+  const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleMovieCard = () => {
     if (!isSelected) {
@@ -25,6 +26,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
         ...prev,
         movie_id: movie_id,
       }));
+      console.log(movie_id);
     } else {
       setMovieId((prev) => ({
         ...prev,
@@ -32,8 +34,6 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       }));
     }
   };
-
-  const [likeCount, setLikeCount] = useState<number>(like_count);
 
   const handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -48,13 +48,8 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
   };
 
   const navigate = useNavigate();
-  const handleBooking = (movieId : number) => {
+  const handleBooking = () => {
     navigate('/select-time');
-    setMovieId(prev => ({
-      ...prev,
-      movie_id: movieId,
-    }));
-    return setMovieId;
   };
 
   return (
@@ -70,7 +65,7 @@ const MovieCard = ({ movie_id, title, poster_url, ranking, total_audience, like_
       <St.Audience>누적관객 {total_audience}</St.Audience>
       <St.BookingBtn
         onClick={() =>{
-          handleBooking(movie_id);
+          handleBooking();
           }}
         disabled={!selectedCard}
           >예매하기</St.BookingBtn>
