@@ -5,11 +5,9 @@ const SelectPersonBottomSheetBtn = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <St.BottomSheetSelectPersonBtn type="button" onClick={() => navigate('/payment')}>
-        인원선택
-      </St.BottomSheetSelectPersonBtn>
-    </>
+    <St.BottomSheetSelectPersonBtn type="button" onClick={() => navigate('/payment')}>
+      인원선택
+    </St.BottomSheetSelectPersonBtn>
   );
 };
 
